@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRESQL_DB_URL")
+}
+
+model Product {
+  id          String @id
+  category    String @db.VarChar(50)
+  name        String @unique @db.VarChar(500)
+  description String @db.VarChar(5000)
+  price       Float
+  image       String @db.VarChar(500)
+  vendorId    String @db.VarChar(100)
+  Vendor      Vendor @relation(fields: [vendorId], references: [id])
+}
+
+model Vendor {
+  id       String    @id
+  name     String    @unique @db.VarChar(50)
+  email    String    @unique @db.VarChar(500)
+  phone    String    @unique @db.VarChar(50)
+  password String    @db.VarChar(500)
+  Product  Product[]
+}
