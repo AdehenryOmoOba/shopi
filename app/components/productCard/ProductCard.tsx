@@ -5,7 +5,7 @@ import {CldImage} from 'next-cloudinary'
 export default function ProductCard({data}: {data: TProduct}) {
 
   return (
-    <div className="py-4 snap-start">
+    <div className="p-4 snap-start">
       <div className="w-64">
         <Link key={data.id} href={`/product/${data.id}`}>
         <div className="p-5 bg-gray-900 rounded-lg h-64 w-64 object-contain">

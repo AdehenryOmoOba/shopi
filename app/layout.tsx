@@ -15,11 +15,11 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
     <html lang="en">
       <head />
       <body>
-        <header className='h-28 w-full grid place-content-center'>
+        <header className='h-28 mx-auto w-full md:w-[90vw] lg:w-[80vw]'>
           <Navbar />
         </header>
         <SearchProvider>
-         <main>
+         <main className='mx-auto px-5 md:w-[90vw] lg:w-[80vw]'>
            {children}
          </main>
         </SearchProvider>

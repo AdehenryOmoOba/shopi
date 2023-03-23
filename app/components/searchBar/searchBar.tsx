@@ -6,7 +6,7 @@ export default function SearchBar() {
   const contextValue =  useContext(SearchContext)
 
   return (
-    <div className='w-full grid items-center mt-5 h-10'>
+    <div className='w-full grid items-center mb-5 h-10'>
         <input type="text"
          placeholder='Search Product'
          value={contextValue?.searchString}

@@ -2,7 +2,6 @@ import fs from 'fs'
 import ProductsPage from "./components/productsPage/ProductsPage"
 import SearchBar from "./components/searchBar/searchBar"
 import mockData from '../ecommerce_products.json'
-import { prisma } from '@/prisma/prismaClient'
 
 
 const path = 'products.json'
@@ -15,15 +14,6 @@ export default async function Home() {
   //   }
   // })
 
-  const data = await prisma.product.findMany({
-    include: {
-      Vendor: true
-    }
-  })
-
-  fs.writeFileSync('mockData.json', JSON.stringify(data, null, 2))
-
-  console.log(data)
 
   const products: TProduct[] = mockData
   // const products: TProduct[] = await response.json()
@@ -35,11 +25,11 @@ export default async function Home() {
   const categoriesLength = categories.length
 
   return (
-    <section className="p-5">
+    <section>
       <SearchBar />
-      <div className='py-5'>
+      <div>
         {categories.map((category, index) => (
-        <div key={category} className=''>
+        <div key={category}>
           <ProductsPage products={products} category={category} index={index} categoriesLength={categoriesLength} />
         </div>
         ))}

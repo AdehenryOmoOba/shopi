@@ -5,7 +5,7 @@
     "name": "Google Pixel 6",
     "description": "The Pixel 6 features a 6.4-inch Full HD+ OLED display, Google Tensor processor, 50-megapixel primary camera, and a 12-megapixel ultra-wide camera. It also includes features such as Night Sight, Live HDR+, and Super Res Zoom.",
     "price": 890.5,
-    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fphone3.png?alt=media&token=bbe92c08-6637-41d1-9474-4e37666a1bb1",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fpixel.png?alt=media&token=5e9940ab-a6a1-4a49-bb66-44aa77730182",
     "vendorId": "5128cfc0-c513-4d6c-8c9a-e21398ee016d"
   },
   {
@@ -23,7 +23,7 @@
     "name": "Jabr3",
     "description": "Android Bluetooth earpieces come in a variety of shapes and sizes, including earbuds, ear hooks, and over-the-ear designs. They typically feature a built-in microphone and controls for adjusting the volume, answering and ending calls, and controlling playback of audio.",
     "price": 155,
-    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fear_piece2.png?alt=media&token=fdfb3a63-b4fe-4e39-af95-e92272408768",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fear_piece1.avif?alt=media&token=cf4c6662-d4f3-4cf3-9fab-01df38531fee",
     "vendorId": "c1fdedb5-bd5f-439f-a8cf-0fd652db81b3"
   },
   {
@@ -59,7 +59,7 @@
     "name": "Sony SmartWatch 3",
     "description": "The Sony SmartWatch 3 is a wearable device developed and manufactured by Sony Corporation. It was released in 2014 and features a 1.6-inch transflective display with a resolution of 320 x 320 pixels. The watch is powered by a 1.2GHz quad-core processor and 512MB of RAM, and comes with 4GB of internal storage",
     "price": 1330,
-    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fwatch3.png?alt=media&token=db7a4f93-a9bb-4269-9a10-2349634d6c4a",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fsony_watch.avif?alt=media&token=8785325d-1b08-4b53-bf2a-e162beace0fc",
     "vendorId": "1a372dca-56da-402b-a875-535b606b13ac"
   },
   {
@@ -68,7 +68,7 @@
     "name": "Nikko 2BL",
     "description": "An Android Bluetooth earpiece is a wireless earpiece that connects to an Android smartphone via Bluetooth technology. These earpieces are designed to be used for hands-free calling and listening to audio, allowing users to keep their hands free while on the go.",
     "price": 169,
-    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fear_piece1.png?alt=media&token=7a8f8db6-08cd-4272-a8fe-e0aa055d6e55",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fear_piece3.png?alt=media&token=daf54f45-d37e-4e9b-9683-4bf3b1fbd77c",
     "vendorId": "c1fdedb5-bd5f-439f-a8cf-0fd652db81b3"
   },
   {
@@ -77,7 +77,7 @@
     "name": "Sony SmartWatch 2",
     "description": "The SmartWatch 2 is designed to be used as a companion device for Android smartphones and includes features such as notifications, music controls, and weather updates. It also includes NFC technology for mobile payments and comes with a range of customizable watch faces.",
     "price": 1099,
-    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fwatch2.png?alt=media&token=a0572ae6-7a2d-463f-b708-08e7a1fe743d",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fsamsung_watch.avif?alt=media&token=19c7f31d-4bad-473f-8439-09f9bc4875ff",
     "vendorId": "1a372dca-56da-402b-a875-535b606b13ac"
   }
 ]

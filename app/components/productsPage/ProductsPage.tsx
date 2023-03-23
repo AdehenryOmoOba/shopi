@@ -25,14 +25,14 @@ export default function ProductsPage({products, category, index , categoriesLeng
   let isCategory = productsArray.find((product) => product.category === category)
 
   return (
-    <>
-     {isCategory && <h2 className="text-2xl capitalize mt-5">{category}</h2>}
+    <div className=''>
+     {isCategory && <h2 className="text-2xl px-4 capitalize">{category}</h2>}
      <div className="flex justify-start space-x-10 overflow-x-scroll snap-x" id="items_container">
       {productsArray.filter((items) => items.category === category).map((item) => (
         <ProductCard key={item.id}  data={item} />
       ))}
      </div>
      {productsArray.length === 0 && index === categoriesLength - 1 && <div><p className='text-center'>No match for &quot;{searchTerm}&quot;</p></div>}
-    </>
+    </div>
   )
 }
