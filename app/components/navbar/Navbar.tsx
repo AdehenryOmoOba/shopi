@@ -5,9 +5,13 @@ import { usePathname } from 'next/navigation'
 import React from 'react'
 import {GiShoppingCart} from 'react-icons/gi'
 
+
+const homeRegex = /^\/product\/[a-z\d]+|\/$/
+
 export default function Navbar() {
 const pathname = usePathname()
-console.log({pathname})
+const isHomePath = homeRegex.test(pathname)
+
 
   return (
     <div className='inline-flex h-28 w-screen px-5'>
@@ -16,7 +20,7 @@ console.log({pathname})
       </div>
       <nav className='flex flex-1 justify-center items-center'>
         <ul className='flex items-center justify-center gap-x-2 w-full h-full text-slate-300 md:gap-x-4 lg:gap-x-10'>
-          <Link href='/' className={`py-1 px-4 rounded text-sm font-extrabold ${pathname === '/' ? 'bg-slate-800' : ''}`}>Home</Link>
+          <Link href='/' className={`py-1 px-4 rounded text-sm font-extrabold ${isHomePath ? 'bg-slate-800' : ''}`}>Home</Link>
           <Link href='/login' className={`py-1 px-4 rounded text-sm font-extrabold ${pathname === '/login' ? 'bg-slate-800' : ''}`}>Login</Link>
           <Link href='/register' className={`py-1 px-4 rounded text-sm font-extrabold ${pathname === '/register' ? 'bg-slate-800' : ''}`}>Register</Link>
         </ul>
