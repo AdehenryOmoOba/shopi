@@ -1,19 +1,32 @@
 import fs from 'fs'
 import ProductsPage from "./components/productsPage/ProductsPage"
 import SearchBar from "./components/searchBar/searchBar"
+import mockData from '../ecommerce_products.json'
+import { prisma } from '@/prisma/prismaClient'
 
 
 const path = 'products.json'
 
 export default async function Home() {
  
-  const response = await fetch('http://localhost:3000/api/products', {
-    next: {
-      revalidate: 3600
+  // const response = await fetch('http://localhost:3000/api/products', {
+  //   next: {
+  //     revalidate: 3600
+  //   }
+  // })
+
+  const data = await prisma.product.findMany({
+    include: {
+      Vendor: true
     }
   })
 
-  const products: TProduct[] = await response.json()
+  fs.writeFileSync('mockData.json', JSON.stringify(data, null, 2))
+
+  console.log(data)
+
+  const products: TProduct[] = mockData
+  // const products: TProduct[] = await response.json()
 
   const idArray = products.map((product) => ({id: product.id}))
   fs.writeFileSync(path, JSON.stringify(idArray, null, 2))
