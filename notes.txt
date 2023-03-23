@@ -16,5 +16,3 @@ pipeline, we need to re-install all the node_modules and re-generate the prisma 
 This can be done by modifying the build script inside the package.json file as: "build": "npx prisma generate && next build"
 
 Seeding: 
-
-This new branch is created for integrating next-auth with the project.
