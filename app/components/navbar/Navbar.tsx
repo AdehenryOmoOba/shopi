@@ -12,7 +12,6 @@ export default function Navbar() {
 const pathname = usePathname()
 const isHomePath = homeRegex.test(pathname)
 
-
   return (
     <div className='inline-flex h-28 w-screen px-5'>
       <div className='flex flex-1 justify-start items-center'>
