@@ -1,5 +1,5 @@
 "use client"
-import { SearchContext } from '@/utils/context/searchContext'
+import { AppContext } from '@/utils/context/appContextProvider'
 import React,{useContext} from 'react'
 import ProductCard from '../productCard/ProductCard'
 
@@ -11,17 +11,16 @@ type Props = {
 }
 
 export default function ProductsPage({products, category, index , categoriesLength}: Props) {
-  const contextValue =  useContext(SearchContext)
-
-  const searchTerm = contextValue?.searchString
+  
+  const {searchString} =  useContext(AppContext)!
 
   let filteredProducts: TProduct[] = []
 
-  if(searchTerm) {
-   filteredProducts = products.filter((items) => items.name.toLowerCase().includes(searchTerm.toLowerCase()))
+  if(searchString) {
+   filteredProducts = products.filter((items) => items.name.toLowerCase().includes(searchString.toLowerCase()))
   }
 
-  let productsArray = filteredProducts.length ? filteredProducts : !filteredProducts.length && searchTerm ? [] : products
+  let productsArray = filteredProducts.length ? filteredProducts : !filteredProducts.length && searchString ? [] : products
   let isCategory = productsArray.find((product) => product.category === category)
 
   return (
@@ -32,7 +31,7 @@ export default function ProductsPage({products, category, index , categoriesLeng
         <ProductCard key={item.id}  data={item} />
       ))}
      </div>
-     {productsArray.length === 0 && index === categoriesLength - 1 && <div><p className='text-center'>No match for &quot;{searchTerm}&quot;</p></div>}
+     {productsArray.length === 0 && index === categoriesLength - 1 && <div><p className='text-center'>No match for &quot;{searchString}&quot;</p></div>}
     </div>
   )
 }

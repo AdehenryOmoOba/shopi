@@ -8,7 +8,7 @@ type TProduct = {
     vendorId: string
   }
 
-  type TProductDetails = {
+type TProductDetails = {
     id: string
     category: string
     name: string
@@ -24,3 +24,21 @@ type TProduct = {
       password: strin
     }
   }
+
+type TVendor =   {
+  id: string
+  name: string
+  email: string
+  phone: string
+}
+
+type TLoginResponse =   {
+  success: boolean
+  jwt: string
+  user: {
+    id: string
+    name: string
+    email: string
+    phone: string
+  }
+}
