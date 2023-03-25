@@ -1,34 +1,30 @@
 "use client"
 import { AppContext } from '@/utils/context/appContextProvider'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import React, { useContext, useState } from 'react'
+import {signIn} from 'next-auth/react'
+import { useSearchParams } from 'next/navigation'
 
-
-const hardToken = "bh90345894@&*#*#*()))_*&JJ&U&"
 
 export default function Login() {
   
   const [userData, setUserData] = useState({username: "", password: ""})
   const {setUser, setError} = useContext(AppContext)!
-  const router = useRouter()
-
+  const searchParams = useSearchParams().get("callbackUrl")
+  
   const handleLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 
     e.preventDefault()
  
     try {
-      const response = await fetch('http://localhost:3000/api/auth/login', {method: "POST", body: JSON.stringify(userData)})
-      const data: TLoginResponse = await response.json()
-      console.log(data)
-      if(data.success && data.jwt === hardToken) setUser(data.user)
-      router.push('/')
+      await signIn("credentials", {username: userData.username, password: userData.password, callbackUrl: `${searchParams ? searchParams : '/'}`})
     } catch (error: any) {
       console.log(error.message)
       setError(error.message)
     }
   }
 
+  console.log({searchParams})
 
   return (
     <div className='w-[280px] h-full mx-auto pt-20 flex-col justify-center lg:w-[308px]'>

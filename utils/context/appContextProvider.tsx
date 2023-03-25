@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from 'react'
+import {SessionProvider} from 'next-auth/react'
 
 
 interface IAppContext {
@@ -20,7 +21,9 @@ export default function AppContextProvider({children}: {children: React.ReactNod
 
   return (
     <AppContext.Provider value={{searchString, setSearchString, user, setUser, error, setError}}>
+      <SessionProvider>
       {children}
+      </SessionProvider>
     </AppContext.Provider>
   )
 }
