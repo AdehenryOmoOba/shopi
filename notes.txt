@@ -17,6 +17,8 @@ This can be done by modifying the build script inside the package.json file as: 
 
 Seeding: 
 
+///////////////////// Adding Nextauth  ////////////////////////
+
 This new branch is created for integrating next-auth with the project.
 In setting up this next-auth, credential provider method with jwt as session strategy will be used so that the user's credential received
 from the client (username/email and password) can be authenticated against what is in the database.
@@ -61,3 +63,5 @@ const handler =  NextAuth(authOptions)
 export {handler as GET, handler as POST}
 
 -   Inside the .env.local file, add enviroment variable "NEXTAUTH_SECRET=<random string>". This will be used to sign the jwt
+
+////////////////////// adding user role and notification ////////////////////
