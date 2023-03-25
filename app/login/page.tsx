@@ -3,14 +3,14 @@ import Link from 'next/link'
 import React, { useContext, useState } from 'react'
 import {signIn} from 'next-auth/react'
 import { useSearchParams } from 'next/navigation'
-import { useNotification } from '../components/notification/Notification'
+// import { useNotification } from '../components/notification/Notification'
 
 
 export default function Login() {
   
   const [userData, setUserData] = useState({username: "", password: ""})
   const searchParams = useSearchParams().get("callbackUrl")
-  const notify = useNotification()
+  // const notify = useNotification()
   
   const handleLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 
@@ -18,10 +18,10 @@ export default function Login() {
  
     try {
       await signIn("credentials", {username: userData.username, password: userData.password, callbackUrl: `${searchParams ? searchParams : '/'}`})
-      notify({type: 'success', message: "Login successful"})
+      // notify({type: 'success', message: "Login successful"})
     } catch (error: any) {
       console.log(error.message)
-      notify({type: 'error', message: error.message})
+      // notify({type: 'error', message: error.message})
     }
   }
 
