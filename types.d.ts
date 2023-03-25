@@ -42,3 +42,8 @@ type TLoginResponse =   {
     phone: string
   }
 }
+
+type TNotify = {
+  type: "error" | "success",
+  message: string 
+}

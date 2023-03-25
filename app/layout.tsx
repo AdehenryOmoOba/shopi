@@ -3,6 +3,7 @@ import {Metadata} from 'next'
 import Footer from './components/footer/Footer'
 import Navbar from './components/navbar/Navbar'
 import AppContextProvider from '@/utils/context/appContextProvider'
+import Notification from './components/notification/Notification'
 
 
 export const metadata: Metadata = {
@@ -24,6 +25,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
           <main className='mx-auto px-5 md:w-[90vw] lg:w-[80vw]'>
             {children}
           </main>
+          <Notification />
           </>
          </AppContextProvider>
          <Footer />
