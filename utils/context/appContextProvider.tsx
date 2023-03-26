@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import {SessionProvider} from 'next-auth/react'
 
 
@@ -22,6 +22,7 @@ export default function AppContextProvider({children}: {children: React.ReactNod
   const [user, setUser] = useState<TVendor | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState<string | null>(null)
+
 
   return (
     <AppContext.Provider value={{searchString, setSearchString, user, setUser, error, setError, success, setSuccess}}>

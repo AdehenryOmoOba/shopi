@@ -1,31 +1,37 @@
 "use client"
 import Link from 'next/link'
-import React, { useContext, useState } from 'react'
+import React, {useState, useContext } from 'react'
 import {signIn} from 'next-auth/react'
-import { useSearchParams } from 'next/navigation'
-// import { useNotification } from '../components/notification/Notification'
+import { useSearchParams, useRouter } from 'next/navigation'
+import { useNotification } from '../components/notification/Notification'
 
 
 export default function Login() {
   
   const [userData, setUserData] = useState({username: "", password: ""})
   const searchParams = useSearchParams().get("callbackUrl")
-  // const notify = useNotification()
+  const notify = useNotification()
+  const router = useRouter()
   
   const handleLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 
     e.preventDefault()
- 
+
     try {
-      await signIn("credentials", {username: userData.username, password: userData.password, callbackUrl: `${searchParams ? searchParams : '/'}`})
-      // notify({type: 'success', message: "Login successful"})
+      const response = await signIn("credentials", { redirect: searchParams ? true : false, username: userData.username, password: userData.password, callbackUrl: `${searchParams ? searchParams : '/'}`})
+      if(response && response.ok) {
+        notify({type: 'success', message: "Login successful"})
+        // window.location.replace(searchParams || '/')
+        router.push(searchParams || '/')
+        console.log({searchParams})
+      }
+      if(response && response.error) {
+        notify({type: 'error', message: response.error})
+      } 
     } catch (error: any) {
       console.log(error.message)
-      // notify({type: 'error', message: error.message})
     }
   }
-
-  console.log({searchParams})
 
   return (
     <div className='w-[280px] h-full mx-auto pt-20 flex-col justify-center lg:w-[308px]'>
