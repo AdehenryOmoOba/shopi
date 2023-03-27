@@ -1,36 +1,23 @@
 "use client"
 import Link from 'next/link'
-import React, {useState, useContext } from 'react'
+import React, {useState } from 'react'
 import {signIn} from 'next-auth/react'
-import { useSearchParams, useRouter } from 'next/navigation'
-import { useNotification } from '../components/notification/Notification'
 
 
 export default function Login() {
   
   const [userData, setUserData] = useState({username: "", password: ""})
-  const searchParams = useSearchParams().get("callbackUrl")
-  const notify = useNotification()
-  const router = useRouter()
   
   const handleLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-
     e.preventDefault()
-
-    try {
-      const response = await signIn("credentials", { redirect: searchParams ? true : false, username: userData.username, password: userData.password, callbackUrl: `${searchParams ? searchParams : '/'}`})
-      if(response && response.ok) {
-        notify({type: 'success', message: "Login successful"})
-        // window.location.replace(searchParams || '/')
-        router.push(searchParams || '/')
-        console.log({searchParams})
-      }
-      if(response && response.error) {
-        notify({type: 'error', message: response.error})
-      } 
-    } catch (error: any) {
-      console.log(error.message)
-    }
+    // const response = await fetch('http://localhost:3000/api/auth/callback/credentials', {
+    //   method: "POST",
+    //   body: JSON.stringify(userData),
+    //   credentials: "include"
+    // })
+    // const responseData = await response.json()
+    // console.log({responseData})
+    await signIn("credentials", {})
   }
 
   return (

@@ -1,32 +1,30 @@
 "use client"
-import { AppContext } from '@/utils/context/appContextProvider'
 import React, { useContext } from 'react'
 
 
-export function useNotification() {
+// export function useNotification() {
 
-  const {setError, setSuccess} = useContext(AppContext)
+//   const {setError, setSuccess} = useContext(AppContext)
 
-  const notify = (payload: TNotify) => {
+//   const notify = (payload: TNotify) => {
 
-    if(payload.type === "error") setError(payload.message)
+//     if(payload.type === "error") setError(payload.message)
 
-    if(payload.type === "success") setSuccess(payload.message)
+//     if(payload.type === "success") setSuccess(payload.message)
 
-    let timeoutID = window.setTimeout(() => {
-      setError(null)
-      setSuccess(null)
-    }, 5000);
-  }
-  return notify
-}
+//     let timeoutID = window.setTimeout(() => {
+//       setError(null)
+//       setSuccess(null)
+//     }, 5000);
+//   }
+//   return notify
+// }
 
 
 export default function Notification() {
-  const {error, success} = useContext(AppContext)
-
-  // const error = null
-  // const success = 'notification test'
+  
+  const success = null
+  const error = null
 
   let isContent = error || success ? true : false
 
