@@ -5,19 +5,10 @@ import {signIn} from 'next-auth/react'
 
 
 export default function Login() {
-  
   const [userData, setUserData] = useState({username: "", password: ""})
-  
   const handleLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
-    // const response = await fetch('http://localhost:3000/api/auth/callback/credentials', {
-    //   method: "POST",
-    //   body: JSON.stringify(userData),
-    //   credentials: "include"
-    // })
-    // const responseData = await response.json()
-    // console.log({responseData})
-    await signIn("credentials", {})
+    await signIn("credentials", { username: userData.username, password: userData.password, callbackUrl: '/' })
   }
 
   return (
