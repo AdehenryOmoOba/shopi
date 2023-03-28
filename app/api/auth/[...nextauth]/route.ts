@@ -13,7 +13,7 @@ export const authOptions: NextAuthOptions = {
                 password: {type: "password"},
             },
             async authorize(credentials) {
-                //   handle auth 
+                //   handle auth // use prisma to lookup user in the database //
                 console.log({credentials})
                 if(!credentials.username) return null
                 const user = { id: "1", name: credentials.username, email: "bobo@gmail.com", phone: "09036554777", image: 'https://firebase/img'};
