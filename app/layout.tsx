@@ -15,9 +15,8 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="en">
       <head />
-       <body>
-         <AppContextProvider>
-          <>
+       <AppContextProvider>
+        <body>
          <header className='h-28 mx-auto w-full md:w-[90vw] lg:w-[80vw]'>
            <Navbar />
          </header>
@@ -25,10 +24,9 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
             {children}
             <Notification />
           </main>
-          </>
-         </AppContextProvider>
          <Footer />
-       </body>
+        </body>
+      </AppContextProvider>
     </html>
   )
 }

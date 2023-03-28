@@ -8,20 +8,31 @@ export const authOptions: NextAuthOptions = {
     },
     providers: [
         CredentialsProvider({
-            name: "Sign In",
             credentials: {
-                username: {label: "Username", type: "text"},
-                password: {label: "Password", type: "password"},
+                username: {type: "text"},
+                password: {type: "password"},
             },
             async authorize(credentials) {
                 //   handle auth 
                 console.log({credentials})
-                if(!credentials?.username) return null
+                if(!credentials.username) return null
                 const user = { id: "1", name: credentials.username, email: "bobo@gmail.com", phone: "09036554777", image: 'https://firebase/img'};
                 return user;
             },
         })
     ],
+    callbacks: {
+       jwt: ({token, user}) => {
+          token = {...token, ...user}
+          return token
+       },
+       session({token, session}) {
+        console.log("from session callback ",token)
+           session.user = {...session.user, ...token}
+           session.user.image = null
+           return session
+       },
+    },
     pages: {
         signIn: "/login"
     }

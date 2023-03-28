@@ -34,9 +34,9 @@ function Navbar() {
           <Link href='/' className={`py-1 px-4 rounded text-sm font-extrabold ${isHomePath ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Home</Link>
           {status === "authenticated" ? 
           <button className="py-1 px-4 rounded text-sm font-extrabold cursor-pointer active:bg-slate-800 active:text-white transition-colors" onClick={handleLogout}>Logout</button> :
-          <button onClick={() => signIn()} className={`py-1 px-4 rounded text-sm font-extrabold ${pathname === '/login' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Login</button>}
+          <Link href='/login' className={`py-1 px-4 rounded text-sm font-extrabold ${pathname === '/login' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Login</Link>}
           <Link href='/register' className={`py-1 px-4 rounded text-sm font-extrabold ${pathname === '/register' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Register</Link>
-          <Link href='/secrete-page' className={`py-1 px-4 rounded text-sm font-extrabold ${pathname === '/secrete-page' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Secrete Page</Link>
+          <Link href='/secret-page' className={`py-1 px-4 rounded text-sm font-extrabold ${pathname === '/secrete-page' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Secrete Page</Link>
         </ul>
       </nav>
       <div className='flex flex-1 justify-end items-center gap-x-5'>
