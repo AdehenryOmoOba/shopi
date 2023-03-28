@@ -22,8 +22,7 @@ function Navbar() {
      signOut()
   }
   
-  console.log({data})
-
+  
   return (
     <div className='inline-flex w-full h-28 px-5'>
       <div className='flex flex-1 justify-start items-center'>

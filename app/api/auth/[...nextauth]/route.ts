@@ -15,7 +15,7 @@ export const authOptions: NextAuthOptions = {
             async authorize(credentials) {
                 //   handle auth // use prisma to lookup user in the database //
                 console.log({credentials})
-                if(!credentials.username) return null
+                if(credentials.username !== "ade") throw new Error("wrong username!")
                 const user = { id: "1", name: credentials.username, email: "bobo@gmail.com", phone: "09036554777", image: 'https://firebase/img'};
                 return user;
             },
@@ -34,7 +34,7 @@ export const authOptions: NextAuthOptions = {
        },
     },
     pages: {
-        signIn: "/login"
+        signIn: "/login",
     }
 }
 

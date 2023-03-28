@@ -2,13 +2,23 @@
 import Link from 'next/link'
 import React, {useState } from 'react'
 import {signIn} from 'next-auth/react'
+import { useRouter } from 'next/navigation'
+import { useNotification } from '../components/notification/Notification'
 
 
 export default function Login() {
   const [userData, setUserData] = useState({username: "", password: ""})
+  const router = useRouter()
+  const notify = useNotification()
+  
   const handleLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
-    await signIn("credentials", { username: userData.username, password: userData.password, callbackUrl: '/' })
+    const {error} = await signIn("credentials", {redirect: false, username: userData.username, password: userData.password, callbackUrl: '/' })
+    if(error) notify({type: "error", message: error})
+    if(!error) {
+      notify({type:'success', message: "Login successful"})
+      router.push('/')
+    }
   }
 
   return (
