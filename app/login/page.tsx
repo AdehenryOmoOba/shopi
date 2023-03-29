@@ -13,11 +13,10 @@ export default function Login() {
   
   const handleLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
-    const {error} = await signIn("credentials", {redirect: false, username: userData.username, password: userData.password, callbackUrl: '/' })
+    const {error} = await signIn("credentials", {username: userData.username, password: userData.password, callbackUrl: '/' })
     if(error) notify({type: "error", message: error})
     if(!error) {
       notify({type:'success', message: "Login successful"})
-      router.push('/')
     }
   }
 

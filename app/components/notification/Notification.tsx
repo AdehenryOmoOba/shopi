@@ -1,5 +1,7 @@
 "use client"
 import { AppContext } from '@/utils/context/appContextProvider'
+import {MdError} from 'react-icons/md'
+import {IoMdCheckmarkCircle} from 'react-icons/io'
 import React, { useContext } from 'react'
 
 
@@ -27,7 +29,8 @@ export default function Notification() {
   const {error, success} =  useContext(AppContext)
   
 
-  const content =  (<div className={`fixed h-10 w-max rounded-full mx-auto bottom-16  items-center justify-center px-10 left-1/2 -translate-x-1/2 ${error || success ? "flex" : "hidden"} ${success ? "bg-green-400 text-slate-800" : "bg-red-500 text-white"}`}>
+  const content =  (<div className={`fixed flex shadow-lg bg-gray-900 space-x-2 h-14 w-max rounded-md mx-auto bottom-16  items-center justify-center px-10 left-1/2 -translate-x-1/2 ${error || success ? "flex" : "hidden"}`}>
+                    {success ? <IoMdCheckmarkCircle className='text-green-300 text-2xl'/> : <MdError className='text-red-600 text-2xl'/>}
                     <p>{success ? success : error}</p>
                   </div>) 
   
