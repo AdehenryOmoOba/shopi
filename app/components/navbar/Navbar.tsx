@@ -18,10 +18,10 @@ function Navbar() {
   
   const isHomePath = homeRegex.test(pathname)
 
-  const handleLogout =  () => {
-     signOut()
+  const handleLogout = () => {
+    signOut()
   }
-  
+
   
   return (
     <div className='inline-flex w-full h-28 px-5'>

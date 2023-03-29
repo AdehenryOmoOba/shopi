@@ -1,26 +1,31 @@
 "use client"
 import Link from 'next/link'
 import React, {useState } from 'react'
-import {signIn} from 'next-auth/react'
-import { useRouter } from 'next/navigation'
+import {signIn, useSession} from 'next-auth/react'
+import { redirect, useSearchParams } from 'next/navigation'
 import { useNotification } from '../components/notification/Notification'
 
 
 export default function Login() {
+  const session = useSession()
   const [userData, setUserData] = useState({username: "", password: ""})
-  const router = useRouter()
+  const searcParams = useSearchParams()
   const notify = useNotification()
   
   const handleLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
-    const {error} = await signIn("credentials", {username: userData.username, password: userData.password, callbackUrl: '/' })
-    if(error) notify({type: "error", message: error})
-    if(!error) {
-      notify({type:'success', message: "Login successful"})
-    }
+    console.log(searcParams.get('nexturl'))
+    const nexturl = searcParams.get('nexturl') ? `/${searcParams.get('nexturl')}` : '/'
+    await signIn("credentials", {redirect: true, username: userData.username, password: userData.password, callbackUrl: nexturl })
+
+    // const {error} = await signIn("credentials", {redirect: true, username: userData.username, password: userData.password, callbackUrl: '/' })
+    // if(error) notify({type: "error", message: error})
+    // if(!error) {
+    //   notify({type:'success', message: "Login successful"})
+    // }
   }
 
-  return (
+  const content = (
     <div className='w-[280px] h-full mx-auto pt-20 flex-col justify-center lg:w-[308px]'>
       <p className='text-center text-2xl mb-4 text-slate-300'>Login to Shopi</p>
       <form className='bg-slate-900 rounded-md p-5 mb-4' autoComplete='false'>
@@ -40,4 +45,10 @@ export default function Login() {
       </div>
     </div>
   )
+  
+  if(session.status === "unauthenticated") return content
+
+  if(session.status === "loading") return <div className='w-[280px] h-full mx-auto pt-20 flex-col justify-center lg:w-[308px]'><p className='text-center'>Loading...</p></div>
+
+  redirect('/')
 }
