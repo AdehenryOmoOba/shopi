@@ -18,6 +18,7 @@ This can be done by modifying the build script inside the package.json file as: 
 Seeding: 
 
 ///////////////////// Adding Custom auth  ////////////////////////
+main branch
 
 
 ////////////////////// adding user role and notification ////////////////////
