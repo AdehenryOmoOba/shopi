@@ -1,28 +1,32 @@
 "use client"
 import Link from 'next/link'
-import React, {useState } from 'react'
-import {signIn, useSession} from 'next-auth/react'
-import { redirect, useSearchParams } from 'next/navigation'
+import React, {useState, useContext } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useNotification } from '../components/notification/Notification'
+import signIn from '@/utils/auth/login'
+import { AppContext } from '@/utils/context/appContextProvider'
 
 
 export default function Login() {
-  const session = useSession()
   const [userData, setUserData] = useState({username: "", password: ""})
   const searcParams = useSearchParams()
   const notify = useNotification()
+  const {setUser, user} = useContext(AppContext)
+  const router = useRouter()
+
   
   const handleLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
     console.log(searcParams.get('nexturl'))
     const nexturl = searcParams.get('nexturl') ? `/${searcParams.get('nexturl')}` : '/'
-    await signIn("credentials", {redirect: true, username: userData.username, password: userData.password, callbackUrl: nexturl })
 
-    // const {error} = await signIn("credentials", {redirect: true, username: userData.username, password: userData.password, callbackUrl: '/' })
-    // if(error) notify({type: "error", message: error})
-    // if(!error) {
-    //   notify({type:'success', message: "Login successful"})
-    // }
+    const response = await signIn(userData)
+    if(!response.success) notify({type: 'error', message: response.error})
+    if(response.success) {
+      notify({type: 'success', message: "Login successful"})
+      setUser(response.data)
+      router.push("/")
+    } 
   }
 
   const content = (
@@ -45,10 +49,6 @@ export default function Login() {
       </div>
     </div>
   )
-  
-  if(session.status === "unauthenticated") return content
 
-  if(session.status === "loading") return <div className='w-[280px] h-full mx-auto pt-20 flex-col justify-center lg:w-[308px]'><p className='text-center'>Loading...</p></div>
-
-  redirect('/')
+  return content
 }

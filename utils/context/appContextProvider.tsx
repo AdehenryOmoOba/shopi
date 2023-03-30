@@ -1,6 +1,6 @@
 "use client"
-import React, { useState } from 'react'
-import {SessionProvider} from 'next-auth/react'
+import React, { useState, useEffect } from 'react'
+import { checkUser } from '../auth/checkUser'
 
 
 interface IAppContext {
@@ -16,6 +16,8 @@ interface IAppContext {
 
 export const AppContext = React.createContext<IAppContext | null>(null)
 
+
+
 export default function AppContextProvider({children}: {children: React.ReactNode}) {
 
   const [searchString, setSearchString] = useState("")
@@ -23,11 +25,17 @@ export default function AppContextProvider({children}: {children: React.ReactNod
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState<string | null>(null)
 
+  useEffect(() => {
+    checkUser().then((res) => {
+      if(res) {
+        setUser({id: res.payload.id, email: res.payload.email, name: res.payload.name, phone: res.payload.phone})
+      }
+    })
+  },[])
+
   return (
-    <SessionProvider>
      <AppContext.Provider value={{searchString, setSearchString, user, setUser, error, setError, success, setSuccess}}>
        {children}
      </AppContext.Provider>
-    </SessionProvider>
   )
 }

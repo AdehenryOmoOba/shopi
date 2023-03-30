@@ -1,11 +1,12 @@
 "use client"
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import React from 'react'
+import React,{useContext} from 'react'
 import {GiShoppingCart} from 'react-icons/gi'
 import { CldImage } from 'next-cloudinary'
-import {signOut, signIn} from 'next-auth/react'
-import {useSession} from 'next-auth/react'
+import { AppContext } from '@/utils/context/appContextProvider'
+import { signOut } from '@/utils/auth/logout'
+import { useNotification } from '../notification/Notification'
 
 
 const homeRegex = /^\/product\/[a-z\d]+|\/$/
@@ -14,15 +15,18 @@ const logoURL = "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.app
 function Navbar() {
  
   const pathname = usePathname()
-  const {data, status} = useSession()
-  
+  const {user, setUser} = useContext(AppContext);
+  const notify = useNotification()
+
   const isHomePath = homeRegex.test(pathname)
 
-  const handleLogout = () => {
-    signOut()
+  const  handleLogout = async () => {
+    const response = await signOut()
+    if(response.error) return notify({type: 'error', message: response.error})
+    setUser(null)
+    notify({type: 'success', message: response.success})
   }
 
-  
   return (
     <div className='inline-flex w-full h-28 px-5'>
       <div className='flex flex-1 justify-start items-center'>
@@ -31,7 +35,7 @@ function Navbar() {
       <nav className='flex flex-1 justify-center items-center'>
         <ul className='flex items-center justify-center gap-x-1 w-max h-full text-slate-300 md:gap-x-5'>
           <Link href='/' className={`py-1 px-4 rounded text-sm font-extrabold ${isHomePath ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Home</Link>
-          {status === "authenticated" ? 
+          {user ? 
           <button className="py-1 px-4 rounded text-sm font-extrabold cursor-pointer active:bg-slate-800 active:text-white transition-colors" onClick={handleLogout}>Logout</button> :
           <Link href='/login' className={`py-1 px-4 rounded text-sm font-extrabold ${pathname === '/login' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Login</Link>}
           <Link href='/register' className={`py-1 px-4 rounded text-sm font-extrabold ${pathname === '/register' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Register</Link>
@@ -39,7 +43,7 @@ function Navbar() {
         </ul>
       </nav>
       <div className='flex flex-1 justify-end items-center gap-x-5'>
-        {status === "authenticated" ? <p className='capitalize'>Hi, {data.user.name}</p> : <p className='capitalize'>Hi, guest</p>}
+        <p className='capitalize'>Hi, {user ? user.name : "Guest"}</p>
         <div className='grid place-content-center h-10 w-10 bg-slate-800 rounded-full'>
          <GiShoppingCart className='text-lg cursor-pointer text-slate-300 hover:text-white transition-colors'/>
         </div>
