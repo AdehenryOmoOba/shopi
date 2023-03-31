@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "npx prisma generate && next build",
     "start": "next start",
+    "bs": "npx prisma generate && next build && next start",
     "lint": "next lint"
   },
   "dependencies": {

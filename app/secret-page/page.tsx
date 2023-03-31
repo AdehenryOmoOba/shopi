@@ -1,7 +1,16 @@
-import { NextResponse } from 'next/server'
-import React from 'react'
+"use client"
+import React, { useContext } from 'react'
+import { redirect } from 'next/navigation'
+import { AppContext } from '@/utils/context/appContextProvider'
 
-export default async function SecretePage() {
+
+export default function SecretePage() {
+  
+ const context = useContext(AppContext)
+
+ let isLoggedIn = context.user ? true : false
+
+ if(!isLoggedIn) redirect("/login")
 
   const content = (text: string) => (
     <div className='w-max -full mx-auto pt-20 flex-col justify-center'>
@@ -9,5 +18,5 @@ export default async function SecretePage() {
     </div>
   )
 
- return content("This is a super secrete page!")
+  return content("This is a super secrete page!")
 }
