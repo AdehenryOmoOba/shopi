@@ -1,4 +1,4 @@
-import { jwtVerify, SignJWT } from "jose"
+import { jwtVerify } from "jose"
 
 type TjwtTPayload = {
     jti: string
