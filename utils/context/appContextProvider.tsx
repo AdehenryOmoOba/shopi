@@ -12,6 +12,8 @@ interface IAppContext {
   setError: React.Dispatch<React.SetStateAction<string | null>>
   success: string | null
   setSuccess: React.Dispatch<React.SetStateAction<string | null>>
+  cartCount: number
+  setCartCount: React.Dispatch<React.SetStateAction<number>>
 }
 
 export const AppContext = React.createContext<IAppContext | null>(null)
@@ -24,6 +26,8 @@ export default function AppContextProvider({children}: {children: React.ReactNod
   const [user, setUser] = useState<TVendor | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState<string | null>(null)
+  const [cartCount, setCartCount] = useState(0)
+
 
   useEffect(() => {
     checkUser().then((res) => {
@@ -34,7 +38,7 @@ export default function AppContextProvider({children}: {children: React.ReactNod
   },[])
 
   return (
-     <AppContext.Provider value={{searchString, setSearchString, user, setUser, error, setError, success, setSuccess}}>
+     <AppContext.Provider value={{searchString, setSearchString, user, setUser, error, setError, success, setSuccess, cartCount, setCartCount}}>
        {children}
      </AppContext.Provider>
   )
