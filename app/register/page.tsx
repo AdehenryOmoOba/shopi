@@ -12,13 +12,6 @@ export default function Register() {
     setUser({...user, [e.currentTarget.name]: e.currentTarget.value})
   }
 
-  // {
-  //   "name": "Duro Ibrahim",
-  //   "email": "duro@gmail.com", 
-  //   "phone": "08034444444",
-  //   "password": "123"
-  // }
-
   const register = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
     const response = await axios.post('http://localhost:3000/api/register', user)
