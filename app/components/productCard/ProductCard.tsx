@@ -25,7 +25,7 @@ export default function ProductCard({data}: {data: TProduct}) {
         </Link>
         <div className="flex mt-2">
           <p className="text-2xl font-bold grow">${data.price}</p>
-          <button className="bg-emerald-400 text-white py-1 px-3 rounded">Add to Cart</button>
+          <button className="bg-blue-600 text-white py-1 px-3 rounded">Add to Cart</button>
         </div>
       </div>
     </div>
