@@ -19,11 +19,16 @@ export default function Register() {
   const register = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
     setIsLoading(true)
-    const response = await axios.post('http://localhost:3000/api/register', user)
-    console.log("server response: " ,response.data)
-    setIsLoading(false)
-    notify({type: "success", message: "Registration successful"})
-    router.push("/login")
+    try {
+      await axios.post('http://localhost:3000/api/register', user)
+      setIsLoading(false)
+      notify({type: "success", message: "Registration successful"})
+      router.push("/login")
+    } catch (error: any) {
+      setIsLoading(false)
+      const errorObj = JSON.parse(error.response.data.error)
+      notify({type: "error", message: errorObj[0].message})
+    }
   }
 
   return (
