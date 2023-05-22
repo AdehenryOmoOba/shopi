@@ -15,7 +15,7 @@ const logoURL = "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.app
 function Navbar() {
  
   const pathname = usePathname()
-  const {user, setUser, cartCount} = useContext(AppContext);
+  const {user, setUser} = useContext(AppContext);
   const notify = useNotification()
 
   const isHomePath = homeRegex.test(pathname)
@@ -46,8 +46,8 @@ function Navbar() {
       <div className='flex flex-1 justify-end items-center gap-x-5'>
         <p className='capitalize'>Hi, {user ? user.name : "Guest"}</p>
         <div className='grid relative place-content-center h-10 w-10 bg-slate-800 rounded-full'>
-        {!!cartCount && <div className='grid absolute place-content-center -top-2 -right-2 h-6 w-6 bg-blue-600 rounded-full'>
-            <p className='grid place-content-center leading-6 text-xs w-6 rounded-full'>{cartCount}</p>
+        {!!user?.cart?.length && <div className='grid absolute place-content-center -top-2 -right-2 h-6 w-6 bg-blue-600 rounded-full'>
+            <p className='grid place-content-center leading-6 text-xs w-6 rounded-full'>{user?.cart?.length}</p>
           </div>}
          <GiShoppingCart className='text-lg cursor-pointer text-slate-300 hover:text-white transition-colors'/>
         </div>

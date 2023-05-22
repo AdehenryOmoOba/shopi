@@ -2,10 +2,14 @@ import { NextRequest, NextResponse } from 'next/server'
 import {SignJWT, jwtVerify} from "jose"
 import { nanoid } from 'nanoid'
 import cookie from 'cookie'
+import { prisma } from '@/prisma/prismaClient'
+import bcrypt from "bcrypt"
+
 
 const jwtSecret = new TextEncoder().encode(process.env.JWT_SECRET_KEY)
 export const cookieOptions = {httpOnly: true, path: '/', secure: process.env.NODE_ENV === "production", maxAge: 3600}
 
+// Persist current user
 export async function GET(req: NextRequest) {
   const userToken = req.cookies.get("user-token")?.value
 
@@ -18,6 +22,7 @@ export async function GET(req: NextRequest) {
   }
 }
 
+// Login user
 export async function POST(req: NextRequest, res: NextResponse) {
 
   const credentials: {username: string, password: string} = await req.json()
@@ -28,8 +33,37 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
   if(!credentials.password) return NextResponse.json({user: null}, {status: 401, statusText: "Password not provided"})
 
-   // make prisma call to get user
-  const user:TVendor = {id: "1", name: credentials.username, phone: "08031234567", email: 'someone@example.com'}
+  // make prisma call to get user
+  const DBuser = await prisma.user.findUnique({
+         where: {
+           name: credentials.username
+         }
+       }) as DBuser || null
+
+  console.log("user from DB: ", DBuser)
+  
+  // Check if user exist
+  if(!DBuser) {
+    return NextResponse.json({user: null}, {
+      status: 404,
+      statusText: "Username does not exist"
+    })
+  }
+  // Confirm password match (for non-social-media users)
+  if(!DBuser.socialmediaUser){
+    let isMatchPassword = await bcrypt.compare(credentials.password, DBuser.password)
+    if (!isMatchPassword){
+      return NextResponse.json({user: null}, {
+        status: 401,
+        statusText: "Password is incorrect"
+      })
+    }
+  }
+
+  const user: TLoginResponse = { 
+    success: DBuser ? true : false,
+    user: DBuser
+  }
 
   // Send a JWT cookie to user
   const jwtToken = await new SignJWT(user)
@@ -39,10 +73,10 @@ export async function POST(req: NextRequest, res: NextResponse) {
                 .setExpirationTime("60m")
                 .sign(jwtSecret)
 
-  const serializedCookie = cookie.serialize("user-token", jwtToken, cookieOptions)
+  const serializedJWT = cookie.serialize("user-token", jwtToken, cookieOptions)
 
   return  NextResponse.json(user, {
-    headers: { "Set-Cookie": serializedCookie}
+    headers: { "Set-Cookie": serializedJWT}
   })
 
 }

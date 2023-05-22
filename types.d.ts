@@ -21,26 +21,25 @@ type TProductDetails = {
       name: string
       email: string
       phone: string
-      password: strin
     }
   }
 
-type TVendor =   {
-  id: string
-  name: string
-  email: string
-  phone: string
+type DBuser = {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  socialmediaUser: boolean;
+  cart: string[];
+  password?: string
+  role: "ADMIN" | "VENDOR" | "CUSTOMER";
 }
 
-type TLoginResponse =   {
+type User = Omit<DBuser, "password">
+
+type TLoginResponse = {
   success: boolean
-  jwt: string
-  user: {
-    id: string
-    name: string
-    email: string
-    phone: string
-  }
+  user: User
 }
 
 type TNotify = {

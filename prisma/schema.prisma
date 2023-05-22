@@ -24,7 +24,7 @@ model User {
   email           String    @unique @db.VarChar(500)
   phone           String    @unique @db.VarChar(50)
   socialmediaUser Boolean   @default(false)
-  password        String    @db.VarChar(500)
+  password        String?   @db.VarChar(500)
   cart            String[]  @default([])
   role            Role      @default(CUSTOMER)
   products        Product[]

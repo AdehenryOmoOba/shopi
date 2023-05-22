@@ -5,28 +5,37 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { useNotification } from '../components/notification/Notification'
 import signIn from '@/utils/auth/login'
 import { AppContext } from '@/utils/context/appContextProvider'
+import Button from '../components/Button'
 
 
 export default function Login() {
   const [userData, setUserData] = useState({username: "", password: ""})
+  const [isLoading, setIsLoading] = useState(false)
   const searcParams = useSearchParams()
   const notify = useNotification()
-  const {setUser, user} = useContext(AppContext)
+  const {setUser} = useContext(AppContext)
   const router = useRouter()
-
   
   const handleLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
-    console.log(searcParams.get('nexturl'))
+    setIsLoading(true)
+    console.log("next url: ",searcParams.get('nexturl'))
     const nexturl = searcParams.get('nexturl') ? `/${searcParams.get('nexturl')}` : '/'
 
     const response = await signIn(userData)
-    if(!response.success) notify({type: 'error', message: response.error})
-    if(response.success) {
-      notify({type: 'success', message: "Login successful"})
-      setUser(response.data)
-      router.push("/")
-    } 
+
+    console.log("Login response: ", response)
+    setIsLoading(false)
+
+    if(!response.success) {
+      notify({type: 'error', message: response.error})
+      return
+    }
+
+    notify({type: 'success', message: "Login successful"})
+    setUser(response.data.user)
+    router.push(nexturl)
+    
   }
 
   const content = (
@@ -41,7 +50,7 @@ export default function Login() {
         <div className='w-full mb-2'><p>Password</p></div>
           <input type="password" className='w-full h-10 rounded-md bg-black px-2 border border-slate-800' role="presentation" value={userData.password} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUserData({...userData, password: e.target.value})} />
         </div>
-        <button className='bg-blue-600 w-full rounded-md h-10 mb-5' onClick={handleLogin}>Login</button>
+        <Button name = "Login" action = {handleLogin} isLoading = {isLoading} />
         <button className='bg-blue-600 w-full rounded-md h-10'>Login with Google</button>
       </form> 
       <div className='h-16 grid place-content-center rounded-md border border-slate-600'>

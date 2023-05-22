@@ -10,7 +10,7 @@ export default function SecretePage() {
 
  let isLoggedIn = context.user ? true : false
 
- if(!isLoggedIn) redirect("/login")
+ if(!isLoggedIn) redirect("/login?nexturl=secret-page")
 
   const content = (text: string) => (
     <div className='w-max -full mx-auto pt-20 flex-col justify-center'>

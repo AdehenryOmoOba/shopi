@@ -19,6 +19,8 @@ export async function GET(req: NextRequest, res: NextResponse) {
 
   const serializedCookie = cookie.serialize("user-token", jwtToken, {...cookieOptions, maxAge: -1})
 
+  console.log("Logout successful")
+
   return  NextResponse.json(null, {
     headers: { "Set-Cookie": serializedCookie}
   })
