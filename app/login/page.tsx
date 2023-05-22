@@ -19,12 +19,10 @@ export default function Login() {
   const handleLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
     setIsLoading(true)
-    console.log("next url: ",searcParams.get('nexturl'))
     const nexturl = searcParams.get('nexturl') ? `/${searcParams.get('nexturl')}` : '/'
 
     const response = await signIn(userData)
 
-    console.log("Login response: ", response)
     setIsLoading(false)
 
     if(!response.success) {

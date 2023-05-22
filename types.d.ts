@@ -11,7 +11,7 @@ type TProduct = {
 type TProductDetails = {
     id: string
     category: string
-    name: string
+    username: string
     description: string
     price: number
     image: string
@@ -26,7 +26,7 @@ type TProductDetails = {
 
 type DBuser = {
   id: string;
-  name: string;
+  username: string;
   email: string;
   phone: string;
   socialmediaUser: boolean;

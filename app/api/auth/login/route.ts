@@ -27,20 +27,16 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
   const credentials: {username: string, password: string} = await req.json()
 
-  console.log("credentials from login API ",credentials)
-
   if(!credentials.username) return NextResponse.json({user: null}, {status: 401, statusText: "Username not provided"})
 
   if(!credentials.password) return NextResponse.json({user: null}, {status: 401, statusText: "Password not provided"})
 
   // make prisma call to get user
-  const DBuser = await prisma.user.findUnique({
-         where: {
-           name: credentials.username
-         }
-       }) as DBuser || null
-
-  console.log("user from DB: ", DBuser)
+  let DBuser = await prisma.user.findUnique({
+        where: {
+          username: credentials.username
+        }
+  }) as unknown as DBuser || null
   
   // Check if user exist
   if(!DBuser) {
@@ -49,6 +45,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
       statusText: "Username does not exist"
     })
   }
+  
   // Confirm password match (for non-social-media users)
   if(!DBuser.socialmediaUser){
     let isMatchPassword = await bcrypt.compare(credentials.password, DBuser.password)
@@ -59,6 +56,8 @@ export async function POST(req: NextRequest, res: NextResponse) {
       })
     }
   }
+
+  DBuser.password = ""
 
   const user: TLoginResponse = { 
     success: DBuser ? true : false,

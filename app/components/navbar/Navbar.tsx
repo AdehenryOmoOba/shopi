@@ -35,16 +35,14 @@ function Navbar() {
       <nav className='flex flex-1 justify-center items-center'>
         <ul className='flex items-center justify-center gap-x-1 w-max h-full text-slate-300 md:gap-x-5'>
           <Link href='/' className={`py-1 px-4 rounded text-sm font-extrabold ${isHomePath ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Home</Link>
-          {user ? 
-          <button className="py-1 px-4 rounded text-sm font-extrabold cursor-pointer active:bg-slate-800 active:text-white transition-colors" onClick={handleLogout}>Logout</button> :
-          <Link href='/login' className={`py-1 px-4 rounded text-sm font-extrabold ${pathname === '/login' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Login</Link>}
-          <Link href='/register' className={`py-1 px-4 rounded text-sm font-extrabold ${pathname === '/register' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Register</Link>
+          {user ? <button className="py-1 px-4 rounded text-sm font-extrabold cursor-pointer active:bg-slate-800 active:text-white transition-colors" onClick={handleLogout}>Logout</button> : <Link href='/login' className={`py-1 px-4 rounded text-sm font-extrabold ${pathname === '/login' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Login</Link>}
+          {!user && <Link href='/register' className={`py-1 px-4 rounded text-sm font-extrabold ${pathname === '/register' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Register</Link>}
           <Link href='/secret-page' className={`py-1 px-4 rounded text-sm font-extrabold ${pathname === '/secrete-page' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Secrete Page</Link>
           <Link href='/cart' className={`py-1 px-4 rounded text-sm font-extrabold ${pathname === '/cart' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>View Cart</Link>
         </ul>
       </nav>
       <div className='flex flex-1 justify-end items-center gap-x-5'>
-        <p className='capitalize'>Hi, {user ? user.name : "Guest"}</p>
+        <p className='capitalize'>Hi, {user ? user.username : "Guest"}</p>
         <div className='grid relative place-content-center h-10 w-10 bg-slate-800 rounded-full'>
         {!!user?.cart?.length && <div className='grid absolute place-content-center -top-2 -right-2 h-6 w-6 bg-blue-600 rounded-full'>
             <p className='grid place-content-center leading-6 text-xs w-6 rounded-full'>{user?.cart?.length}</p>

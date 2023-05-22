@@ -10,7 +10,7 @@ datasource db {
 model Product {
   id          String @default(uuid())
   category    String @db.VarChar(50)
-  name        String @unique @db.VarChar(500)
+  username    String @unique(map: "Product_name_key") @db.VarChar(500)
   description String @db.VarChar(5000)
   price       Float
   image       String @db.VarChar(500)
@@ -20,7 +20,7 @@ model Product {
 
 model User {
   id              String    @id @default(uuid())
-  name            String    @unique @db.VarChar(50)
+  username        String    @unique(map: "User_name_key") @db.VarChar(50)
   email           String    @unique @db.VarChar(500)
   phone           String    @unique @db.VarChar(50)
   socialmediaUser Boolean   @default(false)

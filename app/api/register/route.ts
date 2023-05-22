@@ -4,25 +4,26 @@ import bcrypt from "bcrypt"
 import {z} from "zod"
 
 const newUserSchema = z.object({
-  username: z.string({required_error: "Please provide username"}),
-  password: z.string({required_error: "Please provide password"}),
-  email: z.string({required_error: "Please provide email"}).email({message: "Please provide valid email"}),
-  phone: z.string({required_error: "Please provide phone number"})
+  username: z.string().nonempty("Please provide username").min(3, "Username must be at least three characters long"),
+  password: z.string().nonempty("Please provide password").min(3, "Password must be at least three characters long"),
+  email: z.string().nonempty("Please provide email").email({message: "Please provide valid email"}),
+  phone: z.string().nonempty("Please provide phone number")
 })
 
 export async function POST(req: Request) {
+
+  const userData = await req.json()
+
   try {
-    const userData = await req.json()
-    console.log("from client ", userData)
     const validatedData = newUserSchema.parse(userData)
-    const hashedPassword  = await bcrypt.hash(userData.password, 12)
+    const hashedPassword  = await bcrypt.hash(validatedData.password, 12)
     const newUser = await prisma.user.create({
-      data: {name: validatedData.username, password: hashedPassword, email: validatedData.email, phone: validatedData.phone}
+      data: {...userData, password: hashedPassword}
     })
-    console.log("New created user ", newUser)
+    newUser.password = ""
     return NextResponse.json(newUser)
   } catch (error: any) {
-    console.log(error.message)
-    return NextResponse.json({error: error.message}, {status: 401})
+    let errorMsg = error.code ? `${error.meta.target[0]} "${userData[error.meta.target[0]]}" already exist` : error.issues[0].message
+    return NextResponse.json({error: errorMsg}, {status: 401})
   }
 }
