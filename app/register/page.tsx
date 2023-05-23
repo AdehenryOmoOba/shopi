@@ -21,11 +21,12 @@ export default function Register() {
     e.preventDefault()
     setIsLoading(true)
     try {
-      const response = await axios.post('http://localhost:3000/api/register', user)
+      await axios.post('http://localhost:3000/api/register', user)
       setIsLoading(false)
       notify({type: "success", message: "Registration successful"})
       router.push("/login")
     } catch (error: any) {
+      console.log(error)
       setIsLoading(false)
       const errorMsg = error.response.data.error
       notify({type: "error", message: errorMsg})
