@@ -19,7 +19,7 @@ Seeding:
 
 ///////////////////// latest branch  ////////////////////////
 TODO:
-Complete register/login/logout flow hooked with database
+Complete register/login/logout flow hooked with database ✔️
 Re-add new nextauth
 Add Cart to user object, add/remove item to/from cart functionality (using react-query)
 
