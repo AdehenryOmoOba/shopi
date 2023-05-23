@@ -20,8 +20,8 @@ Seeding:
 ///////////////////// latest branch  ///////////////////////
 
 TODO:
-Complete register/login/logout flow hooked with database ✔️
-Fetch all products for home page from database (using react-query)
-Add Cart to user object, add/remove item to/from cart functionality (using react-query)
+- Complete register/login/logout flow hooked with database ✔️
+- Fetch all products for home page from database (using react-query)
+- Add Cart to user object, add/remove item to/from cart functionality (using react-query)
 
 ////////////////////// adding user role and notification ////////////////////
