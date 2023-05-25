@@ -23,10 +23,10 @@ model Product {
   id          String  @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
   category    String  @db.VarChar(50)
   description String  @db.VarChar(5000)
-  price       String? @db.VarChar(50)
-  image       String? @db.VarChar(500)
-  name        String? @db.VarChar(255)
-  vendorid    String? @db.VarChar(500)
+  price       String  @db.VarChar(50)
+  image       String  @db.VarChar(500)
+  name        String  @db.VarChar(255)
+  vendorid    String  @db.VarChar(500)
   vendor      User?   @relation(fields: [vendorid], references: [id])
 }
 
