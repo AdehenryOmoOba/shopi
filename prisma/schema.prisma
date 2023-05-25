@@ -7,17 +7,6 @@ datasource db {
   url      = env("POSTGRESQL_DB_URL")
 }
 
-model Product {
-  id          String @default(uuid())
-  category    String @db.VarChar(50)
-  username    String @unique(map: "Product_name_key") @db.VarChar(500)
-  description String @db.VarChar(5000)
-  price       Float
-  image       String @db.VarChar(500)
-  vendorId    String @db.VarChar(100)
-  vendor      User   @relation(fields: [vendorId], references: [id])
-}
-
 model User {
   id              String    @id @default(uuid())
   username        String    @unique(map: "User_name_key") @db.VarChar(50)
@@ -28,6 +17,17 @@ model User {
   cart            String[]  @default([])
   role            Role      @default(CUSTOMER)
   products        Product[]
+}
+
+model Product {
+  id          String  @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  category    String  @db.VarChar(50)
+  description String  @db.VarChar(5000)
+  price       String? @db.VarChar(50)
+  image       String? @db.VarChar(500)
+  name        String? @db.VarChar(255)
+  vendorid    String? @db.VarChar(500)
+  vendor      User?   @relation(fields: [vendorid], references: [id])
 }
 
 enum Role {
