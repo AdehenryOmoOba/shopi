@@ -14,21 +14,21 @@ model User {
   phone           String    @unique @db.VarChar(50)
   socialmediaUser Boolean?  @default(false)
   password        String?   @db.VarChar(500)
-  role            String?   @default("CUSTOMER") @db.VarChar
-  products        String[]
-  cart            String[]
+  products        String[]  @default([])
+  cart            String[]  @default([])
+  role            Role      @default(CUSTOMER)
   Product         Product[]
 }
 
 model Product {
-  id          String  @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  category    String  @db.VarChar(50)
-  description String  @db.VarChar(5000)
-  price       String  @db.VarChar(50)
-  image       String  @db.VarChar(500)
-  name        String  @db.VarChar(255)
-  vendorid    String  @db.VarChar(500)
-  vendor      User?   @relation(fields: [vendorid], references: [id])
+  id          String @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  category    String @db.VarChar(50)
+  description String @db.VarChar(5000)
+  price       String @db.VarChar(50)
+  image       String @db.VarChar(500)
+  name        String @db.VarChar(255)
+  vendorid    String @db.Uuid
+  vendor      User   @relation(fields: [vendorid], references: [id])
 }
 
 enum Role {

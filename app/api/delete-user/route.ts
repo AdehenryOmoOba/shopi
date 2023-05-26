@@ -17,6 +17,6 @@ export async function POST(req: NextRequest) {
       console.log({deletedUser})
       return  NextResponse.json({message: `user "${user.username}" deleted successfully`})
     } catch (error) {
-    return  NextResponse.json({error: `Error deleting user "${user.username}", try again`}, {status: 401})
+    return  NextResponse.json({error: `Error deleting user "${user.username}"`}, {status: 401})
     }
   }

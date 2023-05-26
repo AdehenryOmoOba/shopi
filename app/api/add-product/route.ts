@@ -17,16 +17,22 @@ export async function POST(req: Request) {
 
   try {
     const {category, description, image, name, price, vendorid} = newProductSchema.parse(productData)
-
-    console.log({category, description, image, name, price, vendorid})
-
+    
     const newProduct = await prisma.product.create({
       data: { category, description, image, name, price, vendorid }
     })
     return NextResponse.json(newProduct)
   } catch (error: any) {
-    let zodError = error.issues[0].message === "Required" ? `${error.issues[0].path[0]} is required` : error.issues[0].message;
-    let errorMsg = error.code ? `${error.meta.target[0]} "${productData[error.meta.target[0]]}" already exist` : zodError
-    return NextResponse.json({error: errorMsg}, {status: 403})
+
+    let errorResonse: string;
+
+    if (error.code) {
+     // Handles databse schema level errors
+     errorResonse = "Error adding new product"
+    } else{
+      // Handles zod schema validation errors
+      errorResonse = error?.issues[0]?.message
+    }   
+    return NextResponse.json({error: errorResonse}, {status: 403})
   }
 }
