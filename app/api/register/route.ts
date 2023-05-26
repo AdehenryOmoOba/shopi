@@ -19,13 +19,16 @@ export async function POST(req: Request) {
     const validatedData = newUserSchema.parse(userData)
     const hashedPassword  = await bcrypt.hash(validatedData.password, 12)
     const newUser = await prisma.user.create({
-      data: {...userData, password: hashedPassword}
+      data: {...userData, cart: [], products: [], password: hashedPassword}
     })
     newUser.password = ""
     return NextResponse.json(newUser)
   } catch (error: any) {
     let zodError = error.issues[0].message === "Required" ? `${error.issues[0].path[0]} is required` : error.issues[0].message;
     let errorMsg = error.code ? `${error.meta.target[0]} "${userData[error.meta.target[0]]}" already exist` : zodError
+    
+    console.log({error})
+
     return NextResponse.json({error: errorMsg}, {status: 403})
   }
 }

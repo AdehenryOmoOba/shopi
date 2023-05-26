@@ -8,15 +8,16 @@ datasource db {
 }
 
 model User {
-  id              String    @id @default(uuid())
-  username        String    @unique(map: "User_name_key") @db.VarChar(50)
+  id              String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  username        String    @unique @db.VarChar(50)
   email           String    @unique @db.VarChar(500)
   phone           String    @unique @db.VarChar(50)
-  socialmediaUser Boolean   @default(false)
+  socialmediaUser Boolean?  @default(false)
   password        String?   @db.VarChar(500)
-  cart            String[]  @default([])
-  role            Role      @default(CUSTOMER)
-  products        Product[]
+  role            String?   @default("CUSTOMER") @db.VarChar
+  products        String[]
+  cart            String[]
+  Product         Product[]
 }
 
 model Product {
@@ -26,8 +27,8 @@ model Product {
   price       String @db.VarChar(50)
   image       String @db.VarChar(500)
   name        String @db.VarChar(255)
-  vendorid    String @db.VarChar(500)
-  vendor      User   @relation(fields: [vendorid], references: [id])
+  vendorid    String @db.Uuid
+  User        User   @relation(fields: [vendorid], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_vendorid")
 }
 
 enum Role {
