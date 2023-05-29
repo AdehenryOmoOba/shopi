@@ -1,4 +1,5 @@
 "use client"
+import { Product } from '@prisma/client'
 import React, { useState, useEffect } from 'react'
 import { checkUser } from '../auth/checkUser'
 

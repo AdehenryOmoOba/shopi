@@ -3,9 +3,9 @@ type TProduct = {
     category: string
     name: string
     description: string
-    price: number
+    price: string
     image: string
-    vendorId: string
+    vendorid: string
   }
 
 type TProductDetails = {

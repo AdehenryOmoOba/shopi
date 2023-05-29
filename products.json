@@ -1,29 +1,83 @@
 [
   {
-    "id": "a177b60e-3375-4db3-824c-60e9eb87c72a"
+    "id": "f74f313d-d837-4b65-809f-914566be43b7",
+    "category": "wrist watch",
+    "description": "The Series 7 is available in two sizes, 41mm and 45mm, and comes in a range of colors, including Midnight, Starlight, Green, and Product Red. It is also compatible with a variety of interchangeable bands, including the new Solo Loop and Braided Solo Loop bands, which do not have any clasps or buckles for a seamless fit.",
+    "price": "1450",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fwatch1.png?alt=media&token=4d04a717-3927-4b01-96aa-b37c3a8a378f",
+    "name": "iWatch Series 7",
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb"
   },
   {
-    "id": "913db19b-3378-4e1e-8b02-473f3526056f"
+    "id": "6d28f24c-7ca3-4ecf-962c-2a91ea6bd2e7",
+    "category": "mobiles phones",
+    "description": "The S10 features a 6.1-inch Quad HD+ Dynamic AMOLED display, Qualcomm Snapdragon 855 (USA)/Exynos 9820 (Global) chipset, triple rear cameras with a 12-megapixel wide, 12-megapixel telephoto and 16-megapixel ultra-wide lens, and a 10-megapixel front camera. It also comes with up to 512GB of storage, 8GB of RAM, and an in-display fingerprint sensor. The S10 runs on Android 9.0 (Pie) with Samsung's One UI skin on top. It is available in a range of colors, including Prism White, Prism Black, Prism Green, and Prism Blue, as well as Ceramic Black and Ceramic White for the higher-end model.",
+    "price": "1125",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fphone2.png?alt=media&token=8bbe2a90-7ae4-4d9c-b86b-0056d9774f54",
+    "name": "Samsung S10",
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb"
   },
   {
-    "id": "426858ab-898b-4ff3-b9e4-f52e4a0ba174"
+    "id": "bac54073-ad71-4a09-841f-23f6d07bc49c",
+    "category": "wireless earpiece",
+    "description": "Android Bluetooth earpieces come in a variety of shapes and sizes, including earbuds, ear hooks, and over-the-ear designs. They typically feature a built-in microphone and controls for adjusting the volume, answering and ending calls, and controlling playback of audio.",
+    "price": "285",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fear_piece1.avif?alt=media&token=cf4c6662-d4f3-4cf3-9fab-01df38531fee",
+    "name": "Jabr3",
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb"
   },
   {
-    "id": "d49553e4-d807-4b74-ad70-01c52d7d998e"
+    "id": "862090af-ea3f-4ac3-aeec-2a9d80e5678a",
+    "category": "wrist watch",
+    "description": "The Sony SmartWatch 3 is a wearable device developed and manufactured by Sony Corporation. It was released in 2014 and features a 1.6-inch transflective display with a resolution of 320 x 320 pixels. The watch is powered by a 1.2GHz quad-core processor and 512MB of RAM, and comes with 4GB of internal storage.",
+    "price": "1430",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fsony_watch.avif?alt=media&token=8785325d-1b08-4b53-bf2a-e162beace0fc",
+    "name": "Sony SmartWatch 3",
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb"
   },
   {
-    "id": "e2b1b3a7-a8fc-4867-8f35-c81dc9e2f088"
+    "id": "a1f4e7f3-1b50-4e96-8edb-cac336dc095e",
+    "category": "wireless earpiece",
+    "description": "Bluetooth earpieces also include features such as noise-cancellation technology, which reduces background noise and improves call quality. Some models also include voice assistants, such as Google Assistant or Amazon Alexa, allowing users to control their smartphone using voice commands.",
+    "price": "125.99",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fear_piece2.avif?alt=media&token=fbf628f7-7842-4e77-a197-89df319b8b63",
+    "name": "Elipsis SV12Q",
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb"
   },
   {
-    "id": "dd895ced-23a7-48af-8552-afe326b97b53"
+    "id": "ef5b3b6b-2cd3-445b-aa81-8de008a30e83",
+    "category": "mobiles phones",
+    "description": "The iPhone 11 features a 6.1-inch Liquid Retina display, A13 Bionic chip, dual 12-megapixel ultra-wide and wide cameras, 4K video recording, Night mode, and up to 256GB of storage. It also comes with iOS 13 pre-installed, which offers new features such as Dark Mode and improved privacy settings. The iPhone 11 is available in six colors: Black, White, Green, Yellow, Purple.",
+    "price": "995.60",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fphone1.png?alt=media&token=c70745e7-3fcf-4a4f-abe0-bf910b356959",
+    "name": "iPhone 11 Pro Max",
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb"
   },
   {
-    "id": "4a5c0c25-6818-4637-88e4-c948fd8f3f4a"
+    "id": "40324d42-0042-4ab4-9363-8bb44c832ee8",
+    "category": "wireless earpiece",
+    "description": "An Android Bluetooth earpiece is a wireless earpiece that connects to an Android smartphone via Bluetooth technology. These earpieces are designed to be used for hands-free calling and listening to audio, allowing users to keep their hands free while on the go.",
+    "price": "169",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fear_piece3.png?alt=media&token=daf54f45-d37e-4e9b-9683-4bf3b1fbd77c",
+    "name": "Nikko 2BL",
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb"
   },
   {
-    "id": "9d3d6f8e-7a88-4525-8dd5-47910dfc5576"
+    "id": "27eed566-13f4-4b8f-a222-ed0ea0c06e09",
+    "category": "mobiles phones",
+    "description": "The Pixel 6 features a 6.4-inch Full HD+ OLED display, Google Tensor processor, 50-megapixel primary camera, and a 12-megapixel ultra-wide camera. It also includes features such as Night Sight, Live HDR+, and Super Res Zoom.",
+    "price": "890.55",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fpixel.png?alt=media&token=5e9940ab-a6a1-4a49-bb66-44aa77730182",
+    "name": "Google Pixel 6",
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb"
   },
   {
-    "id": "6c20ad22-2e51-4cd4-9ba4-6befe8fd3708"
+    "id": "95971ccc-5bfe-4653-9d7c-a721785a3d88",
+    "category": "wrist watch",
+    "description": "The SmartWatch 2 is designed to be used as a companion device for Android smartphones and includes features such as notifications, music controls, and weather updates. It also includes NFC technology for mobile payments and comes with a range of customizable watch faces.",
+    "price": "1099",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fsamsung_watch.avif?alt=media&token=19c7f31d-4bad-473f-8439-09f9bc4875ff",
+    "name": "Sony SmartWatch 2",
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb"
   }
 ]

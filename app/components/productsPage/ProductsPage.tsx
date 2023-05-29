@@ -12,7 +12,7 @@ type Props = {
 
 export default function ProductsPage({products, category, index , categoriesLength}: Props) {
   
-  const {searchString} =  useContext(AppContext)!
+  const { searchString } =  useContext(AppContext)!
 
   let filteredProducts: TProduct[] = []
 
