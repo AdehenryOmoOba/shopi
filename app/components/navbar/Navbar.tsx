@@ -12,7 +12,7 @@ import { useNotification } from '../notification/Notification'
 const homeRegex = /^\/product\/[a-z\d]+|\/$/
 const logoURL = "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fshopi_logo.png?alt=media&token=930520f4-d5fc-4bbb-aed6-00b92a4ac953"
 
-function Navbar() {
+export default function Navbar() {
  
   const pathname = usePathname()
   const {user, setUser} = useContext(AppContext);
@@ -53,5 +53,3 @@ function Navbar() {
     </div>
   )
 }
-
-export default Navbar
