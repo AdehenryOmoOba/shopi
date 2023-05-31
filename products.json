@@ -6,7 +6,12 @@
     "price": "1450",
     "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fwatch1.png?alt=media&token=4d04a717-3927-4b01-96aa-b37c3a8a378f",
     "name": "iWatch Series 7",
-    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb"
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
+    "vendor": {
+      "username": "chelsea",
+      "email": "chelsea@gmail.com",
+      "phone": "08091114444"
+    }
   },
   {
     "id": "6d28f24c-7ca3-4ecf-962c-2a91ea6bd2e7",
@@ -15,7 +20,12 @@
     "price": "1125",
     "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fphone2.png?alt=media&token=8bbe2a90-7ae4-4d9c-b86b-0056d9774f54",
     "name": "Samsung S10",
-    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb"
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
+    "vendor": {
+      "username": "chelsea",
+      "email": "chelsea@gmail.com",
+      "phone": "08091114444"
+    }
   },
   {
     "id": "bac54073-ad71-4a09-841f-23f6d07bc49c",
@@ -24,7 +34,12 @@
     "price": "285",
     "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fear_piece1.avif?alt=media&token=cf4c6662-d4f3-4cf3-9fab-01df38531fee",
     "name": "Jabr3",
-    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb"
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
+    "vendor": {
+      "username": "chelsea",
+      "email": "chelsea@gmail.com",
+      "phone": "08091114444"
+    }
   },
   {
     "id": "862090af-ea3f-4ac3-aeec-2a9d80e5678a",
@@ -33,7 +48,12 @@
     "price": "1430",
     "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fsony_watch.avif?alt=media&token=8785325d-1b08-4b53-bf2a-e162beace0fc",
     "name": "Sony SmartWatch 3",
-    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb"
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
+    "vendor": {
+      "username": "chelsea",
+      "email": "chelsea@gmail.com",
+      "phone": "08091114444"
+    }
   },
   {
     "id": "a1f4e7f3-1b50-4e96-8edb-cac336dc095e",
@@ -42,7 +62,12 @@
     "price": "125.99",
     "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fear_piece2.avif?alt=media&token=fbf628f7-7842-4e77-a197-89df319b8b63",
     "name": "Elipsis SV12Q",
-    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb"
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
+    "vendor": {
+      "username": "chelsea",
+      "email": "chelsea@gmail.com",
+      "phone": "08091114444"
+    }
   },
   {
     "id": "ef5b3b6b-2cd3-445b-aa81-8de008a30e83",
@@ -51,7 +76,12 @@
     "price": "995.60",
     "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fphone1.png?alt=media&token=c70745e7-3fcf-4a4f-abe0-bf910b356959",
     "name": "iPhone 11 Pro Max",
-    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb"
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
+    "vendor": {
+      "username": "chelsea",
+      "email": "chelsea@gmail.com",
+      "phone": "08091114444"
+    }
   },
   {
     "id": "40324d42-0042-4ab4-9363-8bb44c832ee8",
@@ -60,7 +90,12 @@
     "price": "169",
     "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fear_piece3.png?alt=media&token=daf54f45-d37e-4e9b-9683-4bf3b1fbd77c",
     "name": "Nikko 2BL",
-    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb"
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
+    "vendor": {
+      "username": "chelsea",
+      "email": "chelsea@gmail.com",
+      "phone": "08091114444"
+    }
   },
   {
     "id": "27eed566-13f4-4b8f-a222-ed0ea0c06e09",
@@ -69,7 +104,12 @@
     "price": "890.55",
     "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fpixel.png?alt=media&token=5e9940ab-a6a1-4a49-bb66-44aa77730182",
     "name": "Google Pixel 6",
-    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb"
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
+    "vendor": {
+      "username": "chelsea",
+      "email": "chelsea@gmail.com",
+      "phone": "08091114444"
+    }
   },
   {
     "id": "95971ccc-5bfe-4653-9d7c-a721785a3d88",
@@ -78,6 +118,11 @@
     "price": "1099",
     "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fsamsung_watch.avif?alt=media&token=19c7f31d-4bad-473f-8439-09f9bc4875ff",
     "name": "Sony SmartWatch 2",
-    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb"
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
+    "vendor": {
+      "username": "chelsea",
+      "email": "chelsea@gmail.com",
+      "phone": "08091114444"
+    }
   }
 ]

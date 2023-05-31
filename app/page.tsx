@@ -8,7 +8,7 @@ const path = 'products.json'
 
 export default async function Home() {
 
-  const products: TProduct[] = await getProducts()
+  const products: TProductDetails[] = await getProducts()
 
   fs.writeFileSync(path, JSON.stringify(products, null, 2))
 

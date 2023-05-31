@@ -11,13 +11,12 @@ type TProduct = {
 type TProductDetails = {
     id: string
     category: string
-    username: string
+    name: string
     description: string
-    price: number
+    price: string
     image: string
-    vendorId: string
+    vendorid: string
     vendor: {
-      id: string
       name: string
       email: string
       phone: string
