@@ -2,12 +2,12 @@ import './globals.css'
 import {Metadata} from 'next'
 import Footer from './components/footer/Footer'
 import Navbar from './components/navbar/Navbar'
-import AppContextProvider from '../utils/context/appContextProvider'
+import AppContextProvider from '@/utils/context/appContextProvider'
 import Notification from './components/notification/Notification'
 
 
 export const metadata: Metadata = {
-  title : 'Home : Shopi',
+  title : 'Adehenry : Home Page',
   description: 'Fullstack Application Template'
 }
 

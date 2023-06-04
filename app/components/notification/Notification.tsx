@@ -5,21 +5,17 @@ import {IoMdCheckmarkCircle} from 'react-icons/io'
 import React, { useContext } from 'react'
 
 
-let timeoutID: NodeJS.Timeout;
-
 export function useNotification() {
 
   const {setError, setSuccess} = useContext(AppContext)
 
   const notify = (payload: TNotify) => {
-    
-    clearTimeout(timeoutID)
-    
+
     if(payload.type === "error") setError(payload.message)
-    
+
     if(payload.type === "success") setSuccess(payload.message)
-    
-    timeoutID = setTimeout(() => {
+
+    let timeoutID = window.setTimeout(() => {
       setError(null)
       setSuccess(null)
     }, 5000);

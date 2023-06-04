@@ -29,7 +29,7 @@ type DBuser = {
   email: string;
   phone: string;
   socialmediaUser: boolean;
-  cart: {item: TProduct, count: number}[];
+  cart: string[];
   password?: string
   role: "ADMIN" | "VENDOR" | "CUSTOMER";
 }
