@@ -13,7 +13,7 @@ export default function Login() {
   const [isLoading, setIsLoading] = useState(false)
   const searcParams = useSearchParams()
   const notify = useNotification()
-  const {setUser} = useContext(AppContext)
+  const {setUser, updateCartCount,setCartCount} = useContext(AppContext)
   const router = useRouter()
   
   const handleLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -32,6 +32,11 @@ export default function Login() {
 
     notify({type: 'success', message: "Login successful"})
     setUser(response.data.user)
+    let count = 0;
+    for (let item of response.data.user.cart) {
+      count += item.count
+    }
+    setCartCount(count)
     router.push(nexturl)
     
   }
