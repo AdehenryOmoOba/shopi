@@ -3,14 +3,14 @@ import { AppContext } from '@/utils/context/appContextProvider'
 import React,{useContext} from 'react'
 import ProductCard from '../productCard/ProductCard'
 
-type Props = {
+type ProductsPageProps = {
     products: TProductDetails[]
     category: string
     index: number
     categoriesLength: number
 }
 
-export default function ProductsPage({products, category, index , categoriesLength}: Props) {
+export default function ProductsPage({products, category, index , categoriesLength}: ProductsPageProps) {
   
   const { searchString } =  useContext(AppContext)!
 

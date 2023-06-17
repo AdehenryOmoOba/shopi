@@ -1,46 +1,9 @@
-import React,{useContext} from 'react'
 import Link from 'next/link'
 import {CldImage} from 'next-cloudinary'
-import { AppContext } from '@/utils/context/appContextProvider'
-import { debouncedCartSync } from '@/utils/debouncedCartSync'
-import { useNotification } from '../notification/Notification'
+import AddToCartButton from '../addToCartButton/AddToCartButton'
 
 
-export default function ProductCard({data}: {data: TProduct}) {
-
-  const {user, setUser, setCartCount, updateCartCount} = useContext(AppContext);
-  const notify = useNotification()
-
-  const addToCart = () => {
-
-    let duplicateIndex: number;
-
-    if(!user) {
-      alert("Please login before adding items to cart.")
-      return
-    }
-
-    let isDuplicate = user.cart.some((item, index) => {
-      if (item.item.id === data.id) {
-        duplicateIndex = index
-      }
-      return item.item.id === data.id
-    })
-
-    if (isDuplicate) {
-      user.cart[duplicateIndex].count++
-      setUser({...user})
-    }else{
-      user.cart.push({item: data, count: 1})
-      setUser({...user})
-    }
-    
-    setCartCount(updateCartCount())
-    notify({type: "success", message: `${data.name} added to cart`}, 2000)
-    
-    // TODO: Complete implementation
-    debouncedCartSync({id: user.id, cart: user.cart})
-  }
+export default function ProductCard({data}: {data: TProductDetails}) {
 
   return (
     <div className="p-4 snap-start">
@@ -63,7 +26,7 @@ export default function ProductCard({data}: {data: TProduct}) {
         </Link>
         <div className="flex mt-2 items-center">
           <p className="text-2xl font-bold grow">{parseFloat(data.price).toLocaleString("en-US", {style: "currency", currency: "USD"})}</p>
-          <button onClick={addToCart} className="bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Add to Cart</button>
+          <AddToCartButton data={data} />
         </div>
       </div>
     </div>
