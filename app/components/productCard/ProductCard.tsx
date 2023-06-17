@@ -61,9 +61,9 @@ export default function ProductCard({data}: {data: TProduct}) {
         </div>
         <p className="mt-1 text-sm leading-5 line-clamp-4 text-blue-100">{data.description}</p>
         </Link>
-        <div className="flex mt-2">
+        <div className="flex mt-2 items-center">
           <p className="text-2xl font-bold grow">{parseFloat(data.price).toLocaleString("en-US", {style: "currency", currency: "USD"})}</p>
-          <button onClick={addToCart} className="bg-blue-600 text-white py-1 px-3 rounded">Add to Cart</button>
+          <button onClick={addToCart} className="bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Add to Cart</button>
         </div>
       </div>
     </div>

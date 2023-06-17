@@ -7,7 +7,6 @@ import { CldImage } from 'next-cloudinary'
 import { AppContext } from '@/utils/context/appContextProvider'
 import { signOut } from '@/utils/auth/logout'
 import { useNotification } from '../notification/Notification'
-import TestSingleItem from '@/app/testSingleItem/page'
 
 
 
@@ -44,7 +43,6 @@ export default function Navbar() {
           {!!user && <Link href='/cart' className={`py-1 px-4 rounded text-sm font-extrabold ${pathname === '/cart' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>View Cart</Link>}
           {!user && <Link href='/register' className={`py-1 px-4 rounded text-sm font-extrabold ${pathname === '/register' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Register</Link>}
           {user ? <button className="py-1 px-4 rounded text-sm font-extrabold cursor-pointer active:bg-slate-800 active:text-white transition-colors" onClick={handleLogout}>Logout</button> : <Link href='/login' className={`py-1 px-4 rounded text-sm font-extrabold ${pathname === '/login' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Login</Link>}
-          <Link href='/testSingleItem' className={`py-1 px-4 rounded text-sm font-extrabold ${pathname === '/testSingleItem' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Test Single Item</Link>
         </ul>
       </nav>
       <div className='flex flex-1 justify-end items-center gap-x-5'>

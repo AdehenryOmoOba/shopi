@@ -17,7 +17,7 @@ type TProductDetails = {
   image: string
   vendorid: string
   vendor: {
-    name: string
+    username: string
     email: string
     phone: string
   }
