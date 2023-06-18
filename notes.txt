@@ -22,6 +22,7 @@ Seeding:
 TODO:
 - Complete register/login/logout flow hooked with database ✔️
 - Fetch all products for home page from database ✔️
+- Create single product view page ✔️
 - Add Cart to user object, add/remove item to/from cart functionality
 
 ////////////////////// adding user role and notification ////////////////////
