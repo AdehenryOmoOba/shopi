@@ -55,9 +55,9 @@ export default function SingleProduct({params}: {params: {id: string}}) {
       />
       <h2 className="text-2xl font-bold mt-4">{product.name}</h2>
       <p className="text-gray-600 mt-2"><span className="font-bold text-gray-400">Price</span>: {parseFloat(product.price).toLocaleString("en-US", {style: "currency", currency: "USD"})}</p>
-      <p className="text-gray-600 mt-2 w-1/4"><span className="font-bold text-gray-400">Description</span>: {product.description}</p>
+      <p className="text-gray-600 mt-2 w-5/6 md:w-3/5 lg:w-2/5"><span className="font-bold text-gray-400">Description</span>: {product.description}</p>
       <p className="text-gray-600 mt-2"><span className="font-bold text-gray-400">Vendor</span>: {product.vendor.username}</p>
-      <div className="flex mt-2">
+      <div className="flex my-2">
         <span className="text-yellow-500">⭐️</span>
         <span className="text-yellow-500">⭐️</span>
         <span className="text-yellow-500">⭐️</span>

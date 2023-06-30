@@ -16,7 +16,14 @@ export async function GET(req: NextRequest) {
   try {
     if(!userToken) throw new Error("user not logged in")
     const verifiedToken = await jwtVerify(userToken, jwtSecret)
-    return  NextResponse.json(verifiedToken)
+    const username = verifiedToken.payload.username as string
+    let DBuser = await prisma.user.findUnique({
+      where: {
+        username
+      }
+    }) as unknown as DBuser || null
+
+    return  NextResponse.json(DBuser)
   } catch (error) {
   return  NextResponse.json({error: error.message}, {status: 401})
   }
@@ -64,8 +71,10 @@ export async function POST(req: NextRequest, res: NextResponse) {
     user: DBuser
   }
 
+
+
   // Send a JWT cookie to user
-  const jwtToken = await new SignJWT(user)
+  const jwtToken = await new SignJWT({...user.user, cart: null})
                 .setProtectedHeader({alg: "HS256"})
                 .setJti(nanoid()) 
                 .setIssuedAt()

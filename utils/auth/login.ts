@@ -14,6 +14,7 @@ async function signIn(credentials: TCredentials) {
 
     if(!response.ok) throw new Error(response.statusText)
     const data = await response.json()  
+    console.log({data})
     return {success: true, data}
   } catch (error: any) {
     return {success: false, error: error.message}

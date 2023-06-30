@@ -12,7 +12,7 @@ export default async function Home() {
 
   fs.writeFileSync(path, JSON.stringify(products, null, 2))
 
-  const categories = [...new Set(products.map((product) => product.category))]
+  const categories = [...new Set(products?.map((product) => product.category))]
   const categoriesLength = categories.length
 
   return (

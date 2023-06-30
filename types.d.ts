@@ -29,7 +29,7 @@ username: string;
 email: string;
 phone: string;
 socialmediaUser: boolean;
-cart: {item: TProduct, count: number}[];
+cart: {item: TProductDetails, count: number}[];
 password?: string
 role: "ADMIN" | "VENDOR" | "CUSTOMER";
 }
@@ -47,7 +47,7 @@ type Cart = {
 
 type TCart = {
   id: string
-  cart: {item: TProduct, count: number}[]
+  cart: {item: TProductDetails, count: number}[]
 }
 
 type TNotify = {

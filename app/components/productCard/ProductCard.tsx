@@ -24,8 +24,8 @@ export default function ProductCard({data}: {data: TProductDetails}) {
         </div>
         <p className="mt-1 text-sm leading-5 line-clamp-4 text-blue-100">{data.description}</p>
         </Link>
-        <div className="flex mt-2 items-center">
-          <p className="text-2xl font-bold grow">{parseFloat(data.price).toLocaleString("en-US", {style: "currency", currency: "USD"})}</p>
+        <div className="flex items-center mt-2">
+          <p className="text-xl font-bold grow">{parseFloat(data.price).toLocaleString("en-US", {style: "currency", currency: "USD"})}</p>
           <AddToCartButton data={data} />
         </div>
       </div>

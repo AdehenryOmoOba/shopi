@@ -9,19 +9,19 @@ let timeoutID: NodeJS.Timeout;
 
 export function useNotification() {
 
-  const {setError, setSuccess} = useContext(AppContext)
+  const context = useContext(AppContext)
 
   const notify = (payload: TNotify, delay = 5000) => {
     
     clearTimeout(timeoutID)
     
-    if(payload.type === "error") setError(payload.message)
+    if(payload.type === "error") context?.setError(payload.message)
     
-    if(payload.type === "success") setSuccess(payload.message)
+    if(payload.type === "success") context?.setSuccess(payload.message)
     
     timeoutID = setTimeout(() => {
-      setError(null)
-      setSuccess(null)
+      context?.setError(null)
+      context?.setSuccess(null)
     }, delay);
   }
   return notify

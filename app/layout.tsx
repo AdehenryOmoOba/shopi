@@ -21,7 +21,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
          <header className='h-28 mx-auto w-full md:w-[90vw] lg:w-[80vw]'>
            <Navbar />
          </header>
-          <main className='mx-auto px-5 md:w-[90vw] lg:w-[80vw]'>
+          <main className='flex justify-center mx-auto px-5 md:w-[90vw] lg:w-[80vw]'>
             {children}
             <Notification />
           </main>
