@@ -4,12 +4,14 @@ import { AppContext } from '../../utils/context/appContextProvider'
 import {RiDeleteBinLine} from "react-icons/ri" 
 import Image from 'next/image'
 import { useNotification } from '../components/notification/Notification'
+import { useRouter } from 'next/navigation'
 
 
 export default function Cart() {
 
   const {user, addItemToCart, decrementCartCount, deleteCartItem, clearCart, cartTotal} = useContext(AppContext)
   const notify = useNotification()
+  const router = useRouter()
 
   
   const handleClearCart = () => {
@@ -26,6 +28,28 @@ export default function Cart() {
     decrementCartCount({itemId, itemName})
     console.log("itemcount type", typeof itemCount)
     if(itemCount === 1) notify({type: "success", message: `${itemName} is removed from cart`}, 2000)
+  }
+
+  const handleCheckout = async (cart: {item: TProductDetails, count: number}[]) => {
+    try {
+      const response = await fetch("http://localhost:3000/api/create-payment-intent", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(cart)
+      })
+
+      if(!response.ok) {
+        notify({type: "error", "message": "Checkout is unsuccessful"})
+        return
+      }
+
+      const {url} = await response.json()
+      router.push(url)
+    } catch (error) {
+      console.log(error.message)
+    }
   }
 
   const countControlBtn = (cartItem: {item: TProductDetails, count: number}) => (<div className='flex mb-5'>
@@ -108,7 +132,7 @@ export default function Cart() {
           <p className='text-[1rem] font-extrabold text-gray-200'>Grand total</p>
           <span className='text-lg font-extrabold'>{parseFloat(`${cartTotal}`).toLocaleString("en-US", {style: "currency", currency: "USD"})}</span>
         </div>
-        <button className='bg-white text-gray-900 font-extrabold w-full h-12 text-lg rounded-md  transition ease-linear hover:-translate-y-1 hover:scale-[1.02] hover:text-black duration-200'>Checkout now</button>
+        <button onClick={() => handleCheckout(user.cart)} className='bg-white text-gray-900 font-extrabold w-full h-12 text-lg rounded-md  transition ease-linear hover:-translate-y-1 hover:scale-[1.02] hover:text-black duration-200'>Checkout now</button>
        </div>
      </div>
     </div>

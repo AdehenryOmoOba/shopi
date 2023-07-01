@@ -42,7 +42,7 @@ user: User
 }
 
 type Cart = {
-  cart: {item: TProduct, count: number}[]
+  cart: {item: TProductDetails, count: number}[]
 }
 
 type TCart = {

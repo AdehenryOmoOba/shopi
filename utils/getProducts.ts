@@ -3,7 +3,7 @@ export async function getProducts(): Promise<TProductDetails[]> {
     try {
       const response = await fetch("http://localhost:3000/api/products", {
         next: {
-          revalidate: 3600
+          revalidate: 100
         }
       })
       if(!response.ok) throw new Error("Something went wrong")
@@ -12,5 +12,6 @@ export async function getProducts(): Promise<TProductDetails[]> {
 
     } catch (error) {
       console.log(error.message)
+      return null
     }
 }
