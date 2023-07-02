@@ -44,8 +44,7 @@ export default function Cart() {
         body: JSON.stringify(cart)
       })
 
-      setIsLoading(false)
-
+      
       if(!response.ok) {
         notify({type: "error", "message": "Checkout is unsuccessful"})
         return
@@ -53,6 +52,7 @@ export default function Cart() {
       
       const {url} = await response.json()
       router.push(url)
+      setIsLoading(false)
     } catch (error) {
       console.log(error.message)
     }

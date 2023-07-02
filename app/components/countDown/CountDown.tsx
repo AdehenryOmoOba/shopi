@@ -7,9 +7,7 @@ function CountDown() {
   const [count, setCount] = useState(3)
   const router = useRouter()
 
-
-
-
+  
   useEffect(() => {
 
      let timeoutID = setTimeout(() => {
