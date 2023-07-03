@@ -1,4 +1,6 @@
 import axios from "axios";
+import origin from "./origin";
+
 
 export let timeoutID: NodeJS.Timeout;
 
@@ -10,7 +12,7 @@ export function debouncedCartSync(data: TCart) {
 
     console.log("Synching cart with Database...")
 
-    const response = await axios.put("http://localhost:3000/api/edit-cart", data)
+    const response = await axios.put(`${origin}api/edit-cart`, data)
     
     if(response.status !== 200) return console.log("Error adding item to cart")
 

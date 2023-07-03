@@ -11,8 +11,8 @@ let product: TProductDetails | undefined;
 export async function generateMetadata({params}: {params: {id: string}}) {
 
   const products: TProductDetails[] = JSON.parse(fs.readFileSync("products.json", {encoding: "utf-8"}))
-  
-  product = products.find((product) => product.id === params.id)
+
+  product = products?.find((product) => product.id === params.id)
 
   if(!product){
     return {

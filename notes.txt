@@ -29,7 +29,7 @@ TODO:
 - Fix the shopping cart page and Nav for mobile responsiveness ✔️
 - Implement checkout with stripe ✔️
 - Remove items bought from cart ✔️
+- Deploy on vercel ✔️
 - Add Google login 
-- Deploy on vercel 
 
 ////////////////////// adding user role and notification ////////////////////

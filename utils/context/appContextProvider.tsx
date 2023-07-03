@@ -36,25 +36,33 @@ export default function AppContextProvider({children}: {children: React.ReactNod
   const [cartTotal, setCartTotal] = useState(0)
 
   useEffect(() => {
-    // Persist current user state 
-    checkUser().then((res) => {
-      if(res) {
-        const curretUser = res as User
-        setUser({...curretUser})
+    (async () => {
+    const response = await checkUser()
+    console.log("current user from context:", {response})
 
-        let count = 0;
-        let total = 0
+    if(response.error) {
+     console.log(response.error)
+     return
+    }
 
-        for (let item of curretUser.cart) {
-          count += item.count
-          total += parseFloat(item.item.price) * item.count
-        }
+    const curretUser = response as User
+    
+    console.log("current user from context:", curretUser)
 
-        setCartCount(count)
-        setCartTotal(total)
-      }
-    })
+    setUser({...curretUser})
 
+    let count = 0;
+    let total = 0
+
+    for (let item of curretUser.cart) {
+      count += item.count
+      total += parseFloat(item.item.price) * item.count
+    }
+
+    setCartCount(count)
+    setCartTotal(total)
+
+    })()
   },[])
 
   const updateCartCount = () => {

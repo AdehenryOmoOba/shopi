@@ -28,6 +28,7 @@ export default function Navbar() {
 
   const  handleLogout = async () => {
     const response = await signOut()
+    console.log("response from Signout...Navbar:", response)
     if(response.error) return notify({type: 'error', message: response.error})
     setUser(null)
     setCartCount(0)
@@ -69,8 +70,8 @@ export default function Navbar() {
         <CldImage deliveryType='fetch' src={logoURL} alt="web-logo" width="65"  height="65" loading='lazy' style={{width: "auto"}}/>
       </div>
       {navLinks()}
-      <div className='flex flex-1 justify-end items-center gap-x-5'>
-        <p className='capitalize'>Hi, {user ? user.username : "Guest"}</p>
+      <div className='flex flex-1 justify-end items-center gap-x-5 w-max'>
+        <p className='capitalize w-max'>Hi, {user ? user.username : "Guest"}</p>
         <div className='grid relative place-content-center h-10 w-10 bg-slate-800 rounded-full'>
         {!!cartCount && <div className='grid absolute place-content-center -top-2 -right-2 h-6 w-6 bg-blue-600 rounded-full'>
             <p className='grid place-content-center leading-6 text-xs w-6 rounded-full'>{cartCount}</p>

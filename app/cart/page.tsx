@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { useNotification } from '../components/notification/Notification'
 import { useRouter } from 'next/navigation'
 import Button from '../components/Button'
+import origin from '@/utils/origin'
 
 
 export default function Cart() {
@@ -36,7 +37,7 @@ export default function Cart() {
   const handleCheckout = async (cart: {item: TProductDetails, count: number}[]) => {
     setIsLoading(true)
     try {
-      const response = await fetch("http://localhost:3000/api/create-payment-intent", {
+      const response = await fetch(`${origin}api/create-payment-intent`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

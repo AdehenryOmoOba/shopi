@@ -4,6 +4,7 @@ import {SignJWT} from "jose"
 import { nanoid } from 'nanoid'
 import cookie from 'cookie'
 
+
 const jwtSecret = new TextEncoder().encode(process.env.JWT_SECRET_KEY)
 
 export async function GET(req: NextRequest, res: NextResponse) {
@@ -22,10 +23,14 @@ export async function GET(req: NextRequest, res: NextResponse) {
   console.log("Logout successful")
 
   return  NextResponse.json(null, {
-    headers: { "Set-Cookie": serializedCookie}
+    headers: {
+      "Set-Cookie": serializedCookie
+    }
   })
   } catch (error: any) {
-    return  NextResponse.json({error: "something went wrong"}, {status: 500})
+    return  NextResponse.json({error: "something went wrong"}, {
+      status: 500,
+    })
   }
 }  
 

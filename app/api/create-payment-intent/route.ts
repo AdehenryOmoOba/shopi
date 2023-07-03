@@ -1,5 +1,7 @@
+import origin from "@/utils/origin";
 import { NextResponse, NextRequest } from "next/server";
 import Stripe from "stripe";
+
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   typescript: true,
@@ -27,11 +29,13 @@ export async function POST(req: NextRequest) {
         }
       }),
       mode: "payment",
-      success_url: `http://localhost:3000/payment-completed?success=true&session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `http://localhost:3000/payment-cancelled?cancelled=true`
+      success_url: `${origin}payment-completed?success=true&session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${origin}payment-cancelled?cancelled=true`
     })
 
-    return NextResponse.json({url: checkoutSession.url}, { status: 200 });
+    return NextResponse.json({url: checkoutSession.url}, {
+       status: 200
+      });
   } catch (error: any) {
     return new NextResponse(error, {
       status: 400,

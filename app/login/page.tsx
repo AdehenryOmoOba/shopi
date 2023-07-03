@@ -23,6 +23,8 @@ export default function Login() {
 
     const response = await signIn(userData)
 
+    console.log("response...from login page:", response)
+
     setIsLoading(false)
 
     if(!response.success) {
