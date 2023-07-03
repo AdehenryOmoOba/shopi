@@ -18,3 +18,16 @@ This can be done by modifying the build script inside the package.json file as: 
 Seeding: 
 
 ///////////////////// main branch  ///////////////////////
+
+TODO:
+- Complete register/login/logout flow hooked with database ✔️
+- Fetch all products for home page from database ✔️
+- Create single product view page ✔️
+- Add Cart to user object, add/remove item to/from cart functionality ✔️
+- Implement Item count decrement and removal with cart buttons ✔️
+- Implement cart total update ✔️
+- Fix the shopping cart page and Nav for mobile responsiveness ✔️
+- Implement checkout with stripe ✔️
+- Remove items bought from cart ✔️
+- Deploy on vercel ✔️
+- Add Google login 

@@ -1,11 +1,15 @@
+import origin from "../origin"
 
 export async function checkUser() {
 
-  const response = await fetch("http://localhost:3000/api/auth/login")
+  const response = await fetch(`${origin}api/auth/login`, {
+    cache: "no-store"
+  })
 
-  if(!response.ok) return null
+  if(!response.ok) throw("user not logged in")
 
   const user = await response.json()  
     
   return user
+    
 }

@@ -13,7 +13,7 @@ export default function SecretePage() {
  if(!isLoggedIn) redirect("/login?nexturl=secret-page")
 
   const content = (text: string) => (
-    <div className='w-max -full mx-auto pt-20 flex-col justify-center'>
+    <div className='w-max mx-auto pt-20 flex-col justify-center'>
      <p className='text-center text-2xl mb-4 text-slate-300'>{text}</p>
     </div>
   )

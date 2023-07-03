@@ -3,18 +3,18 @@ import { AppContext } from '@/utils/context/appContextProvider'
 import React,{useContext} from 'react'
 import ProductCard from '../productCard/ProductCard'
 
-type Props = {
-    products: TProduct[]
+type ProductsPageProps = {
+    products: TProductDetails[]
     category: string
     index: number
     categoriesLength: number
 }
 
-export default function ProductsPage({products, category, index , categoriesLength}: Props) {
+export default function ProductsPage({products, category, index , categoriesLength}: ProductsPageProps) {
   
-  const {searchString} =  useContext(AppContext)!
+  const { searchString } =  useContext(AppContext)!
 
-  let filteredProducts: TProduct[] = []
+  let filteredProducts: TProductDetails[] = []
 
   if(searchString) {
    filteredProducts = products.filter((items) => items.name.toLowerCase().includes(searchString.toLowerCase()))

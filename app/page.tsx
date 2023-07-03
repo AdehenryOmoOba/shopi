@@ -1,28 +1,35 @@
-import fs from 'fs'
+import fs from 'fs/promises'
 import ProductsPage from "./components/productsPage/ProductsPage"
 import SearchBar from "./components/searchBar/searchBar"
-import mockData from '../ecommerce_products.json'
+import { getProducts } from '@/utils/getProducts'
 
 
-const path = 'products.json'
+const path = "../products.json"
 
 export default async function Home() {
 
-  const products: TProduct[] = mockData
+  let products: TProductDetails[] | object = await getProducts()
 
-  const idArray = products.map((product) => ({id: product.id}))
-  fs.writeFileSync(path, JSON.stringify(idArray, null, 2))
+  let categories : string[] | null = null
 
-  const categories = [...new Set(products.map((product) => product.category))]
-  const categoriesLength = categories.length
+  
+  if(Array.isArray(products)) {
+    await fs.writeFile(path, JSON.stringify(products, null, 2))
+    categories = [...new Set(products.map((product: TProductDetails) => product.category))]
+  }else{
+    console.log("products is not array...", products)
+    products = null
+  }
+
+  const categoriesLength = categories?.length
 
   return (
     <section>
       <SearchBar />
       <div>
-        {categories.map((category, index) => (
+        {!products ? <p className='text-center'>Error fetching products from database 🤨</p> : categories.map((category, index) => (
         <div key={category}>
-          <ProductsPage products={products} category={category} index={index} categoriesLength={categoriesLength} />
+          <ProductsPage products={products as TProductDetails[]} category={category} index={index} categoriesLength={categoriesLength} />
         </div>
         ))}
      </div>

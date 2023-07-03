@@ -30,6 +30,10 @@ main{
   min-height: calc(100dvh - 129px);
   padding-bottom: 5rem;
 }
+main section {
+  width: 100%;
+}
+
 ul {
   list-style: none;
 }

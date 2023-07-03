@@ -1,48 +1,56 @@
 type TProduct = {
-    id: string
-    category: string
-    name: string
-    description: string
-    price: number
-    image: string
-    vendorId: string
-  }
+  id: string
+  category: string
+  name: string
+  description: string
+  price: string
+  image: string
+  vendorid: string
+}
 
 type TProductDetails = {
-    id: string
-    category: string
+  id: string
+  category: string
+  name: string
+  description: string
+  price: string
+  image: string
+  vendorid: string
+  vendor: {
     username: string
-    description: string
-    price: number
-    image: string
-    vendorId: string
-    vendor: {
-      id: string
-      name: string
-      email: string
-      phone: string
-    }
+    email: string
+    phone: string
   }
+}
 
 type DBuser = {
-  id: string;
-  username: string;
-  email: string;
-  phone: string;
-  socialmediaUser: boolean;
-  cart: string[];
-  password?: string
-  role: "ADMIN" | "VENDOR" | "CUSTOMER";
+id: string;
+username: string;
+email: string;
+phone: string;
+socialmediaUser: boolean;
+cart: {item: TProductDetails, count: number}[];
+password?: string
+role: "ADMIN" | "VENDOR" | "CUSTOMER";
 }
 
 type User = Omit<DBuser, "password">
 
 type TLoginResponse = {
-  success: boolean
-  user: User
+success: boolean
+user: User
+}
+
+type Cart = {
+  cart: {item: TProductDetails, count: number}[]
+}
+
+type TCart = {
+  id: string
+  cart: {item: TProductDetails, count: number}[]
 }
 
 type TNotify = {
-  type: "error" | "success",
-  message: string 
+type: "error" | "success",
+message: string 
 }

@@ -1,57 +1,76 @@
-import productIds from '../../../products.json'
-import mockData from '../../../mockData.json'
+import fs from "fs"
+import { notFound } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
+import {HiOutlineArrowNarrowLeft} from "react-icons/hi"
+import AddToCartButton from "@/app/components/addToCartButton/AddToCartButton";
 
 
-export async function generateStaticParams() {
+let product: TProductDetails | undefined;
 
-  return productIds.map((product) => {
+export async function generateMetadata({params}: {params: {id: string}}) {
+
+  const products: TProductDetails[] = JSON.parse(fs.readFileSync("products.json", {encoding: "utf-8"}))
+
+  product = products?.find((product) => product.id === params.id)
+
+  if(!product){
     return {
-      id: product.id,
+      title: "Page does not exist",
+      description: "The page you requested does not exist on this domain"
     }
-  })
-}
-
-export async function generateMetadata({params}: {params: {id: string}}): Promise<{title: string, description: string}>{
-
-  //   const response = await fetch('http://localhost:3000/api/product-details', {
-  //   next: {
-  //     revalidate: 3600
-  //   }
-  // })
-
-  // const allProducts: TProductDetails[] = await response.json()
-
-  const allProducts: any[] = mockData
-
-  const product = allProducts.find((product) => product.id === params.id)!
+  }
 
   return {
     title: product.name,
-    description: `${product.description.slice(0, 100)}...`,
+    description: product.description
   }
+
 }
 
-async function getDetails(id: string) {
-//  const response = await fetch('http://localhost:3000/api/product-details', {
-//    next: {
-//      revalidate: 3600
-//    }
-//  })
-// const products: TProductDetails[] = await response.json()
-// return products.find((product) => product.id === id)
-
- const allProducts: any[] = mockData
- const product = allProducts.find((product) => product.id === id)
- return product
+// This functions runs first in build time
+export async function generateStaticParams() {
+  const products: TProductDetails[] = JSON.parse(fs.readFileSync("products.json", {encoding: "utf-8"}))
+  const paramsArray = products.map((product) => ({
+    id: product.id
+  }))
+  return paramsArray
 }
 
-export default async function SingleProduct({params}: {params: {id: string}}) {
-  
-  const product = await getDetails(params.id)
+const products: TProductDetails[] = JSON.parse(fs.readFileSync("products.json", {encoding: "utf-8"}))
+
+export default function SingleProduct({params}: {params: {id: string}}) {
+
+  if (!product) return notFound()
 
   return (
-    <div>
-      {JSON.stringify(product)}
+
+    <div className="flex flex-col items-center py-20">
+      <Image 
+       src={product.image} 
+       alt={product.name} 
+       width="256"  
+       height="256"
+       loading='lazy' 
+      />
+      <h2 className="text-2xl font-bold mt-4">{product.name}</h2>
+      <p className="text-gray-600 mt-2"><span className="font-bold text-gray-400">Price</span>: {parseFloat(product.price).toLocaleString("en-US", {style: "currency", currency: "USD"})}</p>
+      <p className="text-gray-600 mt-2 w-5/6 md:w-3/5 lg:w-2/5"><span className="font-bold text-gray-400">Description</span>: {product.description}</p>
+      <p className="text-gray-600 mt-2"><span className="font-bold text-gray-400">Vendor</span>: {product.vendor.username}</p>
+      <div className="flex my-2">
+        <span className="text-yellow-500">⭐️</span>
+        <span className="text-yellow-500">⭐️</span>
+        <span className="text-yellow-500">⭐️</span>
+        <span className="text-yellow-500">⭐️</span>
+        <span className="text-gray-400">⭐️</span>
+      </div>
+      <AddToCartButton data={product} />
+      <Link href="/" className="py-2 px-4 rounded text-sm font-bold bg-slate-800 mt-4 focus:outline-none focus:shadow-outline hover:text-white transition-colors flex items-center gap-x-2">
+        <HiOutlineArrowNarrowLeft />
+        Go Back
+      </Link>
     </div>
   )
 }
+
+

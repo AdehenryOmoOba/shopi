@@ -16,9 +16,17 @@ export async function GET(req: NextRequest) {
   try {
     if(!userToken) throw new Error("user not logged in")
     const verifiedToken = await jwtVerify(userToken, jwtSecret)
-    return  NextResponse.json(verifiedToken)
+    const username = verifiedToken.payload.username as string
+    let DBuser = await prisma.user.findUnique({
+      where: {
+        username
+      }
+    }) as unknown as DBuser || null
+
+    return new Response(JSON.stringify(DBuser))
   } catch (error) {
-  return  NextResponse.json({error: error.message}, {status: 401})
+
+    return new Response(JSON.stringify({error: error.message}))
   }
 }
 
@@ -27,9 +35,13 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
   const credentials: {username: string, password: string} = await req.json()
 
-  if(!credentials.username) return NextResponse.json({user: null}, {status: 401, statusText: "Username not provided"})
+  if(!credentials.username){
+    return new Response(JSON.stringify({user: null}))
+  }
 
-  if(!credentials.password) return NextResponse.json({user: null}, {status: 401, statusText: "Password not provided"})
+  if(!credentials.password) {
+    return new Response(JSON.stringify({user: null}))
+  }
 
   // make prisma call to get user
   let DBuser = await prisma.user.findUnique({
@@ -40,9 +52,8 @@ export async function POST(req: NextRequest, res: NextResponse) {
   
   // Check if user exist
   if(!DBuser) {
-    return NextResponse.json({user: null}, {
+    return NextResponse.json({error: "Username does not exist"}, {
       status: 404,
-      statusText: "Username does not exist"
     })
   }
   
@@ -50,22 +61,15 @@ export async function POST(req: NextRequest, res: NextResponse) {
   if(!DBuser.socialmediaUser){
     let isMatchPassword = await bcrypt.compare(credentials.password, DBuser.password)
     if (!isMatchPassword){
-      return NextResponse.json({user: null}, {
+      return NextResponse.json({error: "Password is incorrect"}, {
         status: 401,
-        statusText: "Password is incorrect"
       })
     }
-  }
-
-  DBuser.password = ""
-
-  const user: TLoginResponse = { 
-    success: DBuser ? true : false,
-    user: DBuser
+    DBuser.password = ""
   }
 
   // Send a JWT cookie to user
-  const jwtToken = await new SignJWT(user)
+  const jwtToken = await new SignJWT({...DBuser, cart: null})
                 .setProtectedHeader({alg: "HS256"})
                 .setJti(nanoid()) 
                 .setIssuedAt()
@@ -74,8 +78,10 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
   const serializedJWT = cookie.serialize("user-token", jwtToken, cookieOptions)
 
-  return  NextResponse.json(user, {
-    headers: { "Set-Cookie": serializedJWT}
+  return  NextResponse.json({user: DBuser}, {
+    headers: { 
+      "Set-Cookie": serializedJWT,
+    }
   })
 
 }

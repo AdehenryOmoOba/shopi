@@ -13,7 +13,7 @@ export default function Login() {
   const [isLoading, setIsLoading] = useState(false)
   const searcParams = useSearchParams()
   const notify = useNotification()
-  const {setUser} = useContext(AppContext)
+  const {setUser, updateCartCount,setCartCount} = useContext(AppContext)
   const router = useRouter()
   
   const handleLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -22,6 +22,8 @@ export default function Login() {
     const nexturl = searcParams.get('nexturl') ? `/${searcParams.get('nexturl')}` : '/'
 
     const response = await signIn(userData)
+
+    console.log("response...from login page:", response)
 
     setIsLoading(false)
 
@@ -32,9 +34,15 @@ export default function Login() {
 
     notify({type: 'success', message: "Login successful"})
     setUser(response.data.user)
+    let count = 0;
+    for (let item of response.data.user.cart) {
+      count += item.count
+    }
+    setCartCount(count)
     router.push(nexturl)
-    
   }
+
+  const loginBtnStyle = "bg-blue-600 w-full rounded-md h-10 relative my-2"
 
   const content = (
     <div className='w-[280px] h-full mx-auto pt-20 flex-col justify-center lg:w-[308px]'>
@@ -48,7 +56,7 @@ export default function Login() {
         <div className='w-full mb-2'><p>Password</p></div>
           <input type="password" className='w-full h-10 rounded-md bg-black px-2 border border-slate-800' role="presentation" value={userData.password} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUserData({...userData, password: e.target.value})} />
         </div>
-        <Button name = "Login" action = {handleLogin} isLoading = {isLoading} />
+        <Button name = "Login" action = {handleLogin} isLoading = {isLoading} btnStyles={loginBtnStyle} actionPayload="" />
         <button className='bg-blue-600 w-full rounded-md h-10'>Login with Google</button>
       </form> 
       <div className='h-16 grid place-content-center rounded-md border border-slate-600'>

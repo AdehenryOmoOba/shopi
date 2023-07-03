@@ -1,8 +1,9 @@
-import React from 'react'
 import Link from 'next/link'
 import {CldImage} from 'next-cloudinary'
+import AddToCartButton from '../addToCartButton/AddToCartButton'
 
-export default function ProductCard({data}: {data: TProduct}) {
+
+export default function ProductCard({data}: {data: TProductDetails}) {
 
   return (
     <div className="p-4 snap-start">
@@ -23,9 +24,9 @@ export default function ProductCard({data}: {data: TProduct}) {
         </div>
         <p className="mt-1 text-sm leading-5 line-clamp-4 text-blue-100">{data.description}</p>
         </Link>
-        <div className="flex mt-2">
-          <p className="text-2xl font-bold grow">${data.price}</p>
-          <button className="bg-blue-600 text-white py-1 px-3 rounded">Add to Cart</button>
+        <div className="flex items-center mt-2">
+          <p className="text-xl font-bold grow">{parseFloat(data.price).toLocaleString("en-US", {style: "currency", currency: "USD"})}</p>
+          <AddToCartButton data={data} />
         </div>
       </div>
     </div>
