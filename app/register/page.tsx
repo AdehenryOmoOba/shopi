@@ -5,6 +5,7 @@ import axios from 'axios'
 import { useNotification } from '../components/notification/Notification'
 import { useRouter } from 'next/navigation'
 import Button from '../components/Button'
+import origin from '@/utils/origin'
 
 
 export default function Register() {
@@ -21,7 +22,7 @@ export default function Register() {
     e.preventDefault()
     setIsLoading(true)
     try {
-      await axios.post('http://localhost:3000/api/register', user)
+      await axios.post(`${origin}api/register`, user)
       setIsLoading(false)
       notify({type: "success", message: "Registration successful"})
       router.push("/login")

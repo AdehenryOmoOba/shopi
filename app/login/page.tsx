@@ -28,7 +28,7 @@ export default function Login() {
     setIsLoading(false)
 
     if(!response.success) {
-      notify({type: 'error', message: response.error})
+      notify({type: 'error', message: "Login failed, Please try again."})
       return
     }
 
