@@ -27,7 +27,7 @@ export default function Login() {
       setIsLoading(false)
   
       if(!response.success) {
-        let errorMsg: string = response.error.length < 30 ? response.error : "Oops! Network error."
+        let errorMsg: string = response.error.length > 30 || response.error === "Failed to fetch" ? "Oops! Network error.": response.error
         notify({type: 'error', message: errorMsg})
         return
       }
