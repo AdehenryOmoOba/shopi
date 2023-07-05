@@ -43,45 +43,51 @@ export async function POST(req: NextRequest, res: NextResponse) {
     return new Response(JSON.stringify({user: null}))
   }
 
-  // make prisma call to get user
+  try {
+      // make prisma call to get user
   let DBuser = await prisma.user.findUnique({
-        where: {
-          username: credentials.username
-        }
-  }) as unknown as DBuser || null
-  
-  // Check if user exist
-  if(!DBuser) {
-    return NextResponse.json({error: "Username does not exist"}, {
-      status: 404,
+    where: {
+      username: credentials.username
+    }
+}) as unknown as DBuser || null
+
+// Check if user exist
+if(!DBuser) {
+return NextResponse.json({error: "Username does not exist"}, {
+  status: 404,
+})
+}
+
+// Confirm password match (for non-social-media users)
+if(!DBuser.socialmediaUser){
+let isMatchPassword = await bcrypt.compare(credentials.password, DBuser.password)
+if (!isMatchPassword){
+  return NextResponse.json({error: "Password is incorrect"}, {
+    status: 401,
+  })
+}
+DBuser.password = ""
+}
+
+// Send a JWT cookie to user
+const jwtToken = await new SignJWT({...DBuser, cart: null})
+            .setProtectedHeader({alg: "HS256"})
+            .setJti(nanoid()) 
+            .setIssuedAt()
+            .setExpirationTime("60m")
+            .sign(jwtSecret)
+
+const serializedJWT = cookie.serialize("user-token", jwtToken, cookieOptions)
+
+return  NextResponse.json({user: DBuser}, {
+headers: { 
+  "Set-Cookie": serializedJWT,
+}
+})
+  } catch (error) {
+    return NextResponse.json({error: `Something went wrong. ${error.message}`}, {
+      status: 500,
     })
   }
-  
-  // Confirm password match (for non-social-media users)
-  if(!DBuser.socialmediaUser){
-    let isMatchPassword = await bcrypt.compare(credentials.password, DBuser.password)
-    if (!isMatchPassword){
-      return NextResponse.json({error: "Password is incorrect"}, {
-        status: 401,
-      })
-    }
-    DBuser.password = ""
-  }
-
-  // Send a JWT cookie to user
-  const jwtToken = await new SignJWT({...DBuser, cart: null})
-                .setProtectedHeader({alg: "HS256"})
-                .setJti(nanoid()) 
-                .setIssuedAt()
-                .setExpirationTime("60m")
-                .sign(jwtSecret)
-
-  const serializedJWT = cookie.serialize("user-token", jwtToken, cookieOptions)
-
-  return  NextResponse.json({user: DBuser}, {
-    headers: { 
-      "Set-Cookie": serializedJWT,
-    }
-  })
 
 }

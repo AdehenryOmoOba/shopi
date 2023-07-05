@@ -23,12 +23,10 @@ export default function Login() {
 
     const response = await signIn(userData)
 
-    console.log("response...from login page:", response)
-
     setIsLoading(false)
 
     if(!response.success) {
-      notify({type: 'error', message: "Login failed, Please try again."})
+      notify({type: 'error', message: response.error})
       return
     }
 

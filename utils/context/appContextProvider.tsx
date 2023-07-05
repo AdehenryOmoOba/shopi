@@ -38,17 +38,13 @@ export default function AppContextProvider({children}: {children: React.ReactNod
   useEffect(() => {
     (async () => {
     const response = await checkUser()
-    console.log("current user from context:", {response})
 
     if(response.error) {
-     console.log(response.error)
      return
     }
 
     const curretUser = response as User
     
-    console.log("current user from context:", curretUser)
-
     setUser({...curretUser})
 
     let count = 0;
