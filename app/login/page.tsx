@@ -13,7 +13,7 @@ export default function Login() {
   const [isLoading, setIsLoading] = useState(false)
   const searcParams = useSearchParams()
   const notify = useNotification()
-  const {setUser, updateCartCount,setCartCount} = useContext(AppContext)
+  const {setUser,setCartCount} = useContext(AppContext)
   const router = useRouter()
   
   const handleLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -21,23 +21,31 @@ export default function Login() {
     setIsLoading(true)
     const nexturl = searcParams.get('nexturl') ? `/${searcParams.get('nexturl')}` : '/'
 
-    const response = await signIn(userData)
+    try {
+      const response = await signIn(userData)
 
-    setIsLoading(false)
+      setIsLoading(false)
+  
+      if(!response.success) {
+        let errorMsg: string = response.error.length > 30 ? response.error : "Oops! Network error."
 
-    if(!response.success) {
-      notify({type: 'error', message: response.error})
-      return
+        notify({type: 'error', message: errorMsg})
+        return
+      }
+  
+      notify({type: 'success', message: "Login successful"})
+      setUser(response.data.user)
+      let count = 0;
+      for (let item of response.data.user.cart) {
+        count += item.count
+      }
+      setCartCount(count)
+      router.push(nexturl)
+    } catch (error) {
+      notify({type: 'error', message: "Oops! Network error."})
     }
 
-    notify({type: 'success', message: "Login successful"})
-    setUser(response.data.user)
-    let count = 0;
-    for (let item of response.data.user.cart) {
-      count += item.count
-    }
-    setCartCount(count)
-    router.push(nexturl)
+  
   }
 
   const loginBtnStyle = "bg-blue-600 w-full rounded-md h-10 relative my-2"
