@@ -9,7 +9,7 @@ type TCredentials = {
 async function signIn(credentials: TCredentials) {
 
   try {
-    const response = await fetch(`${origin}api/auth/login`, {
+    const response = await fetch(`${origin}api/login`, {
         method: "POST",
         body: JSON.stringify(credentials)
       })

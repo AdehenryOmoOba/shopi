@@ -3,7 +3,7 @@ import origin from "../origin"
 
 export async function signOut(){
  try {
-    await fetch(`${origin}api/auth/logout`, {
+    await fetch(`${origin}api/logout`, {
       cache: "no-store"
     })
     return {success: "logged out successfully"}

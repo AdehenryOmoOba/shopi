@@ -2,7 +2,7 @@ import origin from "../origin"
 
 export async function checkUser() {
 
-  const response = await fetch(`${origin}api/auth/login`, {
+  const response = await fetch(`${origin}api/login`, {
     cache: "no-store"
   })
 

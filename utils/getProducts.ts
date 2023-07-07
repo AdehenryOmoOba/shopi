@@ -2,8 +2,6 @@ import origin from "./origin"
 
 
 export async function getProducts(): Promise<TProductDetails[]> {
-
-  console.log("origin from getProduct:", origin )
     
     try {
       const response = await fetch(`${origin}api/products`, {
