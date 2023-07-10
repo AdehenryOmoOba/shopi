@@ -1,13 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth/next'
 import { prisma } from '@/prisma/prismaClient'
+import { nextAuthOptions } from '../../auth/[...nextauth]/route'
 
 
 // Persist current social user
  export async function GET(req: NextRequest, res: NextResponse) {
 
      try {
-        const userInfo = await getServerSession()
+        const userInfo = await getServerSession(nextAuthOptions)
 
         let user = null
         if(userInfo?.user?.email){

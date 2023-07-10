@@ -29,7 +29,7 @@ export default function Login() {
        notify({type: 'success', message: "Login successful with GitHub"})
        setUser(response.data)
        let count = 0;
-       for (let item of response.data.cart) {
+       for (let item of response?.data?.cart) {
          count += item.count
        }
        setCartCount(count)

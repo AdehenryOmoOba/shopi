@@ -10,6 +10,7 @@ import { AppContext } from '@/utils/context/appContextProvider'
 import { signOut } from '@/utils/auth/logout'
 import { useNotification } from '../notification/Notification'
 import { signOut as githubSignOut } from 'next-auth/react'
+import origin from '@/utils/origin'
 
 
 const homeRegex = /^\/product\/[a-z\d]+|\/$/
@@ -28,14 +29,13 @@ export default function Navbar() {
 
   const  handleLogout = async () => {
     try {
-      await githubSignOut()
+      await githubSignOut({redirect: false})
       const response = await signOut()
       console.log("response from Signout...Navbar:", response)
-      if(response.error) throw new Error(response.error)
       setUser(null)
       setCartCount(0)
       notify({type: 'success', message: response.success})
-      router.push('/')
+      router.push(origin)
     } catch (error) {
       notify({type: 'error', message: error.message})
     }

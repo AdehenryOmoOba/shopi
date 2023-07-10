@@ -57,8 +57,6 @@ export default function Cart() {
     }
   }
 
-  if(!user) router.push("/")
-
   const countControlBtn = (cartItem: {item: TProductDetails, count: number}) => (<div className='flex mb-5'>
                             <button onClick={() => handleDecrementCartCount({itemId: cartItem.item.id, itemName: cartItem.item.name, itemCount: cartItem.count})} className='py-[4.5px] px-4 bg-slate-700 ml-2 mr-0 active:bg-slate-900 rounded-l-sm rouned'>-</button>
                             <span className='grid place-content-center w-9 border-4 border-slate-700 text-white'>{cartItem.count}</span>
@@ -141,14 +139,6 @@ export default function Cart() {
           <p className='text-[1rem] font-extrabold text-gray-200'>Grand total</p>
           <span className='text-lg font-extrabold'>{parseFloat(`${cartTotal}`).toLocaleString("en-US", {style: "currency", currency: "USD"})}</span>
         </div>
-        {/* <button onClick={() => handleCheckout(user.cart)} className=''>Checkout now</button> */}
-        {/* <button onClick={() => handleCheckout(user.cart)} className={checkoutBtnStyles} disabled={isLoading}>
-                   <p className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ${isLoading ? "opacity-0" : "opacity-100" }`}>Checkout now</p>
-                   <svg className={`absolute left-1/2 top-1/4 -translate-x-1/2 -rotate-[360] w-5 h-5 mr-3 -ml-1 text-black animate-spin ${isLoading ? "opacity-100" : "opacity-0" }`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                   </svg>
-        </button> */}
         <Button action={handleCheckout} actionPayload={user?.cart} btnStyles={checkoutBtnStyles} isLoading={isLoading} svgColor="text-black" name="Checkout now" />
        </div>
      </div>
