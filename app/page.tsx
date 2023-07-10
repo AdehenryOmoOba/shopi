@@ -2,7 +2,6 @@ import fs from 'fs/promises'
 import ProductsPage from "./components/productsPage/ProductsPage"
 import SearchBar from "./components/searchBar/searchBar"
 import { getProducts } from '@/utils/getProducts'
-import { getServerSession } from 'next-auth'
 
 
 const path = "../products.json"
@@ -22,8 +21,6 @@ export default async function Home() {
   }
 
   const categoriesLength = categories?.length
-
-  const githubSession = await getServerSession()
 
   return (
     <section>
