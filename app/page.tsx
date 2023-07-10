@@ -2,6 +2,7 @@ import fs from 'fs/promises'
 import ProductsPage from "./components/productsPage/ProductsPage"
 import SearchBar from "./components/searchBar/searchBar"
 import { getProducts } from '@/utils/getProducts'
+import { getServerSession } from 'next-auth'
 
 
 const path = "../products.json"
@@ -17,11 +18,12 @@ export default async function Home() {
     await fs.writeFile(path, JSON.stringify(products, null, 2))
     categories = [...new Set(products.map((product: TProductDetails) => product.category))]
   }else{
-    console.log("products is not array...", products)
     products = null
   }
 
   const categoriesLength = categories?.length
+
+  const githubSession = await getServerSession()
 
   return (
     <section>

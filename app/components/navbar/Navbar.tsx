@@ -9,7 +9,7 @@ import { CldImage } from 'next-cloudinary'
 import { AppContext } from '@/utils/context/appContextProvider'
 import { signOut } from '@/utils/auth/logout'
 import { useNotification } from '../notification/Notification'
-
+import { signOut as githubSignOut } from 'next-auth/react'
 
 
 const homeRegex = /^\/product\/[a-z\d]+|\/$/
@@ -27,13 +27,18 @@ export default function Navbar() {
   const isHomePath = homeRegex.test(pathname)
 
   const  handleLogout = async () => {
-    const response = await signOut()
-    console.log("response from Signout...Navbar:", response)
-    if(response.error) return notify({type: 'error', message: response.error})
-    setUser(null)
-    setCartCount(0)
-    notify({type: 'success', message: response.success})
-    router.push('/')
+    try {
+      await githubSignOut()
+      const response = await signOut()
+      console.log("response from Signout...Navbar:", response)
+      if(response.error) throw new Error(response.error)
+      setUser(null)
+      setCartCount(0)
+      notify({type: 'success', message: response.success})
+      router.push('/')
+    } catch (error) {
+      notify({type: 'error', message: error.message})
+    }
   }
 
   const toggleMenu = ()  => {
@@ -46,7 +51,7 @@ export default function Navbar() {
                              <Link href='/secret-page' className={`py-1 px-4 rounded font-extrabold ${pathname === '/secrete-page' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Secrete Page</Link>
                              {!!user && <Link href='/cart' className={`py-1 px-4 rounded font-extrabold ${pathname === '/cart' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>View Cart</Link>}
                              {!user && <Link href='/register' className={`py-1 px-4 rounded font-extrabold ${pathname === '/register' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Register</Link>}
-                             {user ? <button className="py-1 px-4 rounded font-extrabold cursor-pointer active:bg-slate-800 active:text-white transition-colors" onClick={handleLogout}>Logout</button> : <Link href='/login' className={`py-1 px-4 rounded font-extrabold ${pathname === '/login' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Login</Link>}
+                             {user ? <button onClick={handleLogout} className="py-1 px-4 rounded font-extrabold cursor-pointer active:bg-slate-800 active:text-white transition-colors" >Logout</button> : <Link href='/login' className={`py-1 px-4 rounded font-extrabold ${pathname === '/login' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Login</Link>}
                            </ul>
                          </nav>)
 
@@ -56,7 +61,7 @@ export default function Navbar() {
                              <Link href='/secret-page' className={`py-1 px-4 rounded font-extrabold ${pathname === '/secrete-page' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Secrete Page</Link>
                              {!!user && <Link href='/cart' className={`py-1 px-4 rounded font-extrabold ${pathname === '/cart' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>View Cart</Link>}
                              {!user && <Link href='/register' className={`py-1 px-4 rounded font-extrabold ${pathname === '/register' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Register</Link>}
-                             {user ? <button className="py-1 px-4 rounded font-extrabold cursor-pointer active:bg-slate-800 active:text-white transition-colors" onClick={handleLogout}>Logout</button> : <Link href='/login' className={`py-1 px-4 rounded text-sm font-extrabold ${pathname === '/login' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Login</Link>}
+                             {user ? <button onClick={handleLogout} className="py-1 px-4 rounded font-extrabold cursor-pointer active:bg-slate-800 active:text-white transition-colors" >Logout</button> : <Link href='/login' className={`py-1 px-4 rounded text-sm font-extrabold ${pathname === '/login' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Login</Link>}
                            </ul>
                          </nav>)
 

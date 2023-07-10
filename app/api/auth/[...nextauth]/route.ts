@@ -1,4 +1,4 @@
-import NextAuth from "next-auth"
+import NextAuth from "next-auth/next"
 import { NextAuthOptions } from "next-auth"
 import GithubProvider from "next-auth/providers/github";
 
@@ -10,6 +10,9 @@ const options: NextAuthOptions = {
             clientSecret: process.env.GITHUB_CLIENT_SECRET,
         }),
     ],
+    pages: {
+        signIn: "/login"
+    },
 }
 
 const handler = NextAuth(options)

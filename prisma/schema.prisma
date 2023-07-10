@@ -11,7 +11,7 @@ model User {
   id              String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
   username        String    @unique @db.VarChar(50)
   email           String    @unique @db.VarChar(500)
-  phone           String    @unique @db.VarChar(50)
+  phone           String?   @unique @db.VarChar(50)
   socialmediaUser Boolean?  @default(false)
   password        String?   @db.VarChar(500)
   role            Role      @default(CUSTOMER)

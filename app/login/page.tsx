@@ -1,11 +1,13 @@
 "use client"
 import Link from 'next/link'
-import React, {useState, useContext } from 'react'
+import React, {useState, useContext,useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useNotification } from '../components/notification/Notification'
 import signIn from '@/utils/auth/login'
 import { AppContext } from '@/utils/context/appContextProvider'
 import Button from '../components/Button'
+import { signIn as githubSignIn, useSession} from "next-auth/react"
+import socialLogin from '@/utils/auth/socialLogin'
 
 
 export default function Login() {
@@ -13,13 +15,33 @@ export default function Login() {
   const [isLoading, setIsLoading] = useState(false)
   const searcParams = useSearchParams()
   const notify = useNotification()
-  const {setUser,setCartCount} = useContext(AppContext)
+  const {setUser,setCartCount, user} = useContext(AppContext)
   const router = useRouter()
+  const ghSLData = useSession()
+
+  const nexturl = searcParams.get('nexturl') ? `/${searcParams.get('nexturl')}` : '/'
+  
+  useEffect(() => {
+    if(ghSLData?.data?.user && !user) {
+      (async () => {
+       const response = await socialLogin({name: ghSLData?.data?.user.name, email: ghSLData?.data?.user.email})
+       console.log("response from githubLogin API:", response.data)
+       notify({type: 'success', message: "Login successful with GitHub"})
+       setUser(response.data)
+       let count = 0;
+       for (let item of response.data.cart) {
+         count += item.count
+       }
+       setCartCount(count)
+       router.push("/")
+      })()
+    }
+  }, [ghSLData?.data?.user])
+  
   
   const handleLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
     setIsLoading(true)
-    const nexturl = searcParams.get('nexturl') ? `/${searcParams.get('nexturl')}` : '/'
 
     try {
       const response = await signIn(userData)
@@ -43,8 +65,11 @@ export default function Login() {
     } catch (error) {
       notify({type: 'error', message: "Oops! Network error."})
     }
+  }
 
-  
+  const handleGithubLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault()
+    await githubSignIn("github", {redirect: false})
   }
 
   const loginBtnStyle = "bg-blue-600 w-full rounded-md h-10 relative my-2"
@@ -62,7 +87,7 @@ export default function Login() {
           <input type="password" className='w-full h-10 rounded-md bg-black px-2 border border-slate-800' role="presentation" value={userData.password} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUserData({...userData, password: e.target.value})} />
         </div>
         <Button name = "Login" action = {handleLogin} isLoading = {isLoading} btnStyles={loginBtnStyle} actionPayload="" />
-        <button className='bg-blue-600 w-full rounded-md h-10'>Login with Google</button>
+        <button onClick={handleGithubLogin} className='bg-blue-600 w-full rounded-md h-10'>Login with GitHub</button>
       </form> 
       <div className='h-16 grid place-content-center rounded-md border border-slate-600'>
         <p>New to Shopi ?  <Link href='/register' className='text-blue-400'> Create an account</Link></p>

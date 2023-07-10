@@ -15,8 +15,6 @@ export default function Cart() {
   const [isLoading, setIsLoading] = useState(false)
   const notify = useNotification()
   const router = useRouter()
-
-
   
   const handleClearCart = () => {
     clearCart()
@@ -58,6 +56,8 @@ export default function Cart() {
       console.log(error.message)
     }
   }
+
+  if(!user) router.push("/")
 
   const countControlBtn = (cartItem: {item: TProductDetails, count: number}) => (<div className='flex mb-5'>
                             <button onClick={() => handleDecrementCartCount({itemId: cartItem.item.id, itemName: cartItem.item.name, itemCount: cartItem.count})} className='py-[4.5px] px-4 bg-slate-700 ml-2 mr-0 active:bg-slate-900 rounded-l-sm rouned'>-</button>

@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react'
 import { checkUser } from '../auth/checkUser'
 import { debouncedCartSync } from '../debouncedCartSync'
+import {SessionProvider, getSession} from "next-auth/react"
+import { checkSocialUser } from '../auth/checkSocialUser'
 
 
 interface IAppContext {
@@ -36,11 +38,23 @@ export default function AppContextProvider({children}: {children: React.ReactNod
   const [cartTotal, setCartTotal] = useState(0)
 
   useEffect(() => {
-    (async () => {
-    const response = await checkUser()
 
-    if(response.error) {
-     return
+    let response: any
+    
+    (async () => {
+
+    try {
+      response = await checkUser()
+
+      if(response.error) {
+  
+        response = await checkSocialUser()
+  
+        if(response.error) return
+      }
+    } catch (error) {
+      console.log(error)
+      return
     }
 
     const curretUser = response as User
@@ -50,9 +64,11 @@ export default function AppContextProvider({children}: {children: React.ReactNod
     let count = 0;
     let total = 0
 
-    for (let item of curretUser.cart) {
-      count += item.count
-      total += parseFloat(item.item.price) * item.count
+    if(curretUser.cart){
+      for (let item of curretUser.cart) {
+        count += item.count
+        total += parseFloat(item.item.price) * item.count
+      }
     }
 
     setCartCount(count)
@@ -160,7 +176,9 @@ export default function AppContextProvider({children}: {children: React.ReactNod
 
   return (
      <AppContext.Provider value={{searchString, setSearchString, user, setUser, error, setError, success, setSuccess, cartCount, setCartCount, updateCartCount, addItemToCart, decrementCartCount, deleteCartItem, clearCart, cartTotal, setCartTotal}}>
+      <SessionProvider>
        {children}
+      </SessionProvider>
      </AppContext.Provider>
   )
 }
