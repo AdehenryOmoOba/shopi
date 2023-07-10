@@ -13,7 +13,6 @@ const options: NextAuthOptions = {
     pages: {
         signIn: "/login"
     },
-    // secret: process.env.NEXTAUTH_SECRET
     secret: "KWEVPOM3M3F33F33PMFP"
 }
 

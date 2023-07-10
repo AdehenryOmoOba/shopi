@@ -69,7 +69,7 @@ export default function Login() {
 
   const handleGithubLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
-    await githubSignIn("github", {redirect: false})
+    await githubSignIn("github")
   }
 
   const loginBtnStyle = "bg-blue-600 w-full rounded-md h-10 relative my-2"
