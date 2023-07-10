@@ -15,6 +15,7 @@ function CountDown() {
         },1000)
     
         let timeoutID2: NodeJS.Timer | null = null
+        
         if(count === 0) {
           timeoutID2 = setTimeout(() => {
             router.push("/")
@@ -25,7 +26,7 @@ function CountDown() {
           clearInterval(timeoutID)
           clearInterval(timeoutID2)
         }
-  }, [count])
+  }, [count, router])
 
   return (
     <div className='flex flex-col items-center'>

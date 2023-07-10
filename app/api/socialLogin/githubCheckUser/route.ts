@@ -1,19 +1,23 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getServerSession } from 'next-auth/next'
 import { prisma } from '@/prisma/prismaClient'
-import { nextAuthOptions } from '../../auth/[...nextauth]/route'
+import { getToken } from 'next-auth/jwt'
 
 
 // Persist current social user
  export async function GET(req: NextRequest, res: NextResponse) {
 
-     try {
-        const userInfo = await getServerSession(nextAuthOptions)
+  const secret = process.env.NEXTAUTH_SECRET
 
+  const token = await getToken({req, secret})
+
+  console.log("jwt token: ", {token})
+
+     try {
         let user = null
-        if(userInfo?.user?.email){
+
+        if(token?.email){
         // make prisma call to get user
-        user = await prisma.user.findUnique({where: {email: userInfo?.user?.email}})
+        user = await prisma.user.findUnique({where: {email: token?.email}})
       }
 
       if(!user) throw new Error("No user logged in")
