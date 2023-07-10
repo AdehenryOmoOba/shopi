@@ -6,7 +6,7 @@ import { getToken } from 'next-auth/jwt'
 // Persist current social user
  export async function GET(req: NextRequest, res: NextResponse) {
 
-  const secret = process.env.NEXTAUTH_SECRET
+  const secret = "KWEVPOM3M3F33F33PMFP"
 
   const token = await getToken({req, secret})
 
