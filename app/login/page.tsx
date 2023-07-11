@@ -20,6 +20,8 @@ export default function Login() {
   const githubUserEmail = useSession()?.data?.user?.email
 
   const nexturl = searcParams.get('nexturl') ? `/${searcParams.get('nexturl')}` : '/'
+
+  console.log({githubUserEmail})
   
   useEffect(() => {
     if(githubUserEmail && !user) {
