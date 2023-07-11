@@ -2,19 +2,14 @@ import fs from 'fs/promises'
 import ProductsPage from "./components/productsPage/ProductsPage"
 import SearchBar from "./components/searchBar/searchBar"
 import { getProducts } from '@/utils/getProducts'
-import { getServerSession } from 'next-auth/next'
-import { nextAuthoptions } from './api/auth/[...nextauth]/route'
 
 
 const path = "../products.json"
 
 export default async function Home() {
 
-  let sessionData = await getServerSession(nextAuthoptions)
   let products: TProductDetails[] | object = await getProducts()
   let categories : string[] | null = null
-
-  console.log({sessionData})
   
   if(Array.isArray(products)) {
     await fs.writeFile(path, JSON.stringify(products, null, 2))
