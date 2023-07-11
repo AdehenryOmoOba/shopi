@@ -12,7 +12,7 @@ const nextAuthoptions: NextAuthOptions = {
         }),
     ],
     pages: {
-        signIn: `${origin}login`
+        signIn: "/login"
     },
     secret: "KWEVPOM3M3F33F33PMFP",
 }
