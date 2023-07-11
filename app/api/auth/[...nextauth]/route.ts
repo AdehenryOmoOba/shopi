@@ -12,7 +12,7 @@ const nextAuthoptions: NextAuthOptions = {
         }),
     ],
     pages: {
-        signIn: "https://shopi-ten.vercel.app/api/auth/signin/github"
+        signIn: "/login"
     },
     secret: "KWEVPOM3M3F33F33PMFP",
 }
