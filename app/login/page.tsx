@@ -21,7 +21,7 @@ export default function Login() {
 
   const nexturl = searcParams.get('nexturl') ? `/${searcParams.get('nexturl')}` : '/'
 
-  console.log({githubUserEmail})
+  console.log("From login page: ",{githubUserEmail})
   
   useEffect(() => {
     if(githubUserEmail && !user) {
