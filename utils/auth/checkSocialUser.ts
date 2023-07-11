@@ -6,7 +6,7 @@ export async function checkSocialUser() {
     cache: "no-store"
   })
   
-  if(!response.ok) throw("user not logged in")
+  if(!response.ok) return {error: "user not logged in"}
   
   const user = await response.json()  
 

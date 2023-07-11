@@ -12,21 +12,18 @@ import { getToken } from 'next-auth/jwt'
 
   console.log("jwt token: ", {token})
 
-     try {
-        let user = null
+  let user = null
 
-        if(token?.email){
-        // make prisma call to get user
-        user = await prisma.user.findUnique({where: {email: token?.email}})
+  try {
+    if(token?.email){
+      // make prisma call to get user
+      user = await prisma.user.findUnique({where: {email: token?.email}})
       }
-
-      if(!user) throw new Error("No user logged in")
-
+    
+      if(!user) return NextResponse.json({error: "No user logged in"}, {status: 404})
+    
       return NextResponse.json(user)
-      
-    } catch (error) {
-      return NextResponse.json({error: `Something went wrong. ${error.message}`}, {
-       status: 404,
-      })
-    }
+  } catch (error) {
+    return NextResponse.json({error: "Something went wrong"}, {status: 501})
+  }
 }

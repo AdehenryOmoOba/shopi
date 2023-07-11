@@ -17,15 +17,18 @@ export default function Login() {
   const notify = useNotification()
   const {setUser,setCartCount, user} = useContext(AppContext)
   const router = useRouter()
-  const ghSLData = useSession()
+  const githubUserEmail = useSession()?.data?.user?.email
 
   const nexturl = searcParams.get('nexturl') ? `/${searcParams.get('nexturl')}` : '/'
   
   useEffect(() => {
-    if(ghSLData?.data?.user && !user) {
+    if(githubUserEmail && !user) {
       (async () => {
-       const response = await socialLogin({name: ghSLData?.data?.user.name, email: ghSLData?.data?.user.email})
-       console.log("response from githubLogin API:", response.data)
+       const response = await socialLogin(githubUserEmail)
+       if(!response.success) {
+       notify({type: 'error', message: response.error})
+       return
+       }
        notify({type: 'success', message: "Login successful with GitHub"})
        setUser(response.data)
        let count = 0;
@@ -36,8 +39,8 @@ export default function Login() {
        router.push("/")
       })()
     }
-  }, [ghSLData?.data?.user])
-  
+  }, [githubUserEmail])
+
   
   const handleLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
@@ -69,8 +72,10 @@ export default function Login() {
 
   const handleGithubLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
-   const userInfo = await githubSignIn("github",{redirect: false})
-   console.log({userInfo})
+    await githubSignIn("github", {redirect: false})
+
+    console.log("No redirect............")
+    
   }
 
   const loginBtnStyle = "bg-blue-600 w-full rounded-md h-10 relative my-2"

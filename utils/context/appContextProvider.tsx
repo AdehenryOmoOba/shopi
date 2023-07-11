@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { checkUser } from '../auth/checkUser'
 import { debouncedCartSync } from '../debouncedCartSync'
-import {SessionProvider, getSession} from "next-auth/react"
+import {SessionProvider} from "next-auth/react"
 import { checkSocialUser } from '../auth/checkSocialUser'
 
 
@@ -39,41 +39,29 @@ export default function AppContextProvider({children}: {children: React.ReactNod
 
   useEffect(() => {
 
-    let response: any
-    
     (async () => {
 
-    try {
-      response = await checkUser()
+      let response = await checkUser()
+   
+      if(response.error) response = await checkSocialUser()
 
-      if(response.error) {
+      if(response.error) return  
+
+      const curretUser = response as User
   
-        response = await checkSocialUser()
+      setUser({...curretUser})
   
-        if(response.error) return
+      let count = 0;
+      let total = 0
+  
+      if(curretUser.cart){
+        for (let item of curretUser.cart) {
+          count += item.count
+          total += parseFloat(item.item.price) * item.count
+        }
       }
-    } catch (error) {
-      console.log(error)
-      return
-    }
-
-    const curretUser = response as User
-    
-    setUser({...curretUser})
-
-    let count = 0;
-    let total = 0
-
-    if(curretUser.cart){
-      for (let item of curretUser.cart) {
-        count += item.count
-        total += parseFloat(item.item.price) * item.count
-      }
-    }
-
-    setCartCount(count)
-    setCartTotal(total)
-
+      setCartCount(count)
+      setCartTotal(total)
     })()
   },[])
 
