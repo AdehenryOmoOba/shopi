@@ -74,7 +74,7 @@ export default function Login() {
 
   const handleGithubLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
-    await githubSignIn("github", {redirect: false})
+    await githubSignIn("github")
 
     console.log("No redirect............")
     
