@@ -43,7 +43,7 @@ export default function AppContextProvider({children}: {children: React.ReactNod
 
       let response = await checkUser()
    
-      if(response.error) response = await checkSocialUser()
+     // if(response.error) response = await checkSocialUser()
 
       if(response.error) return  
 
