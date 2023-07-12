@@ -11,7 +11,7 @@ import origin from '@/utils/origin'
 
 export default function Cart() {
 
-  const {user, addItemToCart, decrementCartCount, deleteCartItem, clearCart, cartTotal} = useContext(AppContext)
+  const {user, addItemToCart, decrementCartCount, deleteCartItem, clearCart, updateCartCount} = useContext(AppContext)
   const [isLoading, setIsLoading] = useState(false)
   const notify = useNotification()
   const router = useRouter()
@@ -124,7 +124,7 @@ export default function Cart() {
      <div className='sticky top-10 border border-slate-800 h-max flex-1 rounded-lg p-5 mb-5 md:w-8'>
       <div className="flex justify-between mb-3">
         <p className='text-[1rem] font-extrabold font text-gray-500'>Subtotal</p>
-        <span className='text-lg font-extrabold'>{parseFloat(`${cartTotal}`).toLocaleString("en-US", {style: "currency", currency: "USD"})}</span>
+        <span className='text-lg font-extrabold'>{parseFloat(`${updateCartCount().total}`).toLocaleString("en-US", {style: "currency", currency: "USD"})}</span>
       </div>
        <div className="flex justify-between mb-3">
          <p className='text-[1rem] font-extrabold text-gray-500'>Coupon code</p>
@@ -137,7 +137,7 @@ export default function Cart() {
        <div className='pt-7 border-t-[0.1px] border-gray-900'>
         <div className="flex justify-between mb-3">
           <p className='text-[1rem] font-extrabold text-gray-200'>Grand total</p>
-          <span className='text-lg font-extrabold'>{parseFloat(`${cartTotal}`).toLocaleString("en-US", {style: "currency", currency: "USD"})}</span>
+          <span className='text-lg font-extrabold'>{parseFloat(`${updateCartCount().total}`).toLocaleString("en-US", {style: "currency", currency: "USD"})}</span>
         </div>
         <Button action={handleCheckout} actionPayload={user?.cart} btnStyles={checkoutBtnStyles} isLoading={isLoading} svgColor="text-black" name="Checkout now" />
        </div>

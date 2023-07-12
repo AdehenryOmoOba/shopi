@@ -1,7 +1,7 @@
 "use client"
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import React,{useContext, useState} from 'react'
+import React,{useContext, useState, useEffect} from 'react'
 import {GiShoppingCart} from 'react-icons/gi'
 import {MdClose} from 'react-icons/md'
 import {RxHamburgerMenu} from 'react-icons/rx'
@@ -9,8 +9,9 @@ import { CldImage } from 'next-cloudinary'
 import { AppContext } from '@/utils/context/appContextProvider'
 import { signOut } from '@/utils/auth/logout'
 import { useNotification } from '../notification/Notification'
-import { signOut as githubSignOut } from 'next-auth/react'
+import { signOut as githubSignOut, useSession } from 'next-auth/react'
 import origin from '@/utils/origin'
+import socialLogin from '@/utils/auth/socialLogin'
 
 
 const homeRegex = /^\/product\/[a-z\d]+|\/$/
@@ -23,7 +24,27 @@ export default function Navbar() {
   const notify = useNotification()
   const router = useRouter()
   const [isOpen, setisOpen] = useState(false)
-  
+  const githubUserEmail = useSession()?.data?.user?.email
+
+  useEffect(() => {
+    if(githubUserEmail && !user) {
+      (async () => {
+       const response = await socialLogin(githubUserEmail)
+       if(!response.success) {
+       notify({type: 'error', message: response.error})
+       return
+       }
+       notify({type: 'success', message: "Login successful with GitHub"})
+       setUser(response.data)
+       let count = 0;
+       for (let item of response?.data?.cart) {
+         count += item.count
+       }
+       setCartCount(count)
+       router.push("/")
+      })()
+    }
+  }, [githubUserEmail])
 
   const isHomePath = homeRegex.test(pathname)
 
@@ -81,7 +102,9 @@ export default function Navbar() {
         {!!cartCount && <div className='grid absolute place-content-center -top-2 -right-2 h-6 w-6 bg-blue-600 rounded-full'>
             <p className='grid place-content-center leading-6 text-xs w-6 rounded-full'>{cartCount}</p>
           </div>}
-         <GiShoppingCart className='text-lg cursor-pointer text-slate-300 hover:text-white transition-colors'/>
+          <Link href={user ? "/cart" : ""}>
+           <GiShoppingCart className='text-lg cursor-pointer text-slate-300 hover:text-white transition-colors'/>
+          </Link>
         </div>
       </div>
       <div onClick={toggleMenu} className='flex flex-1 justify-end items-center md:hidden'>

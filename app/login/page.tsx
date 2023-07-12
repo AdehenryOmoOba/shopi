@@ -1,13 +1,13 @@
 "use client"
 import Link from 'next/link'
-import React, {useState, useContext,useEffect } from 'react'
+import React, {useState, useContext } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useNotification } from '../components/notification/Notification'
 import signIn from '@/utils/auth/login'
 import { AppContext } from '@/utils/context/appContextProvider'
 import Button from '../components/Button'
-import { signIn as githubSignIn, useSession} from "next-auth/react"
-import socialLogin from '@/utils/auth/socialLogin'
+import { signIn as githubSignIn} from "next-auth/react"
+import origin from '@/utils/origin'
 
 
 export default function Login() {
@@ -17,33 +17,9 @@ export default function Login() {
   const notify = useNotification()
   const {setUser,setCartCount, user} = useContext(AppContext)
   const router = useRouter()
-  const githubUserEmail = useSession()?.data?.user?.email
-
+ 
   const nexturl = searcParams.get('nexturl') ? `/${searcParams.get('nexturl')}` : '/'
 
-  console.log("From login page: ",{githubUserEmail})
-  
-  useEffect(() => {
-    if(githubUserEmail && !user) {
-      (async () => {
-       const response = await socialLogin(githubUserEmail)
-       if(!response.success) {
-       notify({type: 'error', message: response.error})
-       return
-       }
-       notify({type: 'success', message: "Login successful with GitHub"})
-       setUser(response.data)
-       let count = 0;
-       for (let item of response?.data?.cart) {
-         count += item.count
-       }
-       setCartCount(count)
-       router.push("/")
-      })()
-    }
-  }, [githubUserEmail])
-
-  
   const handleLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
     setIsLoading(true)
@@ -74,10 +50,7 @@ export default function Login() {
 
   const handleGithubLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
-    await githubSignIn("github",{redirect: false})
-
-    console.log("No redirect............")
-    
+    await githubSignIn("github",{redirect: true, callbackUrl: origin})
   }
 
   const loginBtnStyle = "bg-blue-600 w-full rounded-md h-10 relative my-2"
