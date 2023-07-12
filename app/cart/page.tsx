@@ -139,7 +139,9 @@ export default function Cart() {
           <p className='text-[1rem] font-extrabold text-gray-200'>Grand total</p>
           <span className='text-lg font-extrabold'>{parseFloat(`${updateCartCount().total}`).toLocaleString("en-US", {style: "currency", currency: "USD"})}</span>
         </div>
-        <Button action={handleCheckout} actionPayload={user?.cart} btnStyles={checkoutBtnStyles} isLoading={isLoading} svgColor="text-black" name="Checkout now" />
+        <Button action={handleCheckout} actionPayload={user?.cart} isLoading={isLoading}>
+         <p>Checkout now</p>
+        </Button>
        </div>
      </div>
     </div>
