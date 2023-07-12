@@ -5,7 +5,7 @@ import {RiDeleteBinLine} from "react-icons/ri"
 import Image from 'next/image'
 import { useNotification } from '../components/notification/Notification'
 import { useRouter } from 'next/navigation'
-import Button from '../components/Button'
+import Button from '../components/buttons/Button'
 import origin from '@/utils/origin'
 
 

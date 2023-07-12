@@ -4,13 +4,18 @@ import React,{useState} from 'react'
 import axios from 'axios'
 import { useNotification } from '../components/notification/Notification'
 import { useRouter } from 'next/navigation'
-import Button from '../components/Button'
+import Button from '../components/buttons/Button'
 import origin from '@/utils/origin'
+import SocialButton from '../components/buttons/SocialButton'
+import { FcGoogle } from 'react-icons/fc'
+import { FaGithub } from 'react-icons/fa'
 
 
 export default function Register() {
   const [user, setUser] = useState({})
   const [isLoading, setIsLoading] = useState(false)
+  const [googleIsLoading, setGoogleIsLoading] = useState(false)
+  const [githubIsLoading, setGithubIsLoading] = useState(false)
   const notify = useNotification()
   const router = useRouter()
 
@@ -34,7 +39,13 @@ export default function Register() {
     }
   }
 
-  const registerBtnStyle = "bg-blue-600 w-full rounded-md h-10 relative my-2"
+  const handleGoogleRegister = () => {
+    console.log("handleGoogleRegister...")
+  }
+
+  const handleGithubRegister = () => {
+    console.log("handleGithubRegister...")
+  }
 
   return (
     <div className='w-[280px] mx-auto pt-20 flex-col justify-center lg:w-[308px]'>
@@ -56,7 +67,22 @@ export default function Register() {
         <div className='w-full mb-2'><p>Password</p></div>
           <input type="password" className='w-full h-10 rounded-md bg-black px-2 border border-slate-800' autoComplete="none" name='password' onChange={updateUser}/>
         </div>
-        <Button name = "Register" action = {register} btnStyles={registerBtnStyle} isLoading = {isLoading} actionPayload=""/>
+        <Button action = {register} isLoading = {isLoading}>
+          <p>Register</p>
+        </Button>
+
+        <div className='flex flex-col bg-transparent h-max rounded-md py-2 relative'>
+          <p className='text-center text-xs text-slate-400'>OR</p>
+          <SocialButton action = {handleGoogleRegister} isLoading = {googleIsLoading}>
+            <FcGoogle  className='relative top-1/2 translate-y-1/4'/>
+            <p className='w-max'>Register with Google</p>
+          </SocialButton>
+          <SocialButton action = {handleGithubRegister} isLoading = {githubIsLoading}>
+            <FaGithub className='relative top-1/2 translate-y-1/4'/>
+            <p className='w-max'>Register with GitHub</p>
+          </SocialButton>
+        </div>
+
       </form> 
       <div className='h-16 grid place-content-center rounded-md border border-slate-600'>
         <p>Have an account already ? <Link href='/login' className='text-blue-400'> Login</Link></p>

@@ -5,14 +5,19 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { useNotification } from '../components/notification/Notification'
 import signIn from '@/utils/auth/login'
 import { AppContext } from '@/utils/context/appContextProvider'
-import Button from '../components/Button'
+import Button from '../components/buttons/Button'
 import { signIn as githubSignIn} from "next-auth/react"
 import origin from '@/utils/origin'
+import {FcGoogle} from "react-icons/fc"
+import {FaGithub} from "react-icons/fa"
+import SocialButton from '../components/buttons/SocialButton'
 
 
 export default function Login() {
   const [userData, setUserData] = useState({username: "", password: ""})
   const [isLoading, setIsLoading] = useState(false)
+  const [googleIsLoading, setGoogleIsLoading] = useState(false)
+  const [githubIsLoading, setGithubIsLoading] = useState(false)
   const searcParams = useSearchParams()
   const notify = useNotification()
   const {setUser,setCartCount, user} = useContext(AppContext)
@@ -21,7 +26,11 @@ export default function Login() {
   const nexturl = searcParams.get('nexturl') ? `/${searcParams.get('nexturl')}` : '/'
 
   const handleLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+
     e.preventDefault()
+
+    if(!userData.username || !userData.password) return
+
     setIsLoading(true)
 
     try {
@@ -48,12 +57,18 @@ export default function Login() {
     }
   }
 
-  const handleGithubLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleGoogleLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
-    await githubSignIn("github",{redirect: true, callbackUrl: origin})
+    setGoogleIsLoading(true)
+    console.log("Google login...")
+    setGoogleIsLoading(false) // Remove this later
   }
 
-  const loginBtnStyle = "bg-blue-600 w-full rounded-md h-10 relative my-2"
+  const handleGithubLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault()
+    setGithubIsLoading(true)
+    await githubSignIn("github",{redirect: true, callbackUrl: origin})
+  }
 
   const content = (
     <div className='w-[280px] h-full mx-auto pt-20 flex-col justify-center lg:w-[308px]'>
@@ -67,8 +82,22 @@ export default function Login() {
         <div className='w-full mb-2'><p>Password</p></div>
           <input type="password" className='w-full h-10 rounded-md bg-black px-2 border border-slate-800' role="presentation" value={userData.password} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUserData({...userData, password: e.target.value})} />
         </div>
-        <Button name = "Login" action = {handleLogin} isLoading = {isLoading} btnStyles={loginBtnStyle} actionPayload="" />
-        <button onClick={handleGithubLogin} className='bg-blue-600 w-full rounded-md h-10'>Login with GitHub</button>
+        <Button action = {handleLogin} isLoading = {isLoading}  actionPayload="">
+          <p>Login</p>
+        </Button>
+
+        <div className='flex flex-col bg-transparent h-max rounded-md py-2 relative'>
+          <p className='text-center text-xs text-slate-400'>OR</p>
+          <SocialButton action = {handleGoogleLogin} isLoading = {googleIsLoading}>
+            <FcGoogle  className='relative top-1/2 translate-y-1/4'/>
+            <p className='w-max'>Login with Google</p>
+          </SocialButton>
+          <SocialButton action = {handleGithubLogin} isLoading = {githubIsLoading}>
+            <FaGithub className='relative top-1/2 translate-y-1/4'/>
+            <p className='w-max'>Login with GitHub</p>
+          </SocialButton>
+        </div>
+
       </form> 
       <div className='h-16 grid place-content-center rounded-md border border-slate-600'>
         <p>New to Shopi ?  <Link href='/register' className='text-blue-400'> Create an account</Link></p>
