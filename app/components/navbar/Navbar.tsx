@@ -28,6 +28,7 @@ export default function Navbar() {
 
   useEffect(() => {
     if(githubUserEmail && !user) {
+      console.log(document.referrer)
       (async () => {
        const response = await socialLogin(githubUserEmail)
        if(!response.success) {
