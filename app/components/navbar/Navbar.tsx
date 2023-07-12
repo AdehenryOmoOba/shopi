@@ -12,6 +12,7 @@ import { useNotification } from '../notification/Notification'
 import { signOut as githubSignOut, useSession } from 'next-auth/react'
 import origin from '@/utils/origin'
 import socialLogin from '@/utils/auth/socialLogin'
+import {useRouter} from "next/router"
 
 
 const homeRegex = /^\/product\/[a-z\d]+|\/$/
@@ -25,10 +26,11 @@ export default function Navbar() {
   const router = useRouter()
   const [isOpen, setisOpen] = useState(false)
   const githubUserEmail = useSession()?.data?.user?.email
+  const router = useRouter()
 
   useEffect(() => {
     if(githubUserEmail && !user) {
-      console.log(document.referrer)
+      console.log({router})
       (async () => {
        const response = await socialLogin(githubUserEmail)
        if(!response.success) {
