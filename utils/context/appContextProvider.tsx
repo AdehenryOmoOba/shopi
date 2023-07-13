@@ -37,7 +37,7 @@ export default function AppContextProvider({children}: {children: React.ReactNod
   const [success, setSuccess] = useState<string | null>(null)
   const [cartCount, setCartCount] = useState(0)
   const [cartTotal, setCartTotal] = useState(0)
-  const loginRef = useRef(false)
+  const loginRef = useRef(true)
 
   useEffect(() => {
 
