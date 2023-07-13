@@ -39,7 +39,7 @@ export default function Navbar() {
        
        if (!shopiUserEmail){
          window.localStorage.setItem("shopi-user-email", githubUserEmail)
-         notify({type: 'success', message: "Logged in successful with GitHub"})
+         notify({type: 'success', message: "Logged in successfully with GitHub"})
        }
 
        setUser(response.data)
