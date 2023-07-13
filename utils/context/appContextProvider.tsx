@@ -24,7 +24,7 @@ interface IAppContext {
   clearCart:  () => void
   cartTotal: number
   setCartTotal: React.Dispatch<React.SetStateAction<number>>
-  loginRef: {current: number}
+  loginRef: {current: boolean}
 }
 
 export const AppContext = React.createContext<IAppContext | null>(null)
