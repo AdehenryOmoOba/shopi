@@ -6,7 +6,7 @@ import { useNotification } from '../components/notification/Notification'
 import signIn from '@/utils/auth/login'
 import { AppContext } from '@/utils/context/appContextProvider'
 import Button from '../components/buttons/Button'
-import { signIn as githubSignIn} from "next-auth/react"
+import { signIn as githubSignIn, signIn as googleSignIn} from "next-auth/react"
 import origin from '@/utils/origin'
 import {FcGoogle} from "react-icons/fc"
 import {FaGithub} from "react-icons/fa"
@@ -61,12 +61,15 @@ export default function Login() {
     e.preventDefault()
     setGoogleIsLoading(true)
     console.log("Google login...")
-    setGoogleIsLoading(false) // Remove this later
+    window.localStorage.setItem("current-provider", "Google")
+    await googleSignIn("google",{redirect: true, callbackUrl: origin})
   }
 
   const handleGithubLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
     setGithubIsLoading(true)
+    console.log("GitHub login...")
+    window.localStorage.setItem("current-provider", "GitHub")
     await githubSignIn("github",{redirect: true, callbackUrl: origin})
   }
 
@@ -83,7 +86,7 @@ export default function Login() {
           <input type="password" className='w-full h-10 rounded-md bg-black px-2 border border-slate-800' role="presentation" value={userData.password} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUserData({...userData, password: e.target.value})} />
         </div>
         <Button action = {handleLogin} isLoading = {isLoading}  actionPayload="">
-          <p>Login</p>
+          <p className='font-extrabold'>Login</p>
         </Button>
 
         <div className='flex flex-col bg-transparent h-max rounded-md py-2 relative'>

@@ -9,7 +9,7 @@ import { CldImage } from 'next-cloudinary'
 import { AppContext } from '@/utils/context/appContextProvider'
 import { signOut } from '@/utils/auth/logout'
 import { useNotification } from '../notification/Notification'
-import { signOut as githubSignOut, useSession } from 'next-auth/react'
+import { signOut as socialSignOut, useSession } from 'next-auth/react'
 import origin from '@/utils/origin'
 import socialLogin from '@/utils/auth/socialLogin'
 
@@ -24,22 +24,25 @@ export default function Navbar() {
   const notify = useNotification()
   const router = useRouter()
   const [isOpen, setisOpen] = useState(false)
-  const githubUserEmail = useSession()?.data?.user?.email
+  const socialUser = useSession()?.data?.user
+  // const session = useSession()
 
   useEffect(() => {
-    if(githubUserEmail && !user) {
+    console.log(socialUser)
+    if(socialUser?.email && !user) {
       (async () => {
-       const response = await socialLogin(githubUserEmail)
+       const response = await socialLogin(socialUser?.email)
        if(!response.success) {
        notify({type: 'error', message: response.error})
        return
        }
 
        const shopiUserEmail = window.localStorage.getItem("shopi-user-email")
+       const currentProvider = window.localStorage.getItem("current-provider")
        
        if (!shopiUserEmail){
-         window.localStorage.setItem("shopi-user-email", githubUserEmail)
-         notify({type: 'success', message: "Logged in successfully with GitHub"})
+         window.localStorage.setItem("shopi-user-email", socialUser?.email)
+         notify({type: 'success', message: `Logged in successfully with ${currentProvider}`})
        }
 
        setUser(response.data)
@@ -51,18 +54,19 @@ export default function Navbar() {
        router.push("/")
       })()
     }
-  }, [githubUserEmail])
+  }, [socialUser?.email])
 
   const isHomePath = homeRegex.test(pathname)
 
   const  handleLogout = async () => {
     try {
-      await githubSignOut({redirect: false})
+      await socialSignOut({redirect: false})
       const response = await signOut()
       console.log("response from Signout...Navbar:", response)
       setUser(null)
       setCartCount(0)
       window.localStorage.removeItem("shopi-user-email")
+      window.localStorage.removeItem("current-provider")
       notify({type: 'success', message: response.success})
       router.push(origin)
     } catch (error) {

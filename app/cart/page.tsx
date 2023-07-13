@@ -140,7 +140,7 @@ export default function Cart() {
           <span className='text-lg font-extrabold'>{parseFloat(`${updateCartCount().total}`).toLocaleString("en-US", {style: "currency", currency: "USD"})}</span>
         </div>
         <Button action={handleCheckout} actionPayload={user?.cart} isLoading={isLoading}>
-         <p>Checkout now</p>
+         <p className='font-extrabold'>Checkout now</p>
         </Button>
        </div>
      </div>

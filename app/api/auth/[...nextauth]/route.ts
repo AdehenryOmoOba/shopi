@@ -1,7 +1,7 @@
 import NextAuth from "next-auth/next"
 import { NextAuthOptions } from "next-auth"
 import GithubProvider from "next-auth/providers/github";
-import origin from "@/utils/origin";
+import GoogleProvider  from "next-auth/providers/google"
 
 
 const nextAuthoptions: NextAuthOptions = {
@@ -10,11 +10,15 @@ const nextAuthoptions: NextAuthOptions = {
             clientId: process.env.GITHUB_CLIENT_ID,
             clientSecret: process.env.GITHUB_CLIENT_SECRET,
         }),
+        GoogleProvider({
+            clientId: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        })
     ],
     pages: {
         signIn: "/login"
     },
-    secret: "KWEVPOM3M3F33F33PMFP",
+    secret: process.env.SOME_SECRET,
 }
 
 const handler = NextAuth(nextAuthoptions)

@@ -2,7 +2,7 @@
 
 export default function SocialButton ({children, action, isLoading, svgColor = "text-white"}) {
 
-return (<button onClick={action} className="flex items-center bg-black w-full rounded-md h-10 relative my-2" disabled={isLoading}>
+return (<button onClick={action} className="flex items-center bg-black w-full rounded-md h-12 relative my-2" disabled={isLoading}>
          <div className={`flex gap-x-2 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ${isLoading ? "opacity-0" : "opacity-100" }`}>
           {children}
          </div>
