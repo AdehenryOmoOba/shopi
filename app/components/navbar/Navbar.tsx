@@ -20,7 +20,7 @@ const logoURL = "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.app
 export default function Navbar() {
  
   const pathname = usePathname()
-  const {user, setUser, cartCount, setCartCount} = useContext(AppContext);
+  const {user, setUser, cartCount, setCartCount, loginRef} = useContext(AppContext);
   const notify = useNotification()
   const router = useRouter()
   const [isOpen, setisOpen] = useState(false)
@@ -28,7 +28,7 @@ export default function Navbar() {
 
   useEffect(() => {
     
-    console.log("Previous url: ")
+    console.log("Login Ref: ", loginRef.current)
     if(githubUserEmail && !user) {
       (async () => {
        const response = await socialLogin(githubUserEmail)
@@ -36,7 +36,7 @@ export default function Navbar() {
        notify({type: 'error', message: response.error})
        return
        }
-       notify({type: 'success', message: "Login successful with GitHub"})
+       if(loginRef.current) notify({type: 'success', message: "Login successful with GitHub"})
        setUser(response.data)
        let count = 0;
        for (let item of response?.data?.cart) {
