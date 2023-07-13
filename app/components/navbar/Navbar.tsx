@@ -27,7 +27,7 @@ export default function Navbar() {
   const githubUserEmail = useSession()?.data?.user?.email
 
   useEffect(() => {
-   console.log({router})
+   console.log(JSON.stringify(router))
     if(githubUserEmail && !user) {
       (async () => {
        const response = await socialLogin(githubUserEmail)
