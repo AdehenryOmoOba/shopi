@@ -1,6 +1,7 @@
 "use client"
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
+import { useRouter as usePrevious} from 'next/router'
 import React,{useContext, useState, useEffect} from 'react'
 import {GiShoppingCart} from 'react-icons/gi'
 import {MdClose} from 'react-icons/md'
@@ -25,9 +26,10 @@ export default function Navbar() {
   const router = useRouter()
   const [isOpen, setisOpen] = useState(false)
   const githubUserEmail = useSession()?.data?.user?.email
+  const prevRouter = usePrevious()
 
   useEffect(() => {
-    const {previous} = router.query
+    const {previous} = prevRouter.query
     console.log("Previous url: ", previous)
     if(githubUserEmail && !user) {
       (async () => {
