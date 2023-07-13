@@ -7,7 +7,7 @@ import Notification from './components/notification/Notification'
 
 
 export const metadata: Metadata = {
-  title : 'Adehenry : Home Page',
+  title : 'Shopi : Home Page',
   description: 'Fullstack Application Template'
 }
 
