@@ -37,6 +37,7 @@ export default function Navbar() {
        return
        }
        if(loginRef.current) notify({type: 'success', message: "Login successful with GitHub"})
+       loginRef.current = false
        setUser(response.data)
        let count = 0;
        for (let item of response?.data?.cart) {
