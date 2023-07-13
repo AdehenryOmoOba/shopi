@@ -27,7 +27,8 @@ export default function Navbar() {
   const githubUserEmail = useSession()?.data?.user?.email
 
   useEffect(() => {
-   console.log(JSON.stringify(router))
+    const {previous} = router.query
+    console.log("Previous url: ", previous)
     if(githubUserEmail && !user) {
       (async () => {
        const response = await socialLogin(githubUserEmail)
