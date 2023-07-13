@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { checkUser } from '../auth/checkUser'
 import { debouncedCartSync } from '../debouncedCartSync'
 import {SessionProvider} from "next-auth/react"
@@ -19,12 +19,11 @@ interface IAppContext {
   setCartCount: React.Dispatch<React.SetStateAction<number>>
   updateCartCount: () => {count: number, total: number}
   addItemToCart:  (data: TProductDetails) => void
-  decrementCartCount:  (data: {itemId: string, itemName: string}) => void
-  deleteCartItem:  (data: {itemId: string, itemName: string}) => void
+  decrementCartCount:  (itemId: string) => void
+  deleteCartItem:  (itemId: string,) => void
   clearCart:  () => void
   cartTotal: number
   setCartTotal: React.Dispatch<React.SetStateAction<number>>
-  loginRef: {current: boolean}
 }
 
 export const AppContext = React.createContext<IAppContext | null>(null)
@@ -37,7 +36,6 @@ export default function AppContextProvider({children}: {children: React.ReactNod
   const [success, setSuccess] = useState<string | null>(null)
   const [cartCount, setCartCount] = useState(0)
   const [cartTotal, setCartTotal] = useState(0)
-  const loginRef = useRef(true)
 
   useEffect(() => {
 
@@ -45,8 +43,6 @@ export default function AppContextProvider({children}: {children: React.ReactNod
 
       let response = await checkUser()
    
-     // if(response.error) response = await checkSocialUser()
-
       if(response.error) return  
 
       const curretUser = response as User
@@ -111,7 +107,7 @@ export default function AppContextProvider({children}: {children: React.ReactNod
     debouncedCartSync({id: user.id, cart: user.cart})
   }
 
-  const decrementCartCount = ({itemId, itemName}: {itemId: string, itemName: string}) => {
+  const decrementCartCount = (itemId: string) => {
 
     let itemIndex: number
         
@@ -134,13 +130,13 @@ export default function AppContextProvider({children}: {children: React.ReactNod
     debouncedCartSync({id: user.id, cart: user.cart})
   }
 
-  const deleteCartItem = (itemInfo: {itemId: string, itemName: string}) => {
+  const deleteCartItem = (itemId: string,) => {
 
     let itemIndex: number
         
     user.cart.find(({item}, index) => {
       itemIndex = index
-      return item.id === itemInfo.itemId
+      return item.id === itemId
     })
   
       user.cart.splice(itemIndex,1)
@@ -165,7 +161,7 @@ export default function AppContextProvider({children}: {children: React.ReactNod
   }
 
   return (
-     <AppContext.Provider value={{searchString, setSearchString, user, setUser, error, setError, success, setSuccess, cartCount, setCartCount, updateCartCount, addItemToCart, decrementCartCount, deleteCartItem, clearCart, cartTotal, setCartTotal, loginRef}}>
+     <AppContext.Provider value={{searchString, setSearchString, user, setUser, error, setError, success, setSuccess, cartCount, setCartCount, updateCartCount, addItemToCart, decrementCartCount, deleteCartItem, clearCart, cartTotal, setCartTotal}}>
       <SessionProvider>
        {children}
       </SessionProvider>

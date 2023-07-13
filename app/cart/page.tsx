@@ -22,12 +22,12 @@ export default function Cart() {
   }
   
   const handleRemoveItem = ({itemId, itemName}: {itemId: string, itemName: string}) => {
-    deleteCartItem({itemId, itemName})
+    deleteCartItem(itemId)
     notify({type: "success", message: `${itemName} is removed from cart`}, 2000)
   }
 
   const handleDecrementCartCount = ({itemId, itemName, itemCount}: {itemId: string, itemName: string, itemCount: number}) => {
-    decrementCartCount({itemId, itemName})
+    decrementCartCount(itemId)
     console.log("itemcount type", typeof itemCount)
     if(itemCount === 1) notify({type: "success", message: `${itemName} is removed from cart`}, 2000)
   }
