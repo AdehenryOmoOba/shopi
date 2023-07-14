@@ -10,7 +10,7 @@ let product: TProductDetails | undefined;
 
 export async function generateMetadata({params}: {params: {id: string}}) {
 
-  const products: TProductDetails[] = JSON.parse(fs.readFileSync("products.json", {encoding: "utf-8"}))
+  const products: TProductDetails[] = JSON.parse(fs.readFileSync("../../products.json", {encoding: "utf-8"}))
 
   product = products?.find((product) => product.id === params.id)
 
@@ -30,14 +30,14 @@ export async function generateMetadata({params}: {params: {id: string}}) {
 
 // This functions runs first in build time
 export async function generateStaticParams() {
-  const products: TProductDetails[] = JSON.parse(fs.readFileSync("products.json", {encoding: "utf-8"}))
+  const products: TProductDetails[] = JSON.parse(fs.readFileSync("../../products.json", {encoding: "utf-8"}))
   const paramsArray = products.map((product) => ({
     id: product.id
   }))
   return paramsArray
 }
 
-const products: TProductDetails[] = JSON.parse(fs.readFileSync("products.json", {encoding: "utf-8"}))
+const products: TProductDetails[] = JSON.parse(fs.readFileSync("../../products.json", {encoding: "utf-8"}))
 
 export default function SingleProduct({params}: {params: {id: string}}) {
 
