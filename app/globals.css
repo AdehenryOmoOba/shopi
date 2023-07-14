@@ -45,6 +45,10 @@ footer{
   border-top: 0.1rem solid #282828;
 }
 
+input[type="search"]{
+  touch-action: manipulation;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

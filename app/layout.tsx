@@ -6,16 +6,15 @@ import AppContextProvider from '@/utils/context/appContextProvider'
 import Notification from './components/notification/Notification'
 
 
-export const metadata: Metadata = {
-  title : 'Shopi : Home Page',
-  description: 'Fullstack Application Template'
-}
-
 export default function RootLayout({children}: {children: React.ReactNode}) {
 
   return (
     <html lang="en">
-      <head />
+      <head>
+        <title>Shopi : Home</title>
+        <meta name='description' content='e-commerce store' />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+      </head>
        <AppContextProvider>
         <body>
          <header className='h-28 mx-auto w-full md:w-[90vw] lg:w-[80vw]'>
