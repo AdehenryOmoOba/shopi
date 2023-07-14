@@ -11,17 +11,22 @@ export function useNotification() {
 
   const context = useContext(AppContext)
 
-  const notify = (payload: TNotify, delay = 5000) => {
+  const notify = (payload: TNotify, delay = 3000) => {
     
     clearTimeout(timeoutID)
     
-    if(payload.type === "error") context?.setError(payload.message)
+    if(payload.type === "error") {
+      context?.setError(payload.message)
+      context?.setShowNotification(true)
+    }
     
-    if(payload.type === "success") context?.setSuccess(payload.message)
+    if(payload.type === "success") {
+      context?.setSuccess(payload.message)
+      context?.setShowNotification(true)
+    }
     
     timeoutID = setTimeout(() => {
-      context?.setError(null)
-      context?.setSuccess(null)
+      context?.setShowNotification(false)
     }, delay);
   }
   return notify
@@ -30,17 +35,12 @@ export function useNotification() {
 
 export default function Notification() {
 
-  const {error, success} =  useContext(AppContext)
+  const {error, success, showNotification} =  useContext(AppContext)
   
 
-  const content =  (<div className={`fixed flex shadow-lg bg-gray-900 space-x-2 h-14 w-max rounded-md mx-auto bottom-16  items-center justify-center px-10 left-1/2 -translate-x-1/2 ${error || success ? "flex" : "hidden"}`}>
-                    {success ? <IoMdCheckmarkCircle className='text-green-300 text-2xl'/> : <MdError className='text-red-600 text-2xl'/>}
-                    <p>{success ? success : error}</p>
-                  </div>) 
-  
-  if(error || success){
-    return content
-  }else{
-    return null
-  }
+  return  (<div className={`fixed flex shadow-lg bg-gray-900 space-x-2 h-14 w-max rounded-md mx-auto bottom-32 items-center justify-center px-10 left-1/2 -translate-x-1/2 transition-transform duration-300 ease-in-out ${showNotification ? "translate-y-full" : "translate-y-[500%]"}`}>
+            {success ? <IoMdCheckmarkCircle className='text-green-300 text-2xl'/> : <MdError className='text-red-600 text-2xl'/>}
+            <p>{success ? success : error}</p>
+          </div>) 
+
 }

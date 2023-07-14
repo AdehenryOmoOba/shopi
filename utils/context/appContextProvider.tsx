@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react'
 import { checkUser } from '../auth/checkUser'
 import { debouncedCartSync } from '../debouncedCartSync'
 import {SessionProvider} from "next-auth/react"
-import { checkSocialUser } from '../auth/checkSocialUser'
 
 
 interface IAppContext {
@@ -24,6 +23,8 @@ interface IAppContext {
   clearCart:  () => void
   cartTotal: number
   setCartTotal: React.Dispatch<React.SetStateAction<number>>
+  showNotification: boolean
+  setShowNotification: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const AppContext = React.createContext<IAppContext | null>(null)
@@ -36,6 +37,7 @@ export default function AppContextProvider({children}: {children: React.ReactNod
   const [success, setSuccess] = useState<string | null>(null)
   const [cartCount, setCartCount] = useState(0)
   const [cartTotal, setCartTotal] = useState(0)
+  const [showNotification, setShowNotification] = useState(false)
 
   useEffect(() => {
 
@@ -161,7 +163,7 @@ export default function AppContextProvider({children}: {children: React.ReactNod
   }
 
   return (
-     <AppContext.Provider value={{searchString, setSearchString, user, setUser, error, setError, success, setSuccess, cartCount, setCartCount, updateCartCount, addItemToCart, decrementCartCount, deleteCartItem, clearCart, cartTotal, setCartTotal}}>
+     <AppContext.Provider value={{searchString, setSearchString, user, setUser, error, setError, success, setSuccess, cartCount, setCartCount, updateCartCount, addItemToCart, decrementCartCount, deleteCartItem, clearCart, cartTotal, setCartTotal,showNotification, setShowNotification}}>
       <SessionProvider>
        {children}
       </SessionProvider>
