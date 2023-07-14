@@ -4,16 +4,16 @@ import SearchBar from "./components/searchBar/searchBar"
 import { getProducts } from '@/utils/getProducts'
 
 
-const path = "../products.json"
+const path = "products.json"
 
 export default async function Home() {
 
   let products = await getProducts() as TProductDetails[] | object
   let categories : string[] = []
 
-  console.log({products})
   
   if(Array.isArray(products)) {
+    console.log({products})
     fs.writeFileSync(path, JSON.stringify(products, null, 2))
     categories = [...new Set(products.map((product: TProductDetails) => product.category))]
   }else{

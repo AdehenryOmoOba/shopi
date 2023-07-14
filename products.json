@@ -1,33 +1,5 @@
 [
   {
-    "id": "f74f313d-d837-4b65-809f-914566be43b7",
-    "category": "wrist watch",
-    "description": "The Series 7 is available in two sizes, 41mm and 45mm, and comes in a range of colors, including Midnight, Starlight, Green, and Product Red. It is also compatible with a variety of interchangeable bands, including the new Solo Loop and Braided Solo Loop bands, which do not have any clasps or buckles for a seamless fit.",
-    "price": "1450",
-    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fwatch1.png?alt=media&token=4d04a717-3927-4b01-96aa-b37c3a8a378f",
-    "name": "iWatch Series 7",
-    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
-    "vendor": {
-      "username": "chelsea",
-      "email": "chelsea@gmail.com",
-      "phone": "08091114444"
-    }
-  },
-  {
-    "id": "6d28f24c-7ca3-4ecf-962c-2a91ea6bd2e7",
-    "category": "mobiles phones",
-    "description": "The S10 features a 6.1-inch Quad HD+ Dynamic AMOLED display, Qualcomm Snapdragon 855 (USA)/Exynos 9820 (Global) chipset, triple rear cameras with a 12-megapixel wide, 12-megapixel telephoto and 16-megapixel ultra-wide lens, and a 10-megapixel front camera. It also comes with up to 512GB of storage, 8GB of RAM, and an in-display fingerprint sensor. The S10 runs on Android 9.0 (Pie) with Samsung's One UI skin on top. It is available in a range of colors, including Prism White, Prism Black, Prism Green, and Prism Blue, as well as Ceramic Black and Ceramic White for the higher-end model.",
-    "price": "1125",
-    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fphone2.png?alt=media&token=8bbe2a90-7ae4-4d9c-b86b-0056d9774f54",
-    "name": "Samsung S10",
-    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
-    "vendor": {
-      "username": "chelsea",
-      "email": "chelsea@gmail.com",
-      "phone": "08091114444"
-    }
-  },
-  {
     "id": "bac54073-ad71-4a09-841f-23f6d07bc49c",
     "category": "wireless earpiece",
     "description": "Android Bluetooth earpieces come in a variety of shapes and sizes, including earbuds, ear hooks, and over-the-ear designs. They typically feature a built-in microphone and controls for adjusting the volume, answering and ending calls, and controlling playback of audio.",
@@ -70,20 +42,6 @@
     }
   },
   {
-    "id": "ef5b3b6b-2cd3-445b-aa81-8de008a30e83",
-    "category": "mobiles phones",
-    "description": "The iPhone 11 features a 6.1-inch Liquid Retina display, A13 Bionic chip, dual 12-megapixel ultra-wide and wide cameras, 4K video recording, Night mode, and up to 256GB of storage. It also comes with iOS 13 pre-installed, which offers new features such as Dark Mode and improved privacy settings. The iPhone 11 is available in six colors: Black, White, Green, Yellow, Purple.",
-    "price": "995.60",
-    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fphone1.png?alt=media&token=c70745e7-3fcf-4a4f-abe0-bf910b356959",
-    "name": "iPhone 11 Pro Max",
-    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
-    "vendor": {
-      "username": "chelsea",
-      "email": "chelsea@gmail.com",
-      "phone": "08091114444"
-    }
-  },
-  {
     "id": "40324d42-0042-4ab4-9363-8bb44c832ee8",
     "category": "wireless earpiece",
     "description": "An Android Bluetooth earpiece is a wireless earpiece that connects to an Android smartphone via Bluetooth technology. These earpieces are designed to be used for hands-free calling and listening to audio, allowing users to keep their hands free while on the go.",
@@ -118,6 +76,202 @@
     "price": "1099",
     "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fsamsung_watch.avif?alt=media&token=19c7f31d-4bad-473f-8439-09f9bc4875ff",
     "name": "Sony SmartWatch 2",
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
+    "vendor": {
+      "username": "chelsea",
+      "email": "chelsea@gmail.com",
+      "phone": "08091114444"
+    }
+  },
+  {
+    "id": "973b44b3-b94f-4004-904e-876a4d38dd11",
+    "category": "wireless earpiece",
+    "description": "The Makinso 2XB-400 is designed to be used as a companion device for Android smartphones and includes features such as notifications, music controls, and weather updates. It also includes NFC technology for mobile payments and comes with a range of customizable watch faces.",
+    "price": "970",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fear_piece4.png?alt=media&token=e0dd84ce-2724-41a8-bb3b-c3031e8a737d",
+    "name": "Makinso 2XB-400",
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
+    "vendor": {
+      "username": "chelsea",
+      "email": "chelsea@gmail.com",
+      "phone": "08091114444"
+    }
+  },
+  {
+    "id": "8aa18e87-26a4-4087-b9f0-1da6b7754771",
+    "category": "wireless earpiece",
+    "description": "The Boom LBO-M is designed to be used as a companion device for Android smartphones and includes features such as notifications, music controls, and weather updates. It also includes NFC technology for mobile payments and comes with a range of customizable watch faces.",
+    "price": "846.99",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fear_piece_5.png?alt=media&token=afbfe139-bc2b-4a76-a154-cb99b0260ee2",
+    "name": "Boom LBO-M",
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
+    "vendor": {
+      "username": "chelsea",
+      "email": "chelsea@gmail.com",
+      "phone": "08091114444"
+    }
+  },
+  {
+    "id": "82120bc4-9127-4418-9e25-c3d93431be82",
+    "category": "hoodie",
+    "description": "The Fan Hoodie is designed to be used as a companion device for Android smartphones and includes features such as notifications, music controls, and weather updates. It also includes NFC technology for mobile payments and comes with a range of customizable watch faces.",
+    "price": "105.45",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fhoodie1.png?alt=media&token=26c5aacb-1a8c-4dea-beb3-2cb1b7edc2cf",
+    "name": "Fan Hoodie",
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
+    "vendor": {
+      "username": "chelsea",
+      "email": "chelsea@gmail.com",
+      "phone": "08091114444"
+    }
+  },
+  {
+    "id": "2471c8e3-1f91-4bee-aafe-ed5acef6cc28",
+    "category": "hoodie",
+    "description": "The Sideren Hoodie is Fashion designed to be used as a companion device for Android smartphones and includes features such as notifications, music controls, and weather updates. It also includes NFC technology for mobile payments and comes with a range of customizable watch faces.",
+    "price": "98.35",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fhoodie2.png?alt=media&token=2eb7ddb1-91ce-4ac3-9ff0-f9d6e7922d2a",
+    "name": "Sideren Hoodie",
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
+    "vendor": {
+      "username": "chelsea",
+      "email": "chelsea@gmail.com",
+      "phone": "08091114444"
+    }
+  },
+  {
+    "id": "38ff18cd-9e1c-4d77-ae1a-58d79ea67f31",
+    "category": "hoodie",
+    "description": "The X-Men Hoodie is Fashion designed to be used as a companion device for Android smartphones and includes features such as notifications, music controls, and weather updates. It also includes NFC technology for mobile payments and comes with a range of customizable watch faces.",
+    "price": "98.35",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fhoodie3.png?alt=media&token=ba630f02-4d63-40ba-a6ed-9055d4c43663",
+    "name": "X-Men Hoodie",
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
+    "vendor": {
+      "username": "chelsea",
+      "email": "chelsea@gmail.com",
+      "phone": "08091114444"
+    }
+  },
+  {
+    "id": "6d28f24c-7ca3-4ecf-962c-2a91ea6bd2e7",
+    "category": "mobiles phones",
+    "description": "The S10 features a 6.1-inch Quad HD+ Dynamic AMOLED display, Qualcomm Snapdragon 855 (USA)/Exynos 9820 (Global) chipset, triple rear cameras with a 12-megapixel wide, 12-megapixel telephoto and 16-megapixel ultra-wide lens, and a 10-megapixel front camera. It also comes with up to 512GB of storage, 8GB of RAM, and an in-display fingerprint sensor. The S10 runs on Android 9.0 (Pie) with Samsung's One UI skin on top. It is available in a range of colors, including Prism White, Prism Black, Prism Green, and Prism Blue, as well as Ceramic Black and Ceramic White for the higher-end model.",
+    "price": "1125",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fsamsung.png?alt=media&token=1769b246-df04-4461-a605-160e572e8393",
+    "name": "Samsung S10",
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
+    "vendor": {
+      "username": "chelsea",
+      "email": "chelsea@gmail.com",
+      "phone": "08091114444"
+    }
+  },
+  {
+    "id": "f21486b5-9fd4-498f-bc65-393bdbcd564c",
+    "category": "hoodie",
+    "description": "The JuneMan Hoodie is Fashion designed to be used as a companion device for Android smartphones and includes features such as notifications, music controls, and weather updates. It also includes NFC technology for mobile payments and comes with a range of customizable watch faces.",
+    "price": "55.15",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fhoodie4.png?alt=media&token=8293dc1d-d457-4d86-8f1e-ada64aab9593",
+    "name": "JuneMan Hoodie",
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
+    "vendor": {
+      "username": "chelsea",
+      "email": "chelsea@gmail.com",
+      "phone": "08091114444"
+    }
+  },
+  {
+    "id": "0c58294c-97b6-4114-82b6-507d470fc5f2",
+    "category": "hoodie",
+    "description": "The Deca Hoodie is Fashion designed to be used as a companion device for Android smartphones and includes features such as notifications, music controls, and weather updates. It also includes NFC technology for mobile payments and comes with a range of customizable watch faces.",
+    "price": "101.89",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fhoodie5.png?alt=media&token=46022204-4b0f-4c05-abab-db3d5ddb519f",
+    "name": "Deca Hoodie",
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
+    "vendor": {
+      "username": "chelsea",
+      "email": "chelsea@gmail.com",
+      "phone": "08091114444"
+    }
+  },
+  {
+    "id": "5a330a60-f8d3-47fa-811b-37f684809ee0",
+    "category": "mobiles phones",
+    "description": "The Nokia Windows QL5-N is Starlight, Green, and Product Red. It is also compatible with a variety of interchangeable bands, including the new Solo Loop and Braided Solo Loop bands, which do not have any clasps or buckles for a seamless fit.",
+    "price": "101.89",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fphone5.png?alt=media&token=cb6a96d0-30fa-4f05-91b7-8334f62a3118",
+    "name": "Nokia Windows QL5-N",
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
+    "vendor": {
+      "username": "chelsea",
+      "email": "chelsea@gmail.com",
+      "phone": "08091114444"
+    }
+  },
+  {
+    "id": "c9fd49a9-7b5f-4c2b-a291-4c96131e9094",
+    "category": "wrist watch",
+    "description": "The Xiomi 215LM is available in two sizes, 41mm and 45mm, and comes in a range of colors, including Midnight, Starlight, Green, and Product Red. It is also compatible with a variety of interchangeable bands, including the new Solo Loop and Braided Solo Loop bands, which do not have any clasps or buckles for a seamless fit.",
+    "price": "101.89",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fwatch4.png?alt=media&token=ab994488-77dc-41f8-a244-94665b4c3c0b",
+    "name": "Xiomi 215LM",
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
+    "vendor": {
+      "username": "chelsea",
+      "email": "chelsea@gmail.com",
+      "phone": "08091114444"
+    }
+  },
+  {
+    "id": "a1146b7e-5613-459e-856c-e87f6d3fe737",
+    "category": "wrist watch",
+    "description": "The Ping T40 smart watch is available in two sizes, 41mm and 45mm, and comes in a range of colors, including Midnight, Starlight, Green, and Product Red. It is also compatible with a variety of interchangeable bands, including the new Solo Loop and Braided Solo Loop bands, which do not have any clasps or buckles for a seamless fit.",
+    "price": "255.19",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fwatch5.png?alt=media&token=3ea8f16d-a20f-4f5c-9271-27bdefbcec18",
+    "name": "Ping T40",
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
+    "vendor": {
+      "username": "chelsea",
+      "email": "chelsea@gmail.com",
+      "phone": "08091114444"
+    }
+  },
+  {
+    "id": "f74f313d-d837-4b65-809f-914566be43b7",
+    "category": "wrist watch",
+    "description": "The Series 7 is available in two sizes, 41mm and 45mm, and comes in a range of colors, including Midnight, Starlight, Green, and Product Red. It is also compatible with a variety of interchangeable bands, including the new Solo Loop and Braided Solo Loop bands, which do not have any clasps or buckles for a seamless fit.",
+    "price": "1450",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fwatch1.png?alt=media&token=7f4092ae-031f-4011-9dcd-d89b71090bce",
+    "name": "iWatch Series 7",
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
+    "vendor": {
+      "username": "chelsea",
+      "email": "chelsea@gmail.com",
+      "phone": "08091114444"
+    }
+  },
+  {
+    "id": "ef5b3b6b-2cd3-445b-aa81-8de008a30e83",
+    "category": "mobiles phones",
+    "description": "The iPhone 11 features a 6.1-inch Liquid Retina display, A13 Bionic chip, dual 12-megapixel ultra-wide and wide cameras, 4K video recording, Night mode, and up to 256GB of storage. It also comes with iOS 13 pre-installed, which offers new features such as Dark Mode and improved privacy settings. The iPhone 11 is available in six colors: Black, White, Green, Yellow, Purple.",
+    "price": "995.60",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fiphone11.png?alt=media&token=3acc4b08-a583-496c-8946-9d7a57f1b9f0",
+    "name": "iPhone 11 Pro Max",
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
+    "vendor": {
+      "username": "chelsea",
+      "email": "chelsea@gmail.com",
+      "phone": "08091114444"
+    }
+  },
+  {
+    "id": "60372cef-a646-4257-9502-cce81c04c015",
+    "category": "mobiles phones",
+    "description": "The Sony Xperia is Starlight, Green, and Product Red. It is also compatible with a variety of interchangeable bands, including the new Solo Loop and Braided Solo Loop bands, which do not have any clasps or buckles for a seamless fit.",
+    "price": "101.89",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fsony.png?alt=media&token=24949ad7-d93f-47b5-9e93-aa73c1a3f550",
+    "name": "Sony Xperia",
     "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
     "vendor": {
       "username": "chelsea",
