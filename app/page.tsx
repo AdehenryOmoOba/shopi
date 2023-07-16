@@ -13,7 +13,6 @@ export default async function Home() {
 
   
   if(Array.isArray(products)) {
-    console.log({products})
     fs.writeFileSync(path, JSON.stringify(products, null, 2))
     categories = [...new Set(products.map((product: TProductDetails) => product.category))]
   }else{

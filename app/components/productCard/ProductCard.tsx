@@ -9,13 +9,13 @@ export default function ProductCard({data}: {data: TProductDetails}) {
     <div className="p-4 snap-start">
       <div className="w-64">
         <Link key={data.id} href={`/product/${data.id}`}>
-        <div className="p-5 bg-gray-900 rounded-lg h-64 w-64 object-contain">
+        <div className="grid place-content-center p-5 bg-gray-900 rounded-lg h-52 w-64 object-contain">
           <CldImage 
            deliveryType='fetch'
            src={data.image} 
            alt={data.name} 
-           width="256"  
-           height="256"
+           width="100"  
+           height="100"
            loading='lazy' 
           />
         </div>
