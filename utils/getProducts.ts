@@ -11,7 +11,7 @@ export async function getProducts(): Promise<TProductDetails[]> {
     try {
       const response = await fetch(`${origin}api/products`, {
         next: {
-          revalidate: 100
+          revalidate: 0
         }
       })
       if(!response.ok) throw new Error("Something went wrong")
