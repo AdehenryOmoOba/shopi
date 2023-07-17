@@ -1,8 +1,5 @@
 import origin from "./origin"
 
-// async function sleep(time: number) {
-//   return new Promise((resolve) => setTimeout(resolve, time))
-// } 
 
 export async function getProducts(): Promise<TProductDetails[]> {
     
