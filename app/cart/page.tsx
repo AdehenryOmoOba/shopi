@@ -88,14 +88,14 @@ export default function Cart() {
           <h3 className='text-sm ml-5'>PRODUCT</h3>
         </div>
         <h3 className='hidden md:flex md:text-sm md:flex-1 md:justify-center'>QUANTITY</h3>
-        <h3 className='text-sm w-56 text-end'>PRICE</h3>
+        <h3 className='hidden text-sm w-56 text-end md:flex'>PRICE</h3>
       </div>
 
       <div>
         {user?.cart?.map((cartItem, index) => (
-          <div key={cartItem.item.id} className='flex w-full py-7 font-extrabold border-t-[0.1px] border-gray-900'>
+          <div key={cartItem.item.id} className='flex w-full py-7 font-extrabold border-t-[0.1px] border-gray-700'>
           <div className="flex w-[22rem]">
-            <h3 className='flex items-center text-gray-500'>{index + 1}</h3>
+            <h3 className='flex self-start items-center text-gray-500'>{index + 1}</h3>
             <div className='flex flex-col'>
              <div className='grid h-24 w-24 place-items-center bg-gray-900 ml-5 mr-3 rounded-md mb-4'>
                <Image src={cartItem.item.image} alt="hoodie" height={80} width={80} />
@@ -139,7 +139,7 @@ export default function Cart() {
          <p className='text-[1rem] font-extrabold text-gray-500'>Discount</p>
          <span className='text-lg font-extrabold'>$0.00</span>
        </div>
-       <div className='pt-7 border-t-[0.1px] border-gray-900'>
+       <div className='pt-7 border-t-[0.4px] border-gray-900'>
         <div className="flex justify-between mb-3">
           <p className='text-[1rem] font-extrabold text-gray-200'>Grand total</p>
           <span className='text-lg font-extrabold'>{parseFloat(`${updateCartCount().total}`).toLocaleString("en-US", {style: "currency", currency: "USD"})}</span>
