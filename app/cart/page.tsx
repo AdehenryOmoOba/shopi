@@ -71,13 +71,13 @@ export default function Cart() {
   const checkoutBtnStyles = "relative bg-white text-gray-900 font-extrabold w-full h-12 text-lg rounded-md  transition ease-linear hover:-translate-y-1 hover:scale-[1.02] hover:text-black duration-200"
 
   return (
-    <div className="flex flex-col  bg-gray-950 rounded-lg h-[82vh] px-10 border border-gray-900 gap-x-10 overflow-auto mx-auto md:w-[90vw] lg:w-[80vw] md:flex-row">
+    <div className="flex flex-col w-screen bg-gray-950 rounded-lg h-[82vh] gap-x-10 overflow-auto mx-auto md:w-[90vw] lg:w-[80vw] md:flex-row">
 
      {/* Left side */}
      <div className='h-max md:w-3/5'>
-      <div className='flex items-center bg-black sticky top-0 justify-between pb-10 pt-16 h-24'>
+      <div className='flex bg-black items-center sticky top-0 justify-between pb-10 pt-16 h-24'>
        <h2 className='text-slate-300 text-3xl font-bold'>Cart</h2>
-       <button onClick={handleClearCart} className="flex items-center gap-x-1 leading-none h-12 text-slate-300 py-2 px-4 w-max rounded font-extrabold border border-gray-800 hover:text-white hover:bg-slate-800 transition-colors">
+       <button onClick={handleClearCart} className="flex bg-red-600 items-center gap-x-1 leading-none h-12 text-slate-300 px-4 w-max rounded font-extrabold border border-gray-800 hover:text-white hover:bg-slate-800 transition-colors">
         <RiDeleteBinLine />
         <span>Clear cart</span>
        </button>
@@ -88,7 +88,7 @@ export default function Cart() {
           <h3 className='text-sm ml-5'>PRODUCT</h3>
         </div>
         <h3 className='hidden md:flex md:text-sm md:flex-1 md:justify-center'>QUANTITY</h3>
-        <h3 className='hidden text-sm w-56 text-end md:flex'>PRICE</h3>
+        <h3 className='hidden justify-end text-sm w-56 text-end md:flex'>PRICE</h3>
       </div>
 
       <div>
@@ -109,7 +109,7 @@ export default function Cart() {
               <div className="flex w-56 text-end text-white md:hidden">
                <p>{parseFloat(cartItem.item.price).toLocaleString("en-US", {style: "currency", currency: "USD"})}</p>
               </div>
-              <p className='mt-2 text-gray-100 font-extrabold md:bg-transparent md:mt-0'>{cartItem.item.name}</p>
+              <p className='mt-2 max-w-[55px] text-gray-100 font-extrabold md:max-w-[100px] md:bg-transparent md:mt-0'>{cartItem.item.name}</p>
               <p className='hidden text-gray-500 mb-2 md:block'>Category : {cartItem.item.category}</p>
             </div>
           </div>
@@ -117,8 +117,8 @@ export default function Cart() {
             {countControlBtn(cartItem)}
             {removeBtn(cartItem)}
           </div>
-          <div className="hidden w-56 text-end text-white md:flex">
-            <p>{parseFloat(cartItem.item.price).toLocaleString("en-US", {style: "currency", currency: "USD"})}</p>
+          <div className="hidden w-56 text-end text-white md:flex md:justify-end">
+            <p className='flex'>{parseFloat(cartItem.item.price).toLocaleString("en-US", {style: "currency", currency: "USD"})}</p>
           </div>
           </div>
         ))}
