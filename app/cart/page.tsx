@@ -106,7 +106,10 @@ export default function Cart() {
               </div>
             </div>
             <div className='flex flex-col'>
-              <p className='mt-8 text-gray-100 font-extrabold md:bg-transparent md:mt-0'>{cartItem.item.name}</p>
+              <div className="flex w-56 text-end text-white md:hidden">
+               <p>{parseFloat(cartItem.item.price).toLocaleString("en-US", {style: "currency", currency: "USD"})}</p>
+              </div>
+              <p className='mt-2 text-gray-100 font-extrabold md:bg-transparent md:mt-0'>{cartItem.item.name}</p>
               <p className='hidden text-gray-500 mb-2 md:block'>Category : {cartItem.item.category}</p>
             </div>
           </div>
@@ -114,7 +117,9 @@ export default function Cart() {
             {countControlBtn(cartItem)}
             {removeBtn(cartItem)}
           </div>
-          <div className="w-56 text-end text-white">{parseFloat(cartItem.item.price).toLocaleString("en-US", {style: "currency", currency: "USD"})}</div>
+          <div className="hidden w-56 text-end text-white md:flex">
+            <p>{parseFloat(cartItem.item.price).toLocaleString("en-US", {style: "currency", currency: "USD"})}</p>
+          </div>
           </div>
         ))}
       </div>

@@ -1,81 +1,11 @@
 [
   {
-    "id": "bac54073-ad71-4a09-841f-23f6d07bc49c",
-    "category": "wireless earpiece",
-    "description": "Android Bluetooth earpieces come in a variety of shapes and sizes, including earbuds, ear hooks, and over-the-ear designs. They typically feature a built-in microphone and controls for adjusting the volume, answering and ending calls, and controlling playback of audio.",
-    "price": "285",
-    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fear_piece1.avif?alt=media&token=cf4c6662-d4f3-4cf3-9fab-01df38531fee",
-    "name": "Jabr3",
-    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
-    "vendor": {
-      "username": "chelsea",
-      "email": "chelsea@gmail.com",
-      "phone": "08091114444"
-    }
-  },
-  {
-    "id": "862090af-ea3f-4ac3-aeec-2a9d80e5678a",
-    "category": "wrist watch",
-    "description": "The Sony SmartWatch 3 is a wearable device developed and manufactured by Sony Corporation. It was released in 2014 and features a 1.6-inch transflective display with a resolution of 320 x 320 pixels. The watch is powered by a 1.2GHz quad-core processor and 512MB of RAM, and comes with 4GB of internal storage.",
-    "price": "1430",
-    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fsony_watch.avif?alt=media&token=8785325d-1b08-4b53-bf2a-e162beace0fc",
-    "name": "Sony SmartWatch 3",
-    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
-    "vendor": {
-      "username": "chelsea",
-      "email": "chelsea@gmail.com",
-      "phone": "08091114444"
-    }
-  },
-  {
-    "id": "a1f4e7f3-1b50-4e96-8edb-cac336dc095e",
-    "category": "wireless earpiece",
-    "description": "Bluetooth earpieces also include features such as noise-cancellation technology, which reduces background noise and improves call quality. Some models also include voice assistants, such as Google Assistant or Amazon Alexa, allowing users to control their smartphone using voice commands.",
-    "price": "125.99",
-    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fear_piece2.avif?alt=media&token=fbf628f7-7842-4e77-a197-89df319b8b63",
-    "name": "Elipsis SV12Q",
-    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
-    "vendor": {
-      "username": "chelsea",
-      "email": "chelsea@gmail.com",
-      "phone": "08091114444"
-    }
-  },
-  {
     "id": "40324d42-0042-4ab4-9363-8bb44c832ee8",
     "category": "wireless earpiece",
     "description": "An Android Bluetooth earpiece is a wireless earpiece that connects to an Android smartphone via Bluetooth technology. These earpieces are designed to be used for hands-free calling and listening to audio, allowing users to keep their hands free while on the go.",
     "price": "169",
     "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fear_piece3.png?alt=media&token=daf54f45-d37e-4e9b-9683-4bf3b1fbd77c",
     "name": "Nikko 2BL",
-    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
-    "vendor": {
-      "username": "chelsea",
-      "email": "chelsea@gmail.com",
-      "phone": "08091114444"
-    }
-  },
-  {
-    "id": "27eed566-13f4-4b8f-a222-ed0ea0c06e09",
-    "category": "mobiles phones",
-    "description": "The Pixel 6 features a 6.4-inch Full HD+ OLED display, Google Tensor processor, 50-megapixel primary camera, and a 12-megapixel ultra-wide camera. It also includes features such as Night Sight, Live HDR+, and Super Res Zoom.",
-    "price": "890.55",
-    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fpixel.png?alt=media&token=5e9940ab-a6a1-4a49-bb66-44aa77730182",
-    "name": "Google Pixel 6",
-    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
-    "vendor": {
-      "username": "chelsea",
-      "email": "chelsea@gmail.com",
-      "phone": "08091114444"
-    }
-  },
-  {
-    "id": "95971ccc-5bfe-4653-9d7c-a721785a3d88",
-    "category": "wrist watch",
-    "description": "The SmartWatch 2 is designed to be used as a companion device for Android smartphones and includes features such as notifications, music controls, and weather updates. It also includes NFC technology for mobile payments and comes with a range of customizable watch faces.",
-    "price": "1099",
-    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fsamsung_watch.avif?alt=media&token=19c7f31d-4bad-473f-8439-09f9bc4875ff",
-    "name": "Sony SmartWatch 2",
     "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
     "vendor": {
       "username": "chelsea",
@@ -154,12 +84,82 @@
     }
   },
   {
+    "id": "862090af-ea3f-4ac3-aeec-2a9d80e5678a",
+    "category": "wrist watch",
+    "description": "The Sony SmartWatch 3 is a wearable device developed and manufactured by Sony Corporation. It was released in 2014 and features a 1.6-inch transflective display with a resolution of 320 x 320 pixels. The watch is powered by a 1.2GHz quad-core processor and 512MB of RAM, and comes with 4GB of internal storage.",
+    "price": "1430",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fsony_sw3.png?alt=media&token=fc40ec06-d669-4996-b59b-d5e00f5227ee",
+    "name": "Sony SmartWatch Neptune",
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
+    "vendor": {
+      "username": "chelsea",
+      "email": "chelsea@gmail.com",
+      "phone": "08091114444"
+    }
+  },
+  {
+    "id": "a1f4e7f3-1b50-4e96-8edb-cac336dc095e",
+    "category": "wireless earpiece",
+    "description": "Bluetooth earpieces also include features such as noise-cancellation technology, which reduces background noise and improves call quality. Some models also include voice assistants, such as Google Assistant or Amazon Alexa, allowing users to control their smartphone using voice commands.",
+    "price": "125.99",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Felipsis.png?alt=media&token=a761fc57-2456-4045-b00d-50490db93dba",
+    "name": "Elipsis SV12Q",
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
+    "vendor": {
+      "username": "chelsea",
+      "email": "chelsea@gmail.com",
+      "phone": "08091114444"
+    }
+  },
+  {
+    "id": "bac54073-ad71-4a09-841f-23f6d07bc49c",
+    "category": "wireless earpiece",
+    "description": "Android Bluetooth earpieces come in a variety of shapes and sizes, including earbuds, ear hooks, and over-the-ear designs. They typically feature a built-in microphone and controls for adjusting the volume, answering and ending calls, and controlling playback of audio.",
+    "price": "285",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fjabr.png?alt=media&token=bf023f9f-89e9-4212-a24f-4297145e4b21",
+    "name": "Jabr3",
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
+    "vendor": {
+      "username": "chelsea",
+      "email": "chelsea@gmail.com",
+      "phone": "08091114444"
+    }
+  },
+  {
+    "id": "27eed566-13f4-4b8f-a222-ed0ea0c06e09",
+    "category": "mobile phones",
+    "description": "The Pixel 6 features a 6.4-inch Full HD+ OLED display, Google Tensor processor, 50-megapixel primary camera, and a 12-megapixel ultra-wide camera. It also includes features such as Night Sight, Live HDR+, and Super Res Zoom.",
+    "price": "890.55",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fgoogle_pixel.webp?alt=media&token=5c30fbd9-c00f-4304-a995-6347e456f959",
+    "name": "Google Pixel 6",
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
+    "vendor": {
+      "username": "chelsea",
+      "email": "chelsea@gmail.com",
+      "phone": "08091114444"
+    }
+  },
+  {
     "id": "6d28f24c-7ca3-4ecf-962c-2a91ea6bd2e7",
-    "category": "mobiles phones",
+    "category": "mobile phones",
     "description": "The S10 features a 6.1-inch Quad HD+ Dynamic AMOLED display, Qualcomm Snapdragon 855 (USA)/Exynos 9820 (Global) chipset, triple rear cameras with a 12-megapixel wide, 12-megapixel telephoto and 16-megapixel ultra-wide lens, and a 10-megapixel front camera. It also comes with up to 512GB of storage, 8GB of RAM, and an in-display fingerprint sensor. The S10 runs on Android 9.0 (Pie) with Samsung's One UI skin on top. It is available in a range of colors, including Prism White, Prism Black, Prism Green, and Prism Blue, as well as Ceramic Black and Ceramic White for the higher-end model.",
     "price": "1125",
     "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fsamsung.png?alt=media&token=1769b246-df04-4461-a605-160e572e8393",
     "name": "Samsung S10",
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
+    "vendor": {
+      "username": "chelsea",
+      "email": "chelsea@gmail.com",
+      "phone": "08091114444"
+    }
+  },
+  {
+    "id": "95971ccc-5bfe-4653-9d7c-a721785a3d88",
+    "category": "wrist watch",
+    "description": "The SmartWatch 2 is designed to be used as a companion device for Android smartphones and includes features such as notifications, music controls, and weather updates. It also includes NFC technology for mobile payments and comes with a range of customizable watch faces.",
+    "price": "1099",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fsony_sw2.png?alt=media&token=8e99c6dd-b891-4cf1-9f9c-6ea7b4b1fbe6",
+    "name": "Sony SmartWatch Rome",
     "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
     "vendor": {
       "username": "chelsea",
@@ -188,20 +188,6 @@
     "price": "101.89",
     "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fhoodie5.png?alt=media&token=46022204-4b0f-4c05-abab-db3d5ddb519f",
     "name": "Deca Hoodie",
-    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
-    "vendor": {
-      "username": "chelsea",
-      "email": "chelsea@gmail.com",
-      "phone": "08091114444"
-    }
-  },
-  {
-    "id": "5a330a60-f8d3-47fa-811b-37f684809ee0",
-    "category": "mobiles phones",
-    "description": "The Nokia Windows QL5-N is Starlight, Green, and Product Red. It is also compatible with a variety of interchangeable bands, including the new Solo Loop and Braided Solo Loop bands, which do not have any clasps or buckles for a seamless fit.",
-    "price": "101.89",
-    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fphone5.png?alt=media&token=cb6a96d0-30fa-4f05-91b7-8334f62a3118",
-    "name": "Nokia Windows QL5-N",
     "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
     "vendor": {
       "username": "chelsea",
@@ -252,8 +238,22 @@
     }
   },
   {
+    "id": "60372cef-a646-4257-9502-cce81c04c015",
+    "category": "mobile phones",
+    "description": "The Sony Xperia is Starlight, Green, and Product Red. It is also compatible with a variety of interchangeable bands, including the new Solo Loop and Braided Solo Loop bands, which do not have any clasps or buckles for a seamless fit.",
+    "price": "101.89",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fsony.png?alt=media&token=24949ad7-d93f-47b5-9e93-aa73c1a3f550",
+    "name": "Sony Xperia",
+    "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
+    "vendor": {
+      "username": "chelsea",
+      "email": "chelsea@gmail.com",
+      "phone": "08091114444"
+    }
+  },
+  {
     "id": "ef5b3b6b-2cd3-445b-aa81-8de008a30e83",
-    "category": "mobiles phones",
+    "category": "mobile phones",
     "description": "The iPhone 11 features a 6.1-inch Liquid Retina display, A13 Bionic chip, dual 12-megapixel ultra-wide and wide cameras, 4K video recording, Night mode, and up to 256GB of storage. It also comes with iOS 13 pre-installed, which offers new features such as Dark Mode and improved privacy settings. The iPhone 11 is available in six colors: Black, White, Green, Yellow, Purple.",
     "price": "995.60",
     "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fiphone11.png?alt=media&token=3acc4b08-a583-496c-8946-9d7a57f1b9f0",
@@ -266,12 +266,12 @@
     }
   },
   {
-    "id": "60372cef-a646-4257-9502-cce81c04c015",
-    "category": "mobiles phones",
-    "description": "The Sony Xperia is Starlight, Green, and Product Red. It is also compatible with a variety of interchangeable bands, including the new Solo Loop and Braided Solo Loop bands, which do not have any clasps or buckles for a seamless fit.",
+    "id": "5a330a60-f8d3-47fa-811b-37f684809ee0",
+    "category": "mobile phones",
+    "description": "The Nokia Windows QL5-N is Starlight, Green, and Product Red. It is also compatible with a variety of interchangeable bands, including the new Solo Loop and Braided Solo Loop bands, which do not have any clasps or buckles for a seamless fit.",
     "price": "101.89",
-    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fsony.png?alt=media&token=24949ad7-d93f-47b5-9e93-aa73c1a3f550",
-    "name": "Sony Xperia",
+    "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fphone5.png?alt=media&token=cb6a96d0-30fa-4f05-91b7-8334f62a3118",
+    "name": "Nokia Windows QL5-VN",
     "vendorid": "de0c25b0-5455-4732-8685-9e228a37b3eb",
     "vendor": {
       "username": "chelsea",

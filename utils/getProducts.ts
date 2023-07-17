@@ -4,10 +4,9 @@ async function sleep(time: number) {
   return new Promise((resolve) => setTimeout(resolve, time))
 } 
 
-
 export async function getProducts(): Promise<TProductDetails[]> {
 
-    await sleep(1000)
+    await sleep(5000)
     
     try {
       const response = await fetch(`${origin}api/products`, {
