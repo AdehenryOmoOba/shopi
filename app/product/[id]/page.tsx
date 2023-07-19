@@ -65,9 +65,11 @@ export default function SingleProduct({params}: {params: {id: string}}) {
         <span className="text-gray-400">⭐️</span>
       </div>
       <AddToCartButton data={product} />
-      <Link href="/" className="py-2 px-4 rounded text-sm font-bold bg-slate-800 mt-4 focus:outline-none focus:shadow-outline hover:text-white transition-colors flex items-center gap-x-2">
-        <HiOutlineArrowNarrowLeft />
-        Go Back
+      <Link href="/">
+        <button className="flex items-center justify-center gap-x-2 h-10 w-36 rounded text-sm font-bold bg-slate-800 mt-4 focus:outline-none focus:shadow-outline hover:text-white transition-colors">
+          <HiOutlineArrowNarrowLeft />
+          Go Back
+        </button>
       </Link>
     </div>
   )

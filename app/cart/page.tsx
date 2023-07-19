@@ -109,7 +109,7 @@ export default function Cart() {
               <div className="flex w-56 text-end text-white md:hidden">
                <p>{parseFloat(cartItem.item.price).toLocaleString("en-US", {style: "currency", currency: "USD"})}</p>
               </div>
-              <p className='mt-2 max-w-[55px] text-gray-100 font-extrabold md:max-w-[100px] md:bg-transparent md:mt-0'>{cartItem.item.name}</p>
+              <p className='mt-2 text-gray-100 font-extrabold md:max-w-[100px] md:bg-transparent md:mt-0'>{cartItem.item.name}</p>
               <p className='hidden text-gray-500 mb-2 md:block'>Category : {cartItem.item.category}</p>
             </div>
           </div>

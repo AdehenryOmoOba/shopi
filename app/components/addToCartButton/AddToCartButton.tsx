@@ -35,13 +35,13 @@ export default function AddToCartButton({data} : {data: TProductDetails}) {
 
   console.log(isInCart())
 
-  const addToCart = <button onClick={() => handleAddItem(data)} className="flex items-center gap-x-1 bg-blue-600 h-10 text-white font-bold px-4 rounded focus:outline-none focus:shadow-outline w-max">
-                     <GiShoppingCart />
-                     <p>Add to Cart</p>
+  const addToCart = <button onClick={() => handleAddItem(data)} className="flex items-center justify-center gap-x-1 bg-blue-600 h-10 text-white font-bold rounded focus:outline-none focus:shadow-outline w-max px-5">
+                     <GiShoppingCart className="text-sm"/>
+                     <p className="">Add to Cart</p>
                     </button>
 
-  const removeFromCart = <button onClick={() => handleRemoveItem({itemId: data.id, itemName: data.name})} className="flex items-center gap-x-1 bg-red-600 text-white font-bold h-14 px-4 rounded focus:outline-none focus:shadow-outline">
-                          <RiDeleteBinLine />
+  const removeFromCart = <button onClick={() => handleRemoveItem({itemId: data.id, itemName: data.name})} className="flex items-center justify-center gap-x-1 bg-red-600 text-white font-bold h-10 rounded focus:outline-none focus:shadow-outline w-max px-5">
+                          <RiDeleteBinLine className="text-sm"/>
                           <p>Delete from Cart</p>
                          </button>
 
