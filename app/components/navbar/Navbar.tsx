@@ -25,7 +25,6 @@ export default function Navbar() {
   const router = useRouter()
   const [isOpen, setisOpen] = useState(false)
   const socialUser = useSession()?.data?.user
-  // const session = useSession()
 
   useEffect(() => {
     console.log(socialUser)

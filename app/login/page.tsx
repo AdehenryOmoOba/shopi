@@ -1,12 +1,12 @@
 "use client"
 import Link from 'next/link'
-import React, {useState, useContext } from 'react'
+import React, {useState, useContext, useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useNotification } from '../components/notification/Notification'
 import signIn from '@/utils/auth/login'
 import { AppContext } from '@/utils/context/appContextProvider'
 import Button from '../components/buttons/Button'
-import { signIn as githubSignIn, signIn as googleSignIn} from "next-auth/react"
+import { signIn as githubSignIn, signIn as googleSignIn, useSession} from "next-auth/react"
 import origin from '@/utils/origin'
 import {FcGoogle} from "react-icons/fc"
 import {FaGithub} from "react-icons/fa"
@@ -20,8 +20,13 @@ export default function Login() {
   const [githubIsLoading, setGithubIsLoading] = useState(false)
   const searcParams = useSearchParams()
   const notify = useNotification()
-  const {setUser,setCartCount, user} = useContext(AppContext)
+  const {setUser,setCartCount} = useContext(AppContext)
   const router = useRouter()
+  const socialUser = useSession()?.data?.user
+
+  useEffect(() => {
+    if (socialUser?.email ) router.push(origin)
+  }, [socialUser?.email])
  
   const nexturl = searcParams.get('nexturl') ? `/${searcParams.get('nexturl')}` : '/'
 
@@ -62,7 +67,7 @@ export default function Login() {
     setGoogleIsLoading(true)
     console.log("Google login...")
     window.localStorage.setItem("current-provider", "Google")
-    await googleSignIn("google",{redirect: true, callbackUrl: origin})
+    await googleSignIn("google",{redirect: false})
   }
 
   const handleGithubLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -70,7 +75,7 @@ export default function Login() {
     setGithubIsLoading(true)
     console.log("GitHub login...")
     window.localStorage.setItem("current-provider", "GitHub")
-    await githubSignIn("github",{redirect: true, callbackUrl: origin})
+    await githubSignIn("github",{redirect: false})
   }
 
   const content = (
