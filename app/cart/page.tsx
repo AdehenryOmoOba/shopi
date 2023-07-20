@@ -77,7 +77,7 @@ export default function Cart() {
      <div className='h-max md:w-3/5'>
       <div className='flex bg-black items-center sticky top-0 justify-between pb-10 pt-16 h-24'>
        <h2 className='text-slate-300 text-3xl font-bold'>Cart</h2>
-       <button onClick={handleClearCart} className="flex bg-red-600 items-center gap-x-1 leading-none h-12 text-slate-300 px-4 w-max rounded font-extrabold border border-gray-800 hover:text-white hover:bg-slate-800 transition-colors">
+       <button onClick={handleClearCart} className="flex bg-red-600 items-center gap-x-1 leading-none h-12 text-slate-300 px-4 w-max rounded font-extrabold border border-red-800 hover:text-white hover:bg-red-800 transition-colors">
         <RiDeleteBinLine />
         <span>Clear cart</span>
        </button>
