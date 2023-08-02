@@ -75,7 +75,7 @@ export default function Cart() {
 
 
   return (
-    <div className="flex flex-col mt-5 w-screen bg-gray-950 rounded-lg h-[82vh] gap-x-10 overflow-auto mx-auto md:w-[90vw] md:mt-0 lg:w-[80vw] md:flex-row">
+    <div className="flex flex-col mt-5 w-screen bg-gray-950 rounded-lg h-[82vh] gap-x-10 overflow-auto mx-auto md:w-[90vw] lg:w-[80vw] md:flex-row">
 
      {/* Left side */}
      <div className='h-max md:w-3/5'>
