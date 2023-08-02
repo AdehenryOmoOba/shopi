@@ -1,7 +1,7 @@
 "use client"
 import React, { useContext, useState } from 'react'
 import { AppContext } from '../../utils/context/appContextProvider'
-import {RiDeleteBinLine} from "react-icons/ri" 
+import {FaTrash} from "react-icons/fa"
 import Image from 'next/image'
 import { useNotification } from '../components/notification/Notification'
 import { useRouter } from 'next/navigation'
@@ -69,7 +69,7 @@ export default function Cart() {
                           </div>)
 
   const removeBtn = (cartItem: {item: TProductDetails, count: number}) => (<button onClick={() => handleRemoveItem({itemId: cartItem.item.id, itemName: cartItem.item.name})} className="flex items-center gap-x-1 text-slate-300 py-2 px-4 w-28 rounded font-extrabold border border-gray-800 hover:text-white hover:bg-slate-800 transition-colors">
-                      <RiDeleteBinLine />
+                      <FaTrash />
                       <span>Remove</span>
                     </button>)
 
@@ -82,7 +82,7 @@ export default function Cart() {
       <div className='flex bg-black items-center sticky top-0 justify-between pb-10 pt-16 h-24'>
        <h2 className='text-slate-300 text-3xl font-bold'>Cart</h2>
        <button onClick={handleClearCart} className="flex bg-red-600 items-center gap-x-1 leading-none h-12 text-slate-300 px-4 w-max rounded font-extrabold border border-gray-800 hover:text-white hover:bg-slate-800 transition-colors">
-        <RiDeleteBinLine />
+        <FaTrash />
         <span>Clear cart</span>
        </button>
       </div>
@@ -106,7 +106,7 @@ export default function Cart() {
              </div>
              <div className='flex md:hidden'>
                {countControlBtn(cartItem)}
-               <RiDeleteBinLine onClick={() => handleRemoveItem({itemId: cartItem.item.id, itemName: cartItem.item.name})} style={{height: "70%", fontSize: "1.3rem", cursor: "pointer"}}/>
+               <FaTrash onClick={() => handleRemoveItem({itemId: cartItem.item.id, itemName: cartItem.item.name})} style={{height: "70%", fontSize: "1.3rem", cursor: "pointer"}}/>
               </div>
             </div>
             <div className='flex flex-col'>

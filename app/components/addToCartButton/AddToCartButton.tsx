@@ -4,7 +4,7 @@ import { usePathname, useRouter } from "next/navigation";
 import {useContext, useState} from "react"
 import { useNotification } from "../notification/Notification";
 import {GiShoppingCart} from 'react-icons/gi'
-import {RiDeleteBinLine} from "react-icons/ri" 
+import {FaTrash} from "react-icons/fa"
 import SearchPopOver from "../searchPopOver/SearchPopOver";
 
 
@@ -47,7 +47,7 @@ export default function AddToCartButton({data} : {data: TProductDetails}) {
                     </button>
 
   const removeFromCart = <button onClick={() => handleRemoveItem({itemId: data.id, itemName: data.name})} className="flex items-center justify-center gap-x-1 bg-red-600 text-white font-bold h-10 rounded focus:outline-none focus:shadow-outline w-max px-5">
-                          <RiDeleteBinLine className="text-sm"/>
+                          <FaTrash className="text-sm"/>
                           <p>Delete from Cart</p>
                          </button>
 
