@@ -6,6 +6,7 @@ import {AiFillCloseCircle} from "react-icons/ai"
 import {GrAdd} from "react-icons/gr"
 import {FaTrash} from "react-icons/fa"
 import Image from "next/image"
+import origin from "@/utils/origin"
 
 
 const inputRegex = /^[A-Za-z0-9]+$/;
@@ -64,7 +65,7 @@ function SearchBox({setPopOver}: Prop) {
       
         try {
     
-          const response = await fetch("http://localhost:3000/api/search-products", fetchOptions)
+          const response = await fetch(`${origin}api/search-products`, fetchOptions)
           
           const data = await response.json()
           
