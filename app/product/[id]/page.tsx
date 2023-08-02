@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import {HiOutlineArrowNarrowLeft} from "react-icons/hi"
-import AddToCartButton from "@/app/_components/addToCartButton/AddToCartButton";
+import AddToCartButton from "@/app/components/addToCartButton/AddToCartButton";
 
 
 let product: TProductDetails | undefined;

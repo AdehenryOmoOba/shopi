@@ -1,8 +1,8 @@
 import './globals.css'
-import Footer from './_components/footer/Footer'
-import Navbar from './_components/navbar/Navbar'
+import Footer from './components/footer/Footer'
+import Navbar from './components/navbar/Navbar'
 import AppContextProvider from '@/utils/context/appContextProvider'
-import Notification from './_components/notification/Notification'
+import Notification from './components/notification/Notification'
 
 
 export default function RootLayout({children}: {children: React.ReactNode}) {

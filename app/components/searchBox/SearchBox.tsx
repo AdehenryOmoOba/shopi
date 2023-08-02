@@ -5,6 +5,7 @@ import {FiSearch} from "react-icons/fi"
 import {AiFillCloseCircle} from "react-icons/ai"
 import {GrAdd} from "react-icons/gr"
 import {FaTrash} from "react-icons/fa"
+import Image from "next/image"
 
 
 const inputRegex = /^[A-Za-z0-9]+$/;
@@ -117,7 +118,14 @@ function SearchBox({setPopOver}: Prop) {
     {
      !!productsFound.length && productsFound.map((product) => (
         <div key={product.id} className='flex items-center w-full h-20 bg-slate-900 border border-slate-800 shadow-lg p-2 my-2 rounded-lg'>
-          <img src={product.image} className='h-10 w-10 rounded mr-4' />
+          <Image 
+            src={product.image} 
+            alt={product.name} 
+            width="10"  
+            height="10"
+            loading='lazy' 
+            className='h-10 w-10 rounded mr-4' 
+          />
           <div className='flex flex-col flex-1'>
             <p className='text-sm font-extrabold'><small className='text-slate-500 text-xs'>Name</small> {product.name}</p>
             <p className='text-sm font-extrabold'><small className='text-slate-500 text-xs'>Price</small> {parseFloat(product.price).toLocaleString("en-US", {style: "currency", currency: "USD"})}</p>

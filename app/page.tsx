@@ -1,5 +1,5 @@
 import fs from 'fs'
-import ProductsPage from "./_components/productsPage/ProductsPage"
+import ProductsPage from "./components/productsPage/ProductsPage"
 import { getProducts } from '@/utils/getProducts'
 
 
