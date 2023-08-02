@@ -1,6 +1,5 @@
 import fs from 'fs'
-import ProductsPage from "./components/productsPage/ProductsPage"
-import SearchBar from "./components/searchBar/searchBar"
+import ProductsPage from "./_components/productsPage/ProductsPage"
 import { getProducts } from '@/utils/getProducts'
 
 
@@ -23,8 +22,7 @@ export default async function Home() {
 
   return (
     <section>
-      <SearchBar />
-      <div>
+      <div className='mt-16'>
         {!products ? <p className='text-center'>Error fetching products from database 🤨</p> : categories.map((category, index) => (
         <div key={category}>
           <ProductsPage products={products as TProductDetails[]} category={category} index={index} categoriesLength={categoriesLength} />

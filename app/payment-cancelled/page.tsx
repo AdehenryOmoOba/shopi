@@ -1,6 +1,6 @@
 "use client"
 import {FcCancel} from "react-icons/fc"
-import CountDown from "../components/countDown/CountDown"
+import CountDown from "../_components/countDown/CountDown"
 
 
 export default function PaymentCancelled() {

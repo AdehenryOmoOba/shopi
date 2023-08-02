@@ -2,15 +2,15 @@
 import Link from 'next/link'
 import React, {useState, useContext, useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useNotification } from '../components/notification/Notification'
+import { useNotification } from '../_components/notification/Notification'
 import signIn from '@/utils/auth/login'
 import { AppContext } from '@/utils/context/appContextProvider'
-import Button from '../components/buttons/Button'
+import Button from '../_components/buttons/Button'
 import { signIn as githubSignIn, signIn as googleSignIn, useSession} from "next-auth/react"
 import origin from '@/utils/origin'
 import {FcGoogle} from "react-icons/fc"
 import {FaGithub} from "react-icons/fa"
-import SocialButton from '../components/buttons/SocialButton'
+import SocialButton from '../_components/buttons/SocialButton'
 
 
 export default function Login() {

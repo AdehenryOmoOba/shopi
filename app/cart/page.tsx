@@ -3,9 +3,9 @@ import React, { useContext, useState } from 'react'
 import { AppContext } from '../../utils/context/appContextProvider'
 import {RiDeleteBinLine} from "react-icons/ri" 
 import Image from 'next/image'
-import { useNotification } from '../components/notification/Notification'
+import { useNotification } from '../_components/notification/Notification'
 import { useRouter } from 'next/navigation'
-import Button from '../components/buttons/Button'
+import Button from '../_components/buttons/Button'
 import origin from '@/utils/origin'
 
 
@@ -33,6 +33,11 @@ export default function Cart() {
   }
 
   const handleCheckout = async (cart: {item: TProductDetails, count: number}[]) => {
+
+    console.log("cart length: ",cart.length)
+
+    if(!cart.length) return notify({type: "error", message: "Please add item to cart before checkout"}, 2000)
+
     setIsLoading(true)
     try {
       const response = await fetch(`${origin}api/create-payment-intent`, {

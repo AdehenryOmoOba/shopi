@@ -25,6 +25,8 @@ interface IAppContext {
   setCartTotal: React.Dispatch<React.SetStateAction<number>>
   showNotification: boolean
   setShowNotification: React.Dispatch<React.SetStateAction<boolean>>
+  setPopOver: React.Dispatch<React.SetStateAction<boolean>>
+  popOver: boolean
 }
 
 export const AppContext = React.createContext<IAppContext | null>(null)
@@ -38,6 +40,8 @@ export default function AppContextProvider({children}: {children: React.ReactNod
   const [cartCount, setCartCount] = useState(0)
   const [cartTotal, setCartTotal] = useState(0)
   const [showNotification, setShowNotification] = useState(false)
+  const [popOver, setPopOver] = useState(false)
+
 
   useEffect(() => {
 
@@ -163,7 +167,7 @@ export default function AppContextProvider({children}: {children: React.ReactNod
   }
 
   return (
-     <AppContext.Provider value={{searchString, setSearchString, user, setUser, error, setError, success, setSuccess, cartCount, setCartCount, updateCartCount, addItemToCart, decrementCartCount, deleteCartItem, clearCart, cartTotal, setCartTotal,showNotification, setShowNotification}}>
+     <AppContext.Provider value={{searchString, setSearchString, user, setUser, error, setError, success, setSuccess, cartCount, setCartCount, updateCartCount, addItemToCart, decrementCartCount, deleteCartItem, clearCart, cartTotal, setCartTotal,showNotification, setShowNotification,popOver,setPopOver}}>
       <SessionProvider>
        {children}
       </SessionProvider>

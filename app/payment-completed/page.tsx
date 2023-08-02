@@ -3,7 +3,7 @@ import { AppContext } from "@/utils/context/appContextProvider"
 import { debouncedCartSync } from "@/utils/debouncedCartSync"
 import {useContext, useEffect} from "react"
 import {IoMdCheckmarkCircleOutline} from "react-icons/io"
-import CountDown from "../components/countDown/CountDown"
+import CountDown from "../_components/countDown/CountDown"
 
 
 export default function PaymentCompleted() {
