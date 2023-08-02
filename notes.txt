@@ -31,3 +31,4 @@ TODO:
 - Remove items bought from cart ✔️
 - Deploy on vercel ✔️
 - Add Google login ✔️
+-
