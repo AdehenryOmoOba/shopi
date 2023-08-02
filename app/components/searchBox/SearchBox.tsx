@@ -95,7 +95,7 @@ function SearchBox({setPopOver}: Prop) {
         setNoMatch(false)
       }
 
-    const content =   <div className={`${styles.scrollBar} flex flex-col fixed top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/4 h-[60vh] w-11/12 bg-slate-900 rounded-lg py-4 drop-shadow-2xl transition-all md:w-5/12`}>
+    const content =   <div className={`${styles.scrollBar} flex flex-col fixed top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/4 h-[60vh] w-11/12 bg-slate-800 rounded-lg py-4 drop-shadow-2xl transition-all md:w-5/12`}>
     {/* Heading  */}
     <div className='flex items-center gap-x-2 w-full h-10 bg-transparent mb-1 pb-4 px-4 border-b border-b-slate-600 text-slate-400'>
       <FiSearch  className='text-xl'/>
@@ -131,7 +131,7 @@ function SearchBox({setPopOver}: Prop) {
             <p className='text-sm font-extrabold'><small className='text-slate-500 text-xs'>Name</small> {product.name}</p>
             <p className='text-sm font-extrabold'><small className='text-slate-500 text-xs'>Price</small> {parseFloat(product.price).toLocaleString("en-US", {style: "currency", currency: "USD"})}</p>
           </div>
-          <div className='flex gap-x-2 text-xs'>
+          <div className='flex gap-x-4 text-xs'>
             <button className='bg-white font-extrabold text-slate-800 py-2 px-4 rounded border-none outline-none hover:bg-slate-100 active:bg-white focus:outline-none'>Details</button>
             {/* <button className='bg-green-300 text-slate-800 border-none p-y px-4 rounded hover:bg-green-400 active:bg-green-500 focus:outline-none'>
               <GrAdd />
