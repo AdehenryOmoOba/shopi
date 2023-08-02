@@ -109,7 +109,7 @@ function SearchBox({setPopOver}: Prop) {
     <div className='my-1 h-8 px-4 text-sm text-slate-400'>
     {isLoading && inputValue && <p>Searching...</p>}
     {
-     noMatch && <p>No match found for '{inputValue}'</p>
+     noMatch && <p> No match found for &quot;{inputValue}&quot;</p>
     }
     </div>
   
