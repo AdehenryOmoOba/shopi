@@ -73,10 +73,9 @@ export default function Cart() {
                       <span>Remove</span>
                     </button>)
 
-  const checkoutBtnStyles = "relative bg-white text-gray-900 font-extrabold w-full h-12 text-lg rounded-md  transition ease-linear hover:-translate-y-1 hover:scale-[1.02] hover:text-black duration-200"
 
   return (
-    <div className="flex flex-col w-screen bg-gray-950 rounded-lg h-[82vh] gap-x-10 overflow-auto mx-auto md:w-[90vw] lg:w-[80vw] md:flex-row">
+    <div className="flex flex-col mt-5 w-screen bg-gray-950 rounded-lg h-[82vh] gap-x-10 overflow-auto mx-auto md:w-[90vw] md:mt-0 lg:w-[80vw] md:flex-row">
 
      {/* Left side */}
      <div className='h-max md:w-3/5'>
