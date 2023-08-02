@@ -42,12 +42,6 @@ export async function POST(req: Request) {
           contains: searchString.searchString,
           mode: "insensitive"
         }
-      },
-      select: {
-        id: true,
-        name: true,
-        price: true,
-        image: true
       }
     })
 

@@ -2,6 +2,7 @@
 import React, { useRef, useState, useLayoutEffect } from 'react'
 import { createPortal } from 'react-dom';
 
+type MouseProp = MouseEvent & { target: HTMLElement}
 
 type SearchPopOverProp = {
   popOver: boolean
@@ -19,7 +20,6 @@ function createDOMElement(id: string) {
 function SearchPopOver({popOver, setPopOver, children}: SearchPopOverProp) {
   const popOverRef = useRef<HTMLDivElement | null>(null)
   const [popOverDiv, setPopOverDiv] = useState<HTMLElement | null>(null)
-  const switchRef = useRef(0)
 
 
   useLayoutEffect(() => {
@@ -30,10 +30,9 @@ function SearchPopOver({popOver, setPopOver, children}: SearchPopOverProp) {
       e.key == "Escape" ? setPopOver(false) : null
     }
 
-    function handleClickOutside(event: any){
+    function handleClickOutside(event: MouseProp){
       if(event.target.classList[0] === "clearBtn") return
-      switchRef.current++
-      if (popOver && !popOverRef.current.contains(event.target) && switchRef.current > 1) {
+      if (popOver && event.target.classList.contains("popOverBg")) {
           setPopOver(false)
       }
     };
@@ -51,14 +50,14 @@ function SearchPopOver({popOver, setPopOver, children}: SearchPopOverProp) {
     document.removeEventListener("keydown", handleEscapeKey);
     document.removeEventListener("click", handleClickOutside);
     document.body.style.overflow = "auto";
-    element.parentNode.removeChild(element)
+    element.parentNode?.removeChild(element)
     }
 
   },[popOver])
 
   if(!popOverDiv) return null
 
-  const content = <div ref={popOverRef}  className="fixed inset-0 bg-black bg-opacity-70 z-10">
+  const content = <div ref={popOverRef}  className="popOverBg fixed inset-0 bg-black bg-opacity-70 z-10">
                     {children}
                   </div>
 

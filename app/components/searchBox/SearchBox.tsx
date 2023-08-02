@@ -1,12 +1,15 @@
 "use client"
 import styles from "./SearchBox.module.css"
-import React,{useRef, useState, useEffect, KeyboardEvent} from 'react'
+import React,{useRef, useState, useEffect, ChangeEvent, useContext} from 'react'
 import {FiSearch} from "react-icons/fi"
 import {AiFillCloseCircle} from "react-icons/ai"
 import {GrAdd} from "react-icons/gr"
 import {FaTrash} from "react-icons/fa"
 import Image from "next/image"
 import origin from "@/utils/origin"
+import { useRouter } from "next/navigation"
+import { AppContext } from "@/utils/context/appContextProvider"
+
 
 
 const inputRegex = /^[A-Za-z0-9]+$/;
@@ -17,14 +20,14 @@ type Prop = {
     setPopOver: React.Dispatch<React.SetStateAction<boolean>>
   }
 
-
 function SearchBox({setPopOver}: Prop) {
-    const popOverRef = useRef()
     const clearBtnRef = useRef()
     const [inputValue, setInputValue] = useState("")
     const [productsFound, setProductsFound] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [noMatch, setNoMatch] = useState(false)
+    const router = useRouter()
+    const {user, deleteCartItem, addItemToCart} = useContext(AppContext)
 
     useEffect(() => {
         (
@@ -85,7 +88,7 @@ function SearchBox({setPopOver}: Prop) {
         }
       }
 
-      function handleInputChange(event: any){
+      function handleInputChange(event: ChangeEvent<HTMLInputElement>){
         setNoMatch(false)
         setInputValue(() => event.target.value)
       }
@@ -95,7 +98,24 @@ function SearchBox({setPopOver}: Prop) {
         setNoMatch(false)
       }
 
-    const content =   <div className={`${styles.scrollBar} flex flex-col fixed top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/4 h-[60vh] w-11/12 bg-slate-800 rounded-lg py-4 drop-shadow-2xl transition-all md:w-5/12`}>
+      function viewDetails(id: string){
+        setPopOver(false)
+        router.push(`/product/${id}`)
+      }
+
+      function isInCart(id: string){
+       return user?.cart.some(({item}) => item.id === id)
+      }
+
+      function handleAddItem(item: TProductDetails) {
+        addItemToCart(item)
+      }
+
+      function handleDeleteItem(id: string) {
+        deleteCartItem(id)
+      }
+
+    const content =   <div className={`${styles.scrollBar} flex flex-col fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[60vh] w-11/12 bg-slate-800 rounded-lg py-4 drop-shadow-2xl transition-all md:w-5/12`}>
     {/* Heading  */}
     <div className='flex items-center gap-x-2 w-full h-10 bg-transparent mb-1 pb-4 px-4 border-b border-b-slate-600 text-slate-400'>
       <FiSearch  className='text-xl'/>
@@ -125,27 +145,30 @@ function SearchBox({setPopOver}: Prop) {
             width="10"  
             height="10"
             loading='lazy' 
-            className='h-10 w-10 rounded mr-4' 
+            className='h-12 w-12 rounded mr-4' 
           />
-          <div className='flex flex-col flex-1'>
-            <p className='text-sm font-extrabold'><small className='text-slate-500 text-xs'>Name</small> {product.name}</p>
-            <p className='text-sm font-extrabold'><small className='text-slate-500 text-xs'>Price</small> {parseFloat(product.price).toLocaleString("en-US", {style: "currency", currency: "USD"})}</p>
+          <div className='flex flex-col flex-1 pr-1 w-10'>
+            <p className='text-xs font-extrabold md:text-sm truncate block'><small className='text-slate-500 text-xs'>Name</small> {product.name}</p>
+            <p className='text-xs font-extrabold md:text-sm'><small className='text-slate-500 text-xs'>Price</small> {parseFloat(product.price).toLocaleString("en-US", {style: "currency", currency: "USD"})}</p>
           </div>
-          <div className='flex gap-x-4 text-xs'>
-            <button className='bg-white font-extrabold text-slate-800 py-2 px-4 rounded border-none outline-none hover:bg-slate-100 active:bg-white focus:outline-none'>Details</button>
-            {/* <button className='bg-green-300 text-slate-800 border-none p-y px-4 rounded hover:bg-green-400 active:bg-green-500 focus:outline-none'>
-              <GrAdd />
-            </button> */}
-            <button className='bg-red-600 text-white p-y px-4 rounded border-none hover:bg-red-500 active:bg-red-700 focus:outline-none'>
-              <FaTrash />
-            </button>
+          <div className='flex gap-x-2 text-xs md:gap-x-4'>
+            <button onClick={() => viewDetails(product.id)} className='bg-white font-extrabold text-slate-800 py-2 px-4 rounded border-none outline-none hover:bg-slate-100 active:bg-white focus:outline-none'>Details</button>
+            {
+              isInCart(product.id) ?
+              <button onClick={() => handleDeleteItem(product.id)} disabled={!user} className='bg-red-600 text-white p-y px-4 rounded border-none hover:bg-red-500 active:bg-red-700 focus:outline-none disabled:bg-gray-500 disabled:opacity-90 disabled:cursor-not-allowed'>
+                <FaTrash />
+              </button>
+              :
+              <button onClick={() => handleAddItem(product)} disabled={!user} className={`bg-green-300 text-slate-800 border-none p-y px-4 rounded hover:bg-green-400 active:bg-green-500 focus:outline-none disabled:bg-gray-500 disabled:opacity-90 disabled:cursor-not-allowed`}>
+                <GrAdd />
+              </button>
+            }
+
           </div>
         </div>
       ))
     }
     </div>
-  
-  
   </div>
 
     return content

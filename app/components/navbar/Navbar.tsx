@@ -106,9 +106,9 @@ export default function Navbar() {
       <div onClick={() => setisOpen((prev) => !prev)}  className={`slideMenu fixed flex flex-col pt-10 pl-5 top-40 right-0 bottom-0 ${isOpen ? "w-1/2":"w-0"} backdrop-blur-lg md:hidden`}>
        {slideNavLinks()}
       </div>
-      <div className='flex flex-1 justify-start items-center'>
+      <Link href="/" className='flex flex-1 justify-start items-center'>
         <CldImage deliveryType='fetch' src={logoURL} alt="web-logo" width="65"  height="65" loading='lazy' style={{width: "auto"}}/>
-      </div>
+      </Link>
       {navLinks()}
       <div className='flex flex-1 justify-center items-center gap-x-5 w-max md:justify-end'>
         <p className='capitalize w-max'>Hi, {user ? user.username : "Guest"}</p>

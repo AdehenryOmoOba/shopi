@@ -6,6 +6,7 @@ import { useNotification } from "../notification/Notification";
 import {GiShoppingCart} from 'react-icons/gi'
 import {FaTrash} from "react-icons/fa"
 import SearchPopOver from "../searchPopOver/SearchPopOver";
+import { useGoToLoginPage } from "@/utils/goToLoginPage";
 
 
 export default function AddToCartButton({data} : {data: TProductDetails}) {
@@ -13,7 +14,7 @@ export default function AddToCartButton({data} : {data: TProductDetails}) {
   const {addItemToCart, user, deleteCartItem} = useContext(AppContext);
   const path = usePathname()
   const [popOver, setPopOver] = useState(false)
-  const router = useRouter()
+  const goToLoginPage = useGoToLoginPage()
 
   const handleAddItem = (data: TProductDetails) => {
     if(!user) {
@@ -35,15 +36,15 @@ export default function AddToCartButton({data} : {data: TProductDetails}) {
     return user?.cart.some(({item}) => item.id === productId) ?? false
   }
 
-  function goToLoginPage(){
-    router.push("/login")
-  }
+  // export function goToLoginPage(){
+  //   router.push("/login")
+  // }
 
   console.log("rendering...")
 
   const addToCart = <button onClick={() => handleAddItem(data)} className="flex items-center justify-center gap-x-1 bg-blue-600 h-10 text-white font-bold rounded focus:outline-none focus:shadow-outline w-max px-5">
                      <GiShoppingCart className="text-sm"/>
-                     <p className="">Add to Cart</p>
+                     <p className="">Add</p>
                     </button>
 
   const removeFromCart = <button onClick={() => handleRemoveItem({itemId: data.id, itemName: data.name})} className="flex items-center justify-center gap-x-1 bg-red-600 text-white font-bold h-10 rounded focus:outline-none focus:shadow-outline w-max px-5">
@@ -59,7 +60,7 @@ export default function AddToCartButton({data} : {data: TProductDetails}) {
             <>
              {addToCart}
              {popOver && <SearchPopOver popOver={popOver} setPopOver={setPopOver}>
-               <div className="flex flex-col fixed gap-y-4 py-10 items-center justify-center top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/4 h-48 w-10/12 bg-slate-900 rounded-lg drop-shadow-2xl transition-all md:w-5/12">
+               <div className="flex flex-col fixed gap-y-4 py-10 items-center justify-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-48 w-10/12 bg-slate-900 rounded-lg drop-shadow-2xl transition-all md:w-5/12">
                 <p className="text-4xl">🤗</p>
                 <p>Please login before adding item to cart</p>
                 <div className="flex gap-x-4 text-xs font-extrabold mb-4 mt-2">
