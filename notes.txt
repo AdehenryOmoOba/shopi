@@ -30,4 +30,4 @@ TODO:
 - Implement checkout with stripe ✔️
 - Remove items bought from cart ✔️
 - Deploy on vercel ✔️
-- Add Google login 
+- Add Google login ✔️
