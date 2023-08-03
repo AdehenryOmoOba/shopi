@@ -113,7 +113,7 @@ export default function Navbar() {
       <div className='hidden md:flex'>
       {isHomePath && <SearchBar />}
       </div>
-      <div className='flex justify-center items-center mr-2 gap-x-5 w-max md:mr-0 md:flex-1 md:justify-end'>
+      <div className='flex justify-center items-center mr-4 gap-x-4 w-max md:mr-0 md:flex-1 md:justify-end'>
         {user && <p className='capitalize w-max'>Hi, {user.username }</p>}
         <div className='grid relative place-content-center h-10 w-10 bg-slate-800 rounded-full'>
         {!!cartCount && <div className='grid absolute place-content-center -top-2 -right-2 h-6 w-6 bg-blue-600 rounded-full'>
