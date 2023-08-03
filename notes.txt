@@ -17,7 +17,7 @@ This can be done by modifying the build script inside the package.json file as: 
 
 Seeding: 
 
-///////////////////// Test branch  ///////////////////////
+///////////////////// Main branch  ///////////////////////
 
 TODO:
 - Complete register/login/logout flow hooked with database ✔️
