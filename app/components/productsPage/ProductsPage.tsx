@@ -24,8 +24,8 @@ export default function ProductsPage({products, category, index , categoriesLeng
   let isCategory = productsArray.find((product) => product.category === category)
 
   return (
-    <div className=''>
-     {isCategory && <h2 className="text-2xl px-4 capitalize">{category}</h2>}
+    <div className='mt-6'>
+     {isCategory && <h2 className="font-extrabold py-2 px-4 rounded-lg ml-4 capitalize text-slate-900 bg-white inline-block tracking-wider">{category}</h2>}
      <div className="flex justify-start space-x-10 overflow-x-scroll snap-x" id="items_container">
       {productsArray.filter((items) => items.category === category).map((item) => (
         <ProductCard key={item.id}  data={item} />
