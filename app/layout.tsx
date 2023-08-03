@@ -13,7 +13,12 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
         <title>Shopi : Home</title>
         <meta name='description' content='e-commerce store' />
         <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+        <meta property="twitter:image" content="https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/sample_images%2Fshopi_screenshot.png?alt=media&token=fdde00a6-62a2-475e-a1a4-52b27f2a936e"></meta>
         <meta property='og:image' content='https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/sample_images%2Fshopi_screenshot.png?alt=media&token=fdde00a6-62a2-475e-a1a4-52b27f2a936e' />
+        <meta property="og:title" content="Shopi home page"></meta>
+        <meta property="og:description" content="Shopi e-commerce store home page" />
+        <meta property="twitter:title" content="Shopi home page"></meta>
+        <meta property="og:url" content="https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/sample_images%2Fshopi_screenshot.png?alt=media&token=fdde00a6-62a2-475e-a1a4-52b27f2a936e"></meta>
         <meta property='og:image:width' content='1200' /> 
         <meta property='og:image:height' content='630' /> 
       </head>
