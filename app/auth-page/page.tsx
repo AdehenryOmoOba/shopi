@@ -4,13 +4,13 @@ import { redirect } from 'next/navigation'
 import { AppContext } from '@/utils/context/appContextProvider'
 
 
-export default function SecretePage() {
+export default function AuthPage() {
   
  const context = useContext(AppContext)
 
  let isLoggedIn = context.user ? true : false
 
- if(!isLoggedIn) redirect("/login?nexturl=secret-page")
+ if(!isLoggedIn) redirect("/login?nexturl=auth-page")
 
   const content = (text: string) => (
     <div className='w-max mx-auto pt-20 flex-col justify-center'>
