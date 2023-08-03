@@ -81,7 +81,7 @@ export default function Navbar() {
   const navLinks = () => (<nav className="hidden md:flex md:flex-1 md:justify-center md:items-center">
                            <ul className='flex items-center justify-center gap-x-1 w-max h-full text-slate-400 md:gap-x-5 font-extrabold'>
                              <Link href='/' className={`py-1 px-4 rounded font-extrabold ${isHomePath ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Home</Link>
-                             <Link href='/secret-page' className={`py-1 px-4 rounded font-extrabold ${pathname === '/secrete-page' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Secrete Page</Link>
+                             <Link href='/secret-page' className={`py-1 px-4 rounded font-extrabold ${pathname === '/secrete-page' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Secret</Link>
                              {!!user && <Link href='/cart' className={`py-1 px-4 rounded font-extrabold ${pathname === '/cart' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>View Cart</Link>}
                              {!user && <Link href='/register' className={`py-1 px-4 rounded font-extrabold ${pathname === '/register' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Register</Link>}
                              {user ? <button onClick={handleLogout} className="py-1 px-4 rounded font-extrabold cursor-pointer active:bg-slate-800 active:text-white transition-colors" >Logout</button> : <Link href='/login' className={`py-1 px-4 rounded font-extrabold ${pathname === '/login' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Login</Link>}
@@ -91,7 +91,7 @@ export default function Navbar() {
   const slideNavLinks = () => (<nav className="flex flex-col justify-center">
                            <ul className='flex flex-col items-start justify-start gap-y-10 w-max h-full text-slate-400 md:gap-x-5 font-extrabold'>
                              <Link href='/' className={`py-1 px-4 rounded font-extrabold ${isHomePath ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Home</Link>
-                             <Link href='/secret-page' className={`py-1 px-4 rounded font-extrabold ${pathname === '/secrete-page' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Secrete Page</Link>
+                             <Link href='/secret-page' className={`py-1 px-4 rounded font-extrabold ${pathname === '/secrete-page' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Secret</Link>
                              {!!user && <Link href='/cart' className={`py-1 px-4 rounded font-extrabold ${pathname === '/cart' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>View Cart</Link>}
                              {!user && <Link href='/register' className={`py-1 px-4 rounded font-extrabold ${pathname === '/register' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Register</Link>}
                              {user ? <button onClick={handleLogout} className="py-1 px-4 rounded font-extrabold cursor-pointer active:bg-slate-800 active:text-white transition-colors" >Logout</button> : <Link href='/login' className={`py-1 px-4 rounded text-sm font-extrabold ${pathname === '/login' ? 'bg-slate-800 text-white' : ''} hover:text-white transition-colors`}>Login</Link>}
@@ -110,8 +110,11 @@ export default function Navbar() {
         <CldImage deliveryType='fetch' src={logoURL} alt="web-logo" width="65"  height="65" loading='lazy' style={{width: "auto"}}/>
       </Link>
       {navLinks()}
-      <div className='flex flex-1 justify-center items-center gap-x-5 w-max md:justify-end'>
-        <p className='capitalize w-max'>Hi, {user ? user.username : "Guest"}</p>
+      <div className='hidden md:flex'>
+      {isHomePath && <SearchBar />}
+      </div>
+      <div className='flex justify-center items-center mr-2 gap-x-5 w-max md:mr-0 md:flex-1 md:justify-end'>
+        {user && <p className='capitalize w-max'>Hi, {user.username }</p>}
         <div className='grid relative place-content-center h-10 w-10 bg-slate-800 rounded-full'>
         {!!cartCount && <div className='grid absolute place-content-center -top-2 -right-2 h-6 w-6 bg-blue-600 rounded-full'>
             <p className='grid place-content-center leading-6 text-sm w-6 rounded-full'>{cartCount}</p>
@@ -121,13 +124,14 @@ export default function Navbar() {
           </Link>
         </div>
       </div>
+      <div className='flex md:hidden'>
+      {isHomePath && <SearchBar />}
+      </div>
       <div onClick={toggleMenu} className='flex flex-1 justify-end items-center md:hidden'>
         {isOpen ? <MdClose  className='text-white text-3xl cursor-pointer'/> : <RxHamburgerMenu  className='text-white text-3xl cursor-pointer'/>}
       </div>
     </div>
-
     <div>
-    {isHomePath && <SearchBar />}
     </div>
 
     </div>
