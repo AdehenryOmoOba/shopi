@@ -42,7 +42,7 @@ export default function AddToCartButton({data} : {data: TProductDetails}) {
 
   console.log("rendering...")
 
-  const addToCart = <button onClick={() => handleAddItem(data)} className="flex items-center justify-center gap-x-1 bg-blue-600 h-10 text-white font-bold rounded focus:outline-none focus:shadow-outline w-max px-5">
+  const addToCart = <button onClick={() => handleAddItem(data)} className="flex items-center justify-center gap-x-1 bg-blue-600 h-10 text-white font-bold rounded-lg focus:outline-none focus:shadow-outline w-max px-5">
                      <GiShoppingCart className="text-sm"/>
                      <p className="">Add</p>
                     </button>
@@ -64,8 +64,8 @@ export default function AddToCartButton({data} : {data: TProductDetails}) {
                 <p className="text-4xl">🤗</p>
                 <p>Please login before adding item to cart</p>
                 <div className="flex gap-x-4 text-xs font-extrabold mb-4 mt-2">
-                  <button onClick={() => setPopOver(false)} className="bg-transparent text-white border border-white px-4 py-2 rounded-md">Cancel</button>
-                  <button onClick={goToLoginPage} className="bg-white border border-white text-slate-900 px-4 py-2 rounded-md">Login</button>
+                  <button onClick={() => setPopOver(false)} className="bg-transparent text-white border border-white px-4 py-2 rounded-lg">Cancel</button>
+                  <button onClick={goToLoginPage} className="bg-white border border-white text-slate-900 px-4 py-2 rounded-lg">Login</button>
                 </div>
                </div>
              </SearchPopOver>

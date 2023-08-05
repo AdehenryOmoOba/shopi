@@ -3,7 +3,16 @@ import Footer from './components/footer/Footer'
 import Navbar from './components/navbar/Navbar'
 import AppContextProvider from '@/utils/context/appContextProvider'
 import Notification from './components/notification/Notification'
+import { getProducts } from '@/utils/getProducts'
 
+
+export async function generateStaticParams() {
+  const products: TProductDetails[] = await getProducts()
+  const paramsArray = products.map((product) => ({
+    id: product.id
+  }))
+  return paramsArray
+}
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
 
