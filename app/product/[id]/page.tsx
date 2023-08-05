@@ -4,6 +4,7 @@ import Link from "next/link";
 import {HiOutlineArrowNarrowLeft} from "react-icons/hi"
 import AddToCartButton from "@/app/components/addToCartButton/AddToCartButton";
 import { findProduct } from "@/utils/findProduct";
+import { getProducts } from "@/utils/getProducts";
 
 
 let product: TProductDetails | null;
@@ -24,6 +25,14 @@ export async function generateMetadata({params}: {params: {id: string}}) {
     description: product.description
   }
 
+}
+
+export async function generateStaticParams() {
+  const products: TProductDetails[] = await getProducts()
+  const paramsArray = products.map((product) => ({
+    id: product.id
+  }))
+  return paramsArray
 }
 
 export default async function SingleProduct({params}: {params: {id: string}}) {

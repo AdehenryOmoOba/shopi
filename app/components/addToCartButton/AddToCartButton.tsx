@@ -36,12 +36,6 @@ export default function AddToCartButton({data} : {data: TProductDetails}) {
     return user?.cart.some(({item}) => item.id === productId) ?? false
   }
 
-  // export function goToLoginPage(){
-  //   router.push("/login")
-  // }
-
-  console.log("rendering...")
-
   const addToCart = <button onClick={() => handleAddItem(data)} className="flex items-center justify-center gap-x-1 bg-blue-600 h-10 text-white font-bold rounded-lg focus:outline-none focus:shadow-outline w-max px-5">
                      <GiShoppingCart className="text-sm"/>
                      <p className="">Add</p>
@@ -73,6 +67,5 @@ export default function AddToCartButton({data} : {data: TProductDetails}) {
             </>
       )
   }
-
 }
     
