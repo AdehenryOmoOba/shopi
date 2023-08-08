@@ -103,7 +103,7 @@ export default function Navbar() {
     <div className='fixed w-[100vw] top-0 left-0 right-0 mx-auto h-32 px-5 pt-10 bg-[#00000b] z-10 lg:w-[80vw]'>
       <div className='inline-flex w-full mb-5'>
         
-      <div onClick={() => setisOpen((prev) => !prev)}  className={`slideMenu fixed flex flex-col pt-10 pl-5 top-40 right-0 bottom-0 ${isOpen ? "w-1/2":"w-0"} backdrop-blur-lg md:hidden`}>
+      <div onClick={() => setisOpen((prev) => !prev)}  className={`slideMenu fixed flex flex-col pt-10 pl-5 top-32 right-0 bottom-0 ${isOpen ? "w-1/2":"w-0"} backdrop-blur-lg md:hidden`}>
        {slideNavLinks()}
       </div>
       <Link href="/" className='flex flex-1 justify-start items-center'>
