@@ -13,7 +13,10 @@ import { signOut as socialSignOut, useSession } from 'next-auth/react'
 import origin from '@/utils/origin'
 import socialLogin from '@/utils/auth/socialLogin'
 import SearchBar from '../searchBar/searchBar'
+import { Pacifico } from 'next/font/google'
 
+
+const pacifico = Pacifico({subsets: ["latin"], weight: "400"})
 
 const homeRegex = /^\/product\/[a-z\d]+|\/$/
 const logoURL = "https://firebasestorage.googleapis.com/v0/b/ecommerce-f8b0d.appspot.com/o/images%2Fshopi_logo.png?alt=media&token=930520f4-d5fc-4bbb-aed6-00b92a4ac953"
@@ -108,6 +111,7 @@ export default function Navbar() {
       </div>
       <Link href="/" className='flex flex-1 justify-start items-center'>
         <CldImage deliveryType='fetch' src={logoURL} alt="web-logo" width="65"  height="65" loading='lazy' style={{width: "auto"}}/>
+        <p className='text-2xl font-medium bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FCAF45]  bg-clip-text text-transparent'>Shopi</p>
       </Link>
       {navLinks()}
       <div className='hidden md:flex'>
